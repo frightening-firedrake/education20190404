@@ -1,0 +1,245 @@
+.SelectChecklist{
+	
+}
+.SelectChecklist .el-form>.el-form-item{
+	height:0.5rem;
+	line-height:0.48rem;
+	border:1px solid #dfdfdf;
+	box-sizing: border-box;
+	background:#ffffff;
+	color:#333333;
+	margin-bottom:0;
+	width:50%;
+	float:left;
+	overflow: hidden;
+}
+.SelectChecklist .el-form>.el-form-item.full{
+	width:100%;
+}
+.SelectChecklist .el-form>.el-form-item .el-form-item__label {
+    line-height: inherit;
+    background-color: #fbfbfb;
+    font-size: 0.18rem;
+    padding: 0 0 0 0.12rem;
+}
+.SelectChecklist .el-form-item .el-form-item__content{
+	border-left:solid 1px #dfdfdf;
+	/*height:0.5rem;*/
+	line-height:0.48rem;
+}
+.SelectChecklist .el-form-item .el-form-item__content>.el-input.searching input{
+	height:0.46rem;
+	line-height:0.46rem;
+	border:none;
+	padding-right:7em;
+	font-size:0.16rem;
+}
+.SelectChecklist .el-form-item .el-form-item__content .el-select{
+	padding-left:0.2rem;
+}
+.SelectChecklist .el-form-item .el-form-item__content .el-select .el-input input{
+	height:0.36rem;
+	width:2.75rem;
+	line-height:0.36rem;
+	border:solid  0.01rem #dfdfdf;
+	font-size:0.16rem;
+	background:#f2f2f2;
+	border-radius:0;
+}
+.SelectChecklist .el-form-item__label, .SelectChecklist input {
+    color: inherit;
+}
+/*验证*/
+/*form.sampling .el-form-item .el-form-item__content .el-form-item__error{
+	top:50%;
+	padding:0;
+	right:0.2rem;
+	left:auto;
+	margin-top:-7px;
+}*/
+.SelectChecklist>p{
+	/*height:0.5rem;*/
+	line-height:0.48rem;
+	border-left:1px solid #dfdfdf;
+	border-right:1px solid #dfdfdf;
+	box-sizing: content-box;
+	color:#333333;
+	background-color: #fbfbfb;
+    font-size: 0.18rem;
+    padding: 0 0 0 0.12rem;
+	clear:both;
+}
+.SelectChecklist .checkboxwrap{
+	min-height:0.5rem;
+	border-left:1px solid #dfdfdf ;
+	border-top:1px solid #dfdfdf ;
+	position:relative;
+}
+.SelectChecklist .checkboxwrap .el-checkbox-group{
+	padding:0;
+}
+.SelectChecklist .checkboxwrap:after{
+	content:"";
+	background:#dfdfdf;
+	position:absolute;
+	right:0;
+	width:1px;
+	top:0;
+	bottom:0;
+	z-index: 3;
+}
+/*为空时显示*/
+.SelectChecklist .checkboxwrap .checklistemit{
+	min-height:2rem;
+	font-size:0.18rem;
+	line-height:2rem;
+	text-align:center;
+	color:#007c36;
+}
+.SelectChecklist .checkboxwrap .el-checkbox{
+    background-color: #fbfbfb;
+	/*width:20%;*/
+	width:25%;
+	float:left;
+	margin:0;
+	height:0.5rem;
+	line-height:0.5rem;
+	box-sizing: border-box;
+	border-right:1px solid #dfdfdf;
+	border-bottom:1px solid #dfdfdf;
+}
+.SelectChecklist .checkboxwrap .el-checkbox .el-checkbox__label{
+	position:absolute;
+	left:1rem;
+	right:0;
+	top:0;
+	bottom:0;
+	line-height:0.48rem;
+	height:100%;
+	color:#666666;
+	font-size:0.16rem;
+	padding:0 0 0 0.22rem;
+	border-left:1px solid #dfdfdf;
+	background:#ffffff;
+	padding:0;
+	text-align: center;
+}
+.SelectChecklist .checkboxwrap .el-checkbox .el-checkbox__input{
+	margin-left:0.4rem;
+}
+/*时间选择*/
+	.SelectChecklist div.dataSelete{
+		float:left;
+	}
+	.SelectChecklist div.dataSelete >p:before{
+		background:#1bb45f;
+	}
+	.SelectChecklist div.dataSelete >div{
+		float:left;
+		width:3rem;
+		line-height:0.54rem;
+	}
+	.SelectChecklist .el-date-editor{
+		width:3rem;
+		height:0.32rem;
+		/*line-height:0.32rem;*/
+		border-radius:0;
+		border:1px solid #58b481;
+		color: #58b481;
+		font-size:0.2rem;
+		padding:0 0.15rem;
+		margin-left:0.2rem;
+	}
+	.SelectChecklist .el-range-editor.is-active, .SelectChecklist .el-range-editor.is-active:hover{
+		border-color:#58b481;
+	}
+	.SelectChecklist .el-date-editor .el-range-separator{
+		padding:0;
+	}
+	
+/*提交与取消*/
+.SelectChecklist .btns{
+	clear:both;
+	padding:0.6rem 0;
+	text-align: center;
+	border-top:solid 1px #dfdfdf;
+	position:relative;
+	z-index: 2;
+	left:-1px;
+	top:-1px;
+	background:#ffffff;
+}
+
+.SelectChecklist .btns button {
+    font-size: 0.18rem;
+    padding: 0rem;
+    line-height: 0.5rem;
+    border-radius: 0.1rem;
+    width:1.3rem;
+    height:0.5rem;
+    text-align: center;
+}
+.SelectChecklist .btns .el-button+.el-button{
+	margin-left:0.57rem;
+}
+.SelectChecklist .btns button.yes {
+	background-color: rgb(88,180,129);
+	border-color:rgb(88,180,129);
+}
+.SelectChecklist .btns button.yes:hover {
+	background-color: rgba(88,180,129,0.8);
+	border-color:#58b481;
+}
+.SelectChecklist .btns button.no {
+	color: #58b481;
+	border-color:#58b481;
+}
+.SelectChecklist .btns button.no:hover {
+	background:rgba(88,180,129,0.1);
+}
+.SelectChecklist .remark-input .el-input__inner{
+	height: 0.36rem;
+    width: 2.75rem;
+    line-height: 0.36rem;
+    border: solid 0.01rem #dfdfdf;
+    font-size: 0.16rem;
+    background: #f2f2f2;
+    border-radius: 0;
+    margin-left:0.2rem;
+}
+.el-autocomplete-suggestion li {
+    font-size: 0.16rem;
+    height: 34px;
+    line-height: 34px;
+}
+.SelectChecklist .pull-left1{
+	height:0.48rem;
+	line-height:0.48rem;
+	margin-left:1rem;
+	border-left: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+	text-align:center;
+}
+.SelectChecklist .order{
+	border-bottom: 1px solid #dfdfdf;
+	background-color:#fbfbfb;
+}
+.SelectChecklist .sampleNumRange .el-input__inner{
+	border:none;
+	height:0.48rem;
+	line-height:0.48rem;
+	font-size:0.16rem;
+	text-align:center;
+	padding:0;
+	width:7em;
+}
+.SelectChecklist .sampleNumRange{
+	
+	border:none;
+	height:0.48rem;
+	line-height:0.48rem;
+	font-size:0.16rem;
+	text-align:center;
+	padding:0;
+	width:7em;
+}

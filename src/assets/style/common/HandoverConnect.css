@@ -1,0 +1,250 @@
+.connect_form p{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top:1px solid #dfdfdf;
+    border-left:1px solid #dfdfdf;
+    border-right:1px solid #dfdfdf;
+    width:100%;
+    height:0.6rem;
+    text-align:center;
+    line-height:0.6rem;
+    font-size:0.2rem;
+    color:#000000;
+    background-color:#eeeeee;
+}
+.connect_form .leading_out{
+    /*float: left;*/
+    display: block;
+    height: 0.4rem;
+    line-height: 0.33rem;
+    margin-left: 0.3rem;
+    font-size: 0.24rem;
+    cursor: pointer;
+    width:2.76rem;
+    margin:0 auto;
+    margin-top:0.3rem;
+    background-color: #58b481;
+    border-radius: 0.05rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.04rem;
+    color: #ffffff;
+}
+.connect_form .leading_out span{
+   border: 1px solid #FFFFFF;
+    border-radius: 0.04rem;
+    padding: 0 0.2rem;
+    font-weight: 500;
+    line-height:0.3rem;
+    text-align:center;
+    width:100%;
+    height:100%;
+    display:block;
+}
+ 
+.connect_form{
+    padding-bottom:0.3rem;
+}
+.connect_form .connect{
+    border-top:1px solid #dfdfdf;
+    border-right:1px solid #dfdfdf;
+}
+.connect_form .connect .connect_fath{
+    overflow: hidden;
+    height:0.6rem;
+    line-height:0.6rem;
+    font-size:0.16rem;
+    border-bottom:1px solid #dfdfdf;
+}
+.connect_form .connect .connect_fath .el-col-12{
+    height:100%;
+}
+
+.connect_form .connect .connect_fath  .el-form-item{
+    height:100%;
+    
+    margin:0;
+}
+.connect_form .connect .connect_fath  .el-form-item .el-form-item__label{
+    width:2.06rem;
+    font-size:0.16rem;
+    height:100%;
+    line-height:0.6rem;
+    color:#333333;
+}
+.connect_form .connect .connect_fath  .el-form-item .el-form-item__content{
+	font-size:0.16rem;
+    /*width:5rem;*/
+    height:100%;
+    border-left:1px solid #dfdfdf;
+    /*float:left;*/
+    line-height:0.6rem;
+    /*padding-left:0.3rem;*/
+}
+.connect_form .connect .connect_fath  .el-form-item .el-form-item__content .el-input input{
+    border:none;
+}
+
+
+
+.connect_form .connect .connect_fath .connect_font{
+    border-left:1px solid #dfdfdf
+}
+.connect_form .connect .connect_fath .connect_font.connect_font_title{
+    background-color:#fdfdfd;
+    text-align:right;
+    /*padding-right:0.3rem;*/
+}
+.connect_form .connect .connect_fath .connect_font_content{
+    background-color:white;
+    padding-left:0.3rem;
+}
+.connect_form .project{
+    height:0.6rem;
+    line-height:0.6rem;
+    /*border-bottom:1px solid #dfdfdf;*/
+    background-color:#eeeeee;
+    overflow: hidden;
+    /*border-top-right-radius: 10px;*/
+    /*border-top-left-radius: 10px;*/
+    border-left:1px solid #dfdfdf;
+    border-right:1px solid #dfdfdf;
+    padding-right:10px;
+}
+.connect_form .project .classify{
+    padding-left:1.02rem;
+}
+.connect_form .project .classify span{
+    padding-left:0.2rem; 
+    color:#333333;
+    font-size:0.16rem;
+}
+.connect_form .project .classify_num{
+    font-size:0.16rem;
+    text-align:center;
+    overflow: hidden
+}
+.connect_form .project_details .classify_num .classify_hao{
+    border-bottom:1px solid #dfdfdf;
+    /*overflow-y: hidden;
+    overflow-x: visible;*/
+    height:0.5rem;
+}
+.connect_form .project_details .classify_num .classify_hao{
+    position:relative;
+}
+.connect_form .project_details .classify_num .classify_hao:after{
+    content:"";
+	position:absolute;
+	width:1px;
+	height:100%;
+	background-color:#dfdfdf;
+	left:100%;
+	top:0;
+	z-index: 2;
+}
+/*.connect_form .project_details .classify_num .classify_hao:last-child .classify_font{
+    border-left:none;
+}*/
+.connect_form .project_details{
+    /*height:0.5rem;*/
+    border:1px solid #dfdfdf;
+    line-height:0.48rem;
+
+}
+.connect_form .project_details  .classify{
+   height:4.9rem;
+   overflow-y:scroll; 
+   
+}
+.connect_form .project_details  .classify .el-checkbox-group{
+	border:1px solid #dfdfdf;
+   padding:0; 
+   
+}
+.connect_form .project_details  .classify .classify_col{
+	width:50%;
+	float:left;
+	display: block;
+    border-bottom:1px solid #dfdfdf;
+    padding-left:0.2rem;
+    margin:0;
+}
+.connect_form .project_details  .classify .el-checkbox__label{
+    padding-left:0.32rem;
+    font-size:0.16rem;   
+}
+
+.connect_form .project_details  .classify .is-checked .el-checkbox__label{
+    color:#666666;
+}
+
+.connect_form .project_details  .classify_num{
+    text-align:center;
+      height:4.9rem;
+   /*overflow-y:scroll;*/ 
+}
+.connect_form .project_details  .classify_num .classify_font{
+    border-left:1px solid #dfdfdf;
+}
+.connect_form .project_details  .classify_num .classify_font .el-col{
+    border-top:1px solid #dfdfdf;
+}
+.connect_form .project_details  .classify_num .classify_font .el-col:last-child{
+    border-bottom:1px solid #dfdfdf;
+}
+.connect_form .project_details  .classify_num .operation{
+    color:#e87373;
+    border-left:none;
+    cursor:pointer;
+}
+.connect_form .project_details  .classify_num .operation.del{
+    
+}
+.connect_form .classify_font .new_sample{
+    color:#58b481;
+    cursor:pointer;
+}
+.connect_form .classify_font .new_sample span{
+    cursor: pointer;
+}
+.connect_form .wrapbox{
+	position:relative;
+	
+    /*height: 100%;*/
+}
+.connect_form .wrapbox:after{
+	content:"";
+	position:absolute;
+	width:100%;
+	height:1px;
+	background-color:#dfdfdf;
+	left:0;
+	bottom:0;
+	z-index: 2;
+}
+.connect_form .wrapbox:before{
+	content:"";
+	position:absolute;
+	width:1px;
+	height:100%;
+	background-color:#dfdfdf;
+	right:0;
+	top:0;
+	z-index: 2;
+}
+.connect_form .el-form-item .el-form-item__content .el-form-item__error {
+    top: 50%;
+    padding: 0;
+    right: 0.2rem;
+    left: auto;
+    margin-top: -7px;
+}
+.connect_form .el-form-item .el-form-item__content .el-input {
+    position:relative;
+}
+.connect_form .el-form-item .el-form-item__content .el-input input {
+    padding-right:7em;
+    font-size:0.16rem;
+    border:none;
+}

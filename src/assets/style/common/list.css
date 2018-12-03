@@ -1,0 +1,382 @@
+.listpagewrap{
+	position:relative;
+	/*height: 100%;*/
+	height: auto;
+}
+/*复选框*/
+.el-checkbox__input{
+	width:0.2rem;
+	height:0.2rem;
+	border-radius: 0.04rem;
+}
+.el-checkbox__inner{
+	width:0.2rem;
+	height:0.2rem;
+	border-radius: 0.04rem;
+}
+.el-checkbox__inner::after{
+    height: 0.11rem;
+    left: 0.065rem;
+    top: 0.015rem;
+    width: 0.038rem;
+}
+/*空数据容器*/
+.el-table__empty-block{
+	width:100%!important;
+}
+.el-main{
+    /*padding: 0px 0.45rem;*/
+    /*background-color:white;*/
+	background:rgba(241, 241, 241, 1);
+}
+.el-main .list{
+    background: rgb(255, 255, 255);
+    /*padding: 0px 0.45rem;*/
+    border-color:rgba(215, 215, 215, 1);
+}
+/*列表行文字*/
+.el-main .list .el-table__body-wrapper table tr{
+    color: #666666;
+    font-size: 0.16rem;
+    font-weight:normal;
+    cursor:pointer;
+}
+.el-main .list.nopointer .el-table__body-wrapper table tr{
+    cursor:default;
+}
+/*表格左右边颜色*/
+.el-main .list .el-table__body-wrapper,.el-main .list .el-table__header-wrapper{
+	/*border-left:1px solid #e6e7e7;
+	border-right:1px solid #e6e7e7;*/
+	border-left:1px solid #d7d7d7;
+	border-right:1px solid #d7d7d7;
+}
+/*多选框宽度*/
+.el-main .list .el-table__body-wrapper .el-table-column--selection{
+    width:0.8rem;
+}
+/*多选框颜色*/
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
+    background-color:rgb(76, 144, 219);
+    border-color:rgb(76, 144, 219);
+}
+.el-checkbox__input.is-focus .el-checkbox__inner, .el-checkbox__inner:hover{
+	border-color:rgb(76, 144, 219);
+}
+.el-main .list .el-table__body-wrapper td.el-table-column--selection .cell{
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+}
+.el-main .list .el-table__body-wrapper td.el-table-column--selection .cell label{
+    width:100%;
+    height:100%;
+}
+.el-main .list .el-table__body-wrapper td.el-table-column--selection .cell label .el-checkbox__input{
+    width:100%;
+    height:100%;
+    vertical-align: top;
+}
+.el-main .list .el-table__body-wrapper td.el-table-column--selection .cell label .el-checkbox__input .el-checkbox__inner{
+    width:100%;
+    height:100%;
+    border-radius: 4px;
+/*    border-color:#58b481;*/
+}
+.el-main .list .el-table__body-wrapper td.el-table-column--selection .cell label .el-checkbox__input .el-checkbox__inner::after{
+    left:38%;
+    top:12%;
+    border-width:2px;
+    height:10px;
+}
+/*列表图标*/
+.el-main .list .el-table__body-wrapper td .cell i{
+    font-size: 0.32rem;
+    cursor: pointer;
+    vertical-align: -0.05rem;
+}
+.el-main .list .el-table__body-wrapper td .cell button{
+    font-size: 0.16rem;
+    padding:0;
+    border:none;
+    background:rgba(0,0,0,0);
+    margin:0 0.13rem;
+    cursor:pointer;
+    outline:none;
+}
+.el-main .list .el-table__body-wrapper td .cell button{
+    color:#666;
+}
+.el-main .list .el-table__body-wrapper td .cell button.input{
+    color:#e37f1d;
+}
+.el-main .list .el-table__body-wrapper td .cell button.exportExcel{
+    color:#58b481;
+}
+.el-main .list .el-table__body-wrapper td .cell button.view1{
+    color: #4c90db;
+    text-decoration: underline;
+}
+.el-main .list .el-table__body-wrapper td .cell button.view{
+    color: #58b481;
+}
+.el-main .list .el-table__body-wrapper td .cell button.edit{
+    color:#1adced;
+}
+.el-main .list .el-table__body-wrapper td .cell button.print{
+    color:#e49f18;
+}
+.el-main .list.le .el-table__body-wrapper td .cell button.edit{
+    color:#58b481;
+}
+.el-main .list .el-table__body-wrapper td .cell button.dele{
+    color:#e87373;
+}
+.el-main .list .el-table__body-wrapper td .cell button.undele{
+    color:#999999;
+    cursor:not-allowed;
+}
+.el-main .list .el-table__body-wrapper td .cell button.auth{
+    color:#e17f00;
+}
+.el-main .list .el-table__body-wrapper td .cell button.repeat{
+	color:#2380FF;
+}
+/*表头*/
+.el-main .list .el-table__header-wrapper table tr,.el-main .list .el-table__header-wrapper table tr th{
+    /*background-color:#ffe7b8;*/
+    background-color:#dff0f9;
+    color: rgb(51, 51, 51);
+    font-size: 0.18rem;
+    color:#000000;
+    height:0.68rem;
+    /*line-height:0.68rem;*/
+}
+/*表格颜色*/
+.el-main .list .el-table__body-wrapper table tr,.el-main .list .el-table__body-wrapper table tr th{
+    background-color:#f6f9fa;
+}
+/*列表补边*/
+.listpagewrap{
+	box-sizing: border-box;
+	padding:0 0.14rem;
+	background:#ffffff;
+
+	border-left:0.4rem solid rgba(241, 241, 241, 1);
+	border-right:0.4rem solid rgba(241, 241, 241, 1);
+	/*height:auto;*/
+	min-height:100%;
+}
+/*表格行线*/
+.el-table td, .el-table th.is-leaf{
+	/*border-bottom:1px dashed #dfdfdf;*/
+	border-bottom:1px solid #d7d7d7;
+}
+.el-table .el-table__body-wrapper td{
+	border-right:1px solid #d7d7d7;
+}
+.list .el-table__footer, .list .el-table__header{
+	width:100%!important;
+	margin:0 -1px;
+}
+.list .el-table__body{
+	width:100%!important;
+	margin:0 -1px;
+}
+/*.list .el-table::before{
+	display: none;
+}*/
+.list .el-table__body-wrapper{
+	width:100%!important;
+	overflow:hidden;
+	/*padding:1px;*/
+	min-height:5rem;
+}
+.list .el-table__body tr{
+	width:100%!important;
+	
+}
+/*.list .el-table__row:hover{
+	outline: 1px solid #378ef8;
+}*/
+/*.el-table--striped .el-table__body tr.el-table__row--striped td{
+	background-color:rgb(250,250,250)!important;
+}*/
+/*悬停颜色*/
+.list.el-table--enable-row-hover .el-table__body tr:hover>td{
+	background:#deede8;
+}
+/*去掉padding用line-height设置行高*/
+.list td, .list th{
+	padding:0!important;
+}
+.list div.cell{
+    line-height:0.5rem;
+    padding:0 0.5em;
+    white-space: nowrap;
+}
+/*加载中*/
+.list .el-icon-loading{
+	/*color:#1bb45f;*/
+	color:#4c90db;
+}
+.list .el-loading-text{
+	/*color:#1bb45f;*/
+	color:#4c90db;
+}
+/*上下箭头*/
+.el-table .sort-caret.ascending{
+	top:50%;
+	/*margin-top:-11px;*/
+	margin-top:-12px;
+	border-bottom-color: #999;
+	
+}
+.el-table .sort-caret.descending{
+	top:50%;
+	/*margin-top:-4px;*/
+	margin-top:-1px;
+	border-top-color: #999;
+
+	
+}
+.el-table .descending .sort-caret.descending{
+	border-top-color: #333;
+	/*border-top-color: #1bb45f;*/
+}
+.el-table .ascending .sort-caret.ascending{
+	border-bottom-color: #333;
+	/*border-bottom-color: #1bb45f;*/
+}
+.el-table--border::after, .el-table--group::after, .el-table::before{
+	/*display: none;*/
+}
+/*表头文字对齐*/
+.list tr >th:nth-last-child(2) div.cell{
+	/*padding-right:0.3rem;*/
+}
+.list tr td:nth-last-child(1) div.cell{
+	/*padding-right:0.3rem;*/
+	/*margin-right:-1px;*/
+}
+/*.el-table--striped .el-table__body tr.el-table__row--striped td{	
+	background:rgba(250,250,250,0)!important;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped{
+	background:rgba(250,250,250,1)!important;
+}*/
+.el-table--border, .el-table--group{
+	border-top:1px solid #d7d7d7;
+	border-right:1px solid #d7d7d7;
+	border-left:1px solid #d7d7d7;
+	/*border-left:none;*/
+	border-bottom:none;
+}
+/*库典列表宽度匹配*/
+/*设定表头宽度*/
+.el-main .liblist .el-table__header-wrapper table colgroup col:nth-child(1){
+    width:0.68rem;
+    min-width: 70px;
+}
+.el-main .liblist .el-table__header-wrapper table colgroup col:nth-last-child(5),.el-main .liblist .el-table__header-wrapper table colgroup col:nth-last-child(4),.el-main .liblist .el-table__header-wrapper table colgroup col:nth-last-child(3){
+    /*width:0.37rem;*/
+}
+.el-main .liblist .el-table__header-wrapper table colgroup col:nth-last-child(2){
+    /*width:0.68rem;*/
+}
+/*设定表身宽度*/
+.el-main .liblist .el-table__body-wrapper table colgroup col:nth-child(1){
+    width:0.68rem;
+    min-width: 70px;
+}
+.el-main .liblist .el-table__body-wrapper table colgroup col:nth-last-child(4),.el-main .liblist .el-table__body-wrapper table colgroup col:nth-last-child(3),.el-main .liblist .el-table__body-wrapper table colgroup col:nth-last-child(2){
+    /*width:0.37rem;*/
+}
+.el-main .liblist .el-table__body-wrapper table colgroup col:nth-last-child(1){
+    /*width:0.68rem;*/
+}
+/*工作底稿与安全报告*/
+.viewManuscript:hover{
+	color:#2d5bb8!important;
+	text-decoration: underline;
+}
+.createManuscript{
+	color:#58b481!important;
+}
+.createManuscript:hover{
+	color:#58b481!important;
+	text-decoration: underline;
+}
+.viewSafetyReport:hover{
+	color:#2d5bb8!important;
+	text-decoration: underline;
+}
+.createSafetyReport{
+	color:#2dd2ff!important;
+}
+.createSafetyReport:hover{
+	color:#2dd2ff!important;
+	text-decoration: underline;
+}
+/*当类表数据为空时的新建按钮*/
+.el-table__empty-block{
+	height:5rem;
+	/*line-height:5rem;*/
+}
+.el-table__empty-text{
+	font-size:0.2rem;
+	color: #333333;
+	line-height:0.3rem;
+}
+.el-table__empty-text i{
+	font-size:0.65rem;
+	color: #ffffff;
+	width:1.24rem;
+	height:1.24rem;
+	line-height:1.24rem;
+	text-align: center;
+	display: block;
+	margin:auto;
+	background-color: rgba(76, 144, 219, 0.9);
+	box-shadow: 0 0 0.1rem 0 
+		rgba(35, 24, 21, 0.27);
+	border-radius:50%;
+	cursor:pointer;
+}
+/*以下根据列表设计而定非通用*/
+/*扦样列表宽度匹配*/
+/*设定表头宽度*/
+.el-main .Samplinglist .el-table__header-wrapper table colgroup col:nth-child(1){
+    width:0.68rem;
+    min-width: 70px;
+}
+.el-main .Samplinglist .el-table__header-wrapper table colgroup col:nth-last-child(5),.el-main .Samplinglist .el-table__header-wrapper table colgroup col:nth-last-child(4),.el-main .Samplinglist .el-table__header-wrapper table colgroup col:nth-last-child(3){
+    /*width:0.37rem;*/
+}
+.el-main .Samplinglist .el-table__header-wrapper table colgroup col:nth-last-child(2){
+    /*width:0.68rem;*/
+}
+/*设定表身宽度*/
+.el-main .Samplinglist .el-table__body-wrapper table colgroup col:nth-child(1){
+    width:0.68rem;
+    min-width: 70px;
+}
+.el-main .Samplinglist .el-table__body-wrapper table colgroup col:nth-last-child(4),.el-main .Samplinglist .el-table__body-wrapper table colgroup col:nth-last-child(3),.el-main .Samplinglist .el-table__body-wrapper table colgroup col:nth-last-child(2){
+    /*width:0.37rem;*/
+}
+.el-main .Samplinglist .el-table__body-wrapper table colgroup col:nth-last-child(1){
+    /*width:0.68rem;*/
+}
+/*复杂表*/
+/*.complex */
+.el-checkbox__input.is-checked+.el-checkbox__label{
+	color:rgb(76, 144, 219);
+}
+.el-table .caret-wrapper{
+	width:6px!important;
+}
+
