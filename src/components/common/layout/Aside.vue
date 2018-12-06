@@ -1,7 +1,7 @@
 <template>
 
 	<!--<el-menu unique-opened :default-active="activePath" class="el-menu-vertical-demo" :router=true @open="handleOpen" @select="handleSelect" @close="handleClose" :collapse="this.isCollapse" :background-color="backgroundColor">-->
-	<el-menu :default-active="activePath" class="el-menu-vertical-demo" :router=true @open="handleOpen" @select="handleSelect" @close="handleClose" :collapse="this.isCollapse" :background-color="backgroundColor">
+	<el-menu :default-active="activePath" default-openeds="[1,10]" class="el-menu-vertical-demo" :router=true @open="handleOpen" @select="handleSelect" @close="handleClose" :collapse="this.isCollapse" :background-color="backgroundColor">
 		<!--用户信息-->
 		<!--<div class="user" style="width:2.5rem;">
 			<div class="photo">
@@ -137,8 +137,8 @@ export default {
       navlist: [
      
         {
-          icon: "icon-hetong",
-          title: "扫黑除恶警情案件",
+          icon: "icon-weixin",
+          title: "思政微信小程序管理",
           linkto: "",
           level: 2,
           pid: 0,
@@ -146,61 +146,68 @@ export default {
         },
         {
           icon: "icon-hetong",
-          title: "综合案件列表",
-          linkto: "/index/evilCriminalCases/comprehensiveCriminalCaseList",
+          title: "思政建设管理",
+          linkto: "/index/minProgramManagement/thoughtPoliticalList",
           level: 2,
           pid: 1,
           lid: 2
         },
         {
           icon: "icon-daishenhe",
-          title: "待审核案件",
-          linkto: "/index/evilCriminalCases/pendingTrialCaseList",
+          title: "活动动态管理",
+          linkto: "/index/minProgramManagement/activityList",
           level: 2,
           pid: 1,
           lid: 3
         },
 		{
 			icon: 'icon-tongguos',
-			title: '审核通过案件',
-			linkto: '/index/evilCriminalCases/passedCaseList',
+			title: '政策法规管理',
+			linkto: '/index/minProgramManagement/policyList',
 			level: 2,
 			pid: 1,
 			lid: 4
 		},
 		{
-			icon: 'icon-tongji',
-			title: '数据字典管理',
-			linkto: '',
+			icon: 'icon-weibiaoti--1',
+			title: '规章制度管理',
+			linkto: '/index/minProgramManagement/rulesList',
 			level: 2,
-			pid: 0,
+			pid: 1,
 			lid: 5
 		},
-
-        {
-          icon: "icon-fankui",
-          title: "反馈信息编辑",
-          linkto: "/index/dataDictionaryManagement/feedbackInformation",
-          level: 2,
-          pid: 5,
-          lid: 6
-        },
-        {
-          icon: "icon-tongji1",
-          title: "报表统计",
-          linkto: "",
-          level: 2,
-          pid: 0,
-          lid: 7
-        },
-        {
-          icon: "icon-tongji1",
-          title: "数据汇总情况统计",
-          linkto: "/index/reportStatistics/dataCollection",
-          level: 2,
-          pid: 7,
-          lid: 8
-        },
+		{
+			icon: 'icon-dingdanguanli',
+			title: '校园黄页管理',
+			linkto: '/index/minProgramManagement/contactIndexList',
+			level: 2,
+			pid: 1,
+			lid: 6
+		},
+		{
+			icon: 'icon-guanlimoshi',
+			title: '认识自我管理',
+			linkto: '/index/minProgramManagement/knowingYourselfList',
+			level: 2,
+			pid: 1,
+			lid: 7
+		},
+		{
+			icon: 'icon-guanlizhengshu',
+			title: '党(团)费上缴管理',
+			linkto: '/index/minProgramManagement/payManagementList',
+			level: 2,
+			pid: 1,
+			lid: 8
+		},
+		{
+			icon: 'icon-tongji',
+			title: '认识自我统计表',
+			linkto: '/index/minProgramManagement/StatisticalList',
+			level: 2,
+			pid: 1,
+			lid: 9
+		},
         
         {
           icon: "icon-quanxianguanli",
@@ -208,7 +215,7 @@ export default {
           linkto: "",
           level: 2,
           pid: 0,
-          lid: 9,
+          lid: 10,
 //        needAuth: "AuthorityManagement"
         },
         {
@@ -216,24 +223,24 @@ export default {
           title: "角色管理",
           linkto: "/index/AuthorityManagement/RoleList",
           level: 2,
-          pid: 9,
-          lid: 10
+          pid: 10,
+          lid: 11
         },
         {
           icon: "icon-yonghuguanli",
           title: "用户管理",
           linkto: "/index/AuthorityManagement/UserList",
           level: 2,
-          pid: 9,
-          lid: 11
+          pid: 10,
+          lid: 12
         },
         {
           icon: "icon-ziyuanguanli",
           title: "资源管理",
           linkto: "/index/AuthorityManagement/ResourcesList",
           level: 2,
-          pid: 9,
-          lid: 12
+          pid: 10,
+          lid: 13
         },
       ]
     };

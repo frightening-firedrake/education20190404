@@ -4,6 +4,24 @@ import Login from '@/components/login/Login.vue'
 import Layout from '@/components/common/layout/Layout.vue'
 //首页
 import Home from '@/components/home/Home.vue'
+//思政建设管理thoughtPoliticalList
+import thoughtPoliticalList from '@/components/minProgramManagement/thoughtPolitical/thoughtPoliticalList.vue'
+import thoughtPoliticalAdd from '@/components/minProgramManagement/thoughtPolitical/thoughtPoliticalAdd.vue'
+import thoughtPoliticalEdit from '@/components/minProgramManagement/thoughtPolitical/thoughtPoliticalEdit.vue'
+//活动动态管理activityList
+import activityList from '@/components/minProgramManagement/activity/activityList.vue'
+//政策法规管理policyList
+import policyList from '@/components/minProgramManagement/policy/policyList.vue'
+//规章制度管理rulesList
+import rulesList from '@/components/minProgramManagement/rules/rulesList.vue'
+//校园黄页管理contactIndexList
+import contactIndexList from '@/components/minProgramManagement/contactIndex/contactIndexList.vue'
+//认识自我管理knowingYourselfList
+import knowingYourselfList from '@/components/minProgramManagement/knowingYourself/knowingYourselfList.vue'
+//党（团）费上缴管理payManagementList
+import payManagementList from '@/components/minProgramManagement/payManagement/payManagementList.vue'
+//认识自我统计表StatisticalList
+import StatisticalList from '@/components/minProgramManagement/Statistical/StatisticalList.vue'
 
 
 
@@ -51,8 +69,81 @@ const routes = [{
                 name: '没有权限',
                 component: error403,
             },
-            
-
+//          思政微信小程序管理
+			{
+                path: "minProgramManagement",
+                name: '思政微信小程序管理',
+                component: thoughtPoliticalList,
+                redirect: 'minProgramManagement/thoughtPoliticalList',
+            },
+//          思政建设管理
+            {
+                path: "minProgramManagement/thoughtPoliticalList",
+                name: "思政微信小程序管理/思政建设管理",
+                component: thoughtPoliticalList,
+                meta: { needAuth: '思政建设管理' },
+            },
+            {
+                path: "minProgramManagement/thoughtPoliticalList/thoughtPoliticalAdd",
+                name: "思政微信小程序管理/思政建设管理/新建内容",
+                component: thoughtPoliticalAdd,
+                meta: { needAuth: '思政建设管理' },
+            },
+            {
+                path: "minProgramManagement/thoughtPoliticalList/thoughtPoliticalEdit",
+                name: "思政微信小程序管理/思政建设管理/思政建设管理内容",
+                component: thoughtPoliticalEdit,
+                meta: { needAuth: '思政建设管理' },
+            },
+//          活动动态管理
+            {
+                path: "minProgramManagement/activityList",
+                name: "思政微信小程序管理/活动动态管理",
+                component: activityList,
+                meta: { needAuth: '活动动态管理' },
+            },
+//          政策法规管理
+            {
+                path: "minProgramManagement/policyList",
+                name: "思政微信小程序管理/政策法规管理",
+                component: policyList,
+                meta: { needAuth: '政策法规管理' },
+            },
+//          规章制度管理
+            {
+                path: "minProgramManagement/rulesList",
+                name: "思政微信小程序管理/规章制度管理",
+                component: rulesList,
+                meta: { needAuth: '规章制度管理' },
+            },
+//          校园黄页管理
+            {
+                path: "minProgramManagement/contactIndexList",
+                name: "思政微信小程序管理/校园黄页管理",
+                component: contactIndexList,
+                meta: { needAuth: '校园黄页管理' },
+            },
+//          认识自我管理
+            {
+                path: "minProgramManagement/knowingYourselfList",
+                name: "思政微信小程序管理/认识自我管理",
+                component: knowingYourselfList,
+                meta: { needAuth: '认识自我管理' },
+            },
+//          党（团）费上缴管理
+            {
+                path: "minProgramManagement/payManagementList",
+                name: "思政微信小程序管理/党（团）费上缴管理",
+                component: payManagementList,
+                meta: { needAuth: '党（团）费上缴管理' },
+            },
+//          认识自我统计表
+            {
+                path: "minProgramManagement/StatisticalList",
+                name: "思政微信小程序管理/认识自我统计表",
+                component: StatisticalList,
+                meta: { needAuth: '认识自我统计表' },
+            },
 //
             //        权限管理AuthorityManagement
             {

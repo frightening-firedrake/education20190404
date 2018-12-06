@@ -1,5 +1,5 @@
 <template>
-    <div class="login" style="background-image:url(static/images/login/bj1.png)">
+    <div class="login" style="background-image:url(static/images/login/bj1.jpg)">
         <div class="login_box">
         	<span class="sjx"></span>
         	<img class="loginbj2" src="static/images/login/bj2.png" alt="" />

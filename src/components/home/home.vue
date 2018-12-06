@@ -1,74 +1,10 @@
 <template>
-    <div class='listpagewrap home'>
-    	<div class="rowL1">
-    		
-    		<div class="right">
-    			<ul>
-    				<li v-for="(item,index) in menu">
-    					<div class="box" >
-	    					<span>
-	    						{{item.title}}
-	    					</span>
-	    					<p>
-	    						{{item.subtitle}}
-	    						<i>起</i>
-	    					</p>
-	    					<div class="img" :style="styleRight[index]"></div>
-    					</div>
-    				</li>
-    			</ul>
-    		</div>
-    		<div class="left">
-    			<div class='banner'>
-		    		<ul>
-		    			<li v-for="item in banner" :style="item">
-		    			</li>
-		    		</ul>
-		    	</div>
-    		</div>
-    	</div>
-    	<div class="rowL2">
-    		
-    		<div class="right">
-    			<p class="title">
-    				<span>
-	    				<!--<el-badge :value="12" class="item">-->
-	    					新消息通知
-	    					<b class="wrap" @click="viewList">    						
-		    					<el-badge class="mark" style="line-height:normal;margin-left:0.1rem;cursor:pointer;"  :value="msgTotal" />
-	    					</b>
-						<!--</el-badge>-->
-    					<!--<i></i>-->
-    				</span>
-    			</p>
-    			<ul>
-    				<li v-for="(item,index) in msg">
-    					<div class="btnwrap">
-    						<span class="btn" @click="view(item)">    							
-    							查看详情
-    						</span>
-    					</div>
-    					<div class="msgwrap">
-    						<span>{{index-0+1+'、'}}</span>
-    						<p class="msg">
-		    					{{item.informContent}}
-		    					<!--<el-badge v-if="item.state==-1" class="mark" style="" value="new" />-->
-    						</p>
-    					</div>
-    				</li>
-    				<template v-if="!msg.length">
-    					<div class="empty">暂无新消息通知</div>
-    				</template>
-    			</ul>
-    		</div>
-    		<div class="left">
-				<p class="title">
-    				<span>扫黑除恶案件数量质量统计表</span>
-    			</p>
-    			<div class="chart" id="chartH">
-    				
-    			</div>
-    		</div>
+    <div class='listpagewrap home'>  	
+		<div class='banner'>
+    		<ul>
+    			<li v-for="item in banner" :style="item">
+    			</li>
+    		</ul>
     	</div>
     </div>
 </template>
@@ -81,78 +17,17 @@
 	/*background-color:rgba(241, 241, 241, 1);*/
 	background:#fdfdfd;
 	border-top:0.4rem solid rgba(241, 241, 241, 1);
-	height:auto;
-	padding-bottom:0.4rem;
-}
-.home .rowL1{
-	width:auto;
-	height:2.5rem;
-	margin:0 0 0.15rem 0;
-	padding-top:0.25rem;
-	/*background:#fff;*/
-	box-sizing: content-box;
-}
-.home .rowL1 .right{
-	float:right;
-	height:2.5rem;
-	width:6.3rem;
-}
-.home .rowL1 .right ul{
+	border-bottom:0.2rem solid rgba(241, 241, 241, 1);
 	height:100%;
-	width:100%;
-	position:relative;
+	/*padding-bottom:0.4rem;*/
 }
 
-.home .rowL1 .right ul li{
-	height:1.2rem;
-	margin-bottom:0.1rem;
-	padding-right:0.25rem;
-	width:50%;
-	background-color: #ffffff;
-	float:left;
-}
-.home .rowL1 .right ul li div.box{
-	height:1.2rem;
-	width:auto;
-	padding:0.2rem 1.12rem 0 0.12rem;
-	position:relative;
-	background-color: #ffffff;
-	border: solid 1px #e4ebf1;
-}
-.home .rowL1 .right ul li div.box span{
-	font-size:0.16rem;
-	color: #666666;
-}
-.home .rowL1 .right ul li div.box p{
-	font-size:0.43rem;
-	color: #333333;
-}
-.home .rowL1 .right ul li div.box p i{
-	font-size:0.18rem;
-	color: #333333;
-	font-style: normal;
-}
-.home .rowL1 .right ul li div.box .img{
-	position:absolute;
-	top:50%;
-	margin-top:-0.45rem;
-	right:0.22rem;
-	width:0.9rem;
-	height:0.9rem;
-	border-radius:0.1rem;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size:0.9rem 0.9rem;
-}
-.home .rowL1 .left{
-	height:2.5rem;
-	overflow: hidden;
-	padding:0 0.25rem;
-}
+
 
 .home .banner{
 	width:100%;
 	height:100%;
+	padding:0.24rem;
 }
 .home .banner ul{
 	width:100%;
@@ -162,138 +37,11 @@
 	width:100%;
 	height:100%;
 	background-size: cover;
-	background-position:center;
+	/*background-position:center;*/
+	background-position:50% 34%;
 	background-repeat: no-repeat;
 }
-.home .rowL2{
-	width:auto;
-	height:6.05rem;
-}
-.home .rowL2 .right{
-	float:right;
-	height:6.05rem;
-	width:6.3rem;
-	padding-right:0.25rem;
-}
-.home .rowL2 .right ul{
-	border-left:solid 1px #e4ebf1;
-	border-right:solid 1px #e4ebf1;
-	border-bottom:solid 1px #e4ebf1;
-	background-color: #ffffff;
-	padding:0.07rem 0.22rem 0;
-	min-height:5.55rem;
-	position:relative;
-}
-.home .rowL2 .right ul .empty{
-	position:absolute;
-	top:50%;
-	left:50%;
-	margin-left:-8em;
-	margin-top:-15px;
-	width:16em;
-	height:30px;
-	line-height:30px;
-	text-align: center;
-	font-size:0.22rem;
-	color:#333;
-}
-.home .rowL2 .right ul li{
-	display: block;
-	width:auto;
-	height: 0.4rem;
-	background-color: #f1f1f1;
-	border-radius: 0.05rem;
-	padding:0 1.3rem 0 0.2rem;
-	line-height:0.4rem;
-	position:relative;
-	margin:0.07rem 0 0.14rem;
-	color: #666666;
-}
-.home .rowL2 .right ul li:hover{
-	background-color: #4c90db;
-	color: #ffffff;
-}
-.home .rowL2 .right ul li:hover .btn{
-	color: #ffffff;
-}
-.home .rowL2 .right ul li .btnwrap{
-	display: block;
-	width:1.3rem;
-	position:absolute;
-	top:0;
-	right:0;
-	height:0.4rem;
-	line-height:0.4rem;
-	text-align: center;
-}
-.home .rowL2 .right ul li .btn{
-	cursor:pointer;
-	color: #4c90db;
-	text-decoration: underline;
-	font-size:0.14rem;
-}
-.home .rowL2 .right ul li .msgwrap{
-	display: block;
-	width:auto;
-	position:relative;
-	height:100%;
-	overflow: hidden;
-}
-.home .rowL2 .right ul li .msgwrap span{
-	position:absolute;
-	top:0;
-	left:0;
-	height:100%;
-	width:0.3rem;
-}
-.home .rowL2 .right ul li .msgwrap .msg{
-	padding-left:0.3rem;
-	/*padding-right:18px;*/
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	position:relative;
-}
-.home .rowL2 .left{
-	/*height:6.05rem;*/
-	height:6.1rem;
-	overflow: hidden;
-	padding:0 0.25rem;
-}
-.home .rowL2 .left .chart{
-	border-left:solid 1px #e4ebf1;
-	border-right:solid 1px #e4ebf1;
-	border-bottom:solid 1px #e4ebf1;
-	background-color: #ffffff;
-	min-height:5.55rem;
-}
-.home .title{
-	height:0.48rem;
-	line-height:0.48rem;
-	border:1px solid #e4ebf1;
-	background-color: #f6f5f8;
-	box-sizing: content-box;
-	padding-left:0.22rem;
-}
-.home .title span{
-	font-size:0.2rem;
-	padding-left:0.23rem;
-	border-left:3px solid #5278d5;
-	color: #333333;
-	position:relative;
-}
-.home .title span i{
-	width: 0.12rem;
-	height: 0.12rem;
-	border-radius: 50%;
-	background-color: #fa8564;
-	box-shadow: 0px 0px 7px 0px 
-		rgba(250, 133, 100, 0.35);
-	border: solid 0.01 #ffffff;
-	position:absolute;
-	top:0.06rem;
-	right:-0.16rem;
-}
+
 
 </style>
 
@@ -303,18 +51,7 @@ import "@/assets/style/index/home.css";
 import { mapState,mapMutations,mapGetters,mapActions} from 'vuex';
 //本地测试要用下面import代码
 //import data from '@/util/mock';
-// 引入基本模板
-let echarts = require('echarts/lib/echarts')
-// 引入折线图图组件
-require('echarts/lib/chart/line')
-// 引入柱状图组件
-require('echarts/lib/chart/bar')
-// 引入提示框和title组件
-require('echarts/lib/component/tooltip')
-require("echarts/lib/component/legend")
-require("echarts/lib/component/title");
-require("echarts/lib/component/dataZoom");
-require("echarts/lib/component/toolbox");
+
 
 
 export default {
@@ -328,22 +65,22 @@ export default {
   },
   created(){
 //  获取列表数据（第一页）
-	this.findSumAndValid()
-	this.findNum()
-	this.getdata()
-	clearInterval(this.T)
-//	this.T=setInterval(this.getdata,10000)
+//	this.findSumAndValid()
+//	this.findNum()
+//	this.getdata()
+//	clearInterval(this.T)
+
 	
 	
   },
   destroy(){
   	
   },
-  beforeRouteLeave(to, from, next){
-  	console.log(this.T)
-	clearInterval(this.T)
-	next();
-  },
+//beforeRouteLeave(to, from, next){
+//	console.log(this.T)
+//	clearInterval(this.T)
+//	next();
+//},
   mounted() {
 //  this.setChart();
   },

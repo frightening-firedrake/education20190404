@@ -125,7 +125,9 @@
     color: #58b481;
 }
 .el-main .list .el-table__body-wrapper td .cell button.edit{
-    color:#1adced;
+    /*color:#1adced;*/
+    color: #4c90db;
+    text-decoration: underline;
 }
 .el-main .list .el-table__body-wrapper td .cell button.print{
     color:#e49f18;
@@ -134,7 +136,9 @@
     color:#58b481;
 }
 .el-main .list .el-table__body-wrapper td .cell button.dele{
-    color:#e87373;
+    /*color:#e87373;*/
+    color: #f16b74;
+    text-decoration: underline;
 }
 .el-main .list .el-table__body-wrapper td .cell button.undele{
     color:#999999;

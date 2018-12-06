@@ -17,7 +17,8 @@
   .el-submenu__icon-arrow{
   	color:#333333;
   	margin-top:-4px;
-  	right:14px;
+  	/*right:14px;*/
+  	right:10px;
   }
   .el-menu-vertical-demo{
   	width:2.5rem;
@@ -74,6 +75,7 @@
   	line-height:0.6rem;
   	min-width: auto;
   	padding-right:20px;
+  	padding-left:32px!important;
   }
   i.firstlevel{
   	width:0.45rem;
@@ -123,6 +125,9 @@
   li.is-opened >div.el-submenu__title{
   	/*background:rgb(241,241,241)!important;*/
   	/*margin-bottom: 1px;*/
+  }
+  .el-submenu__title{
+  	padding-left:12px!important;
   }
   /*鼠标悬停*/
   .el-submenu__title:hover,.el-menu-item:hover{
