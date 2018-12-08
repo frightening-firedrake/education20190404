@@ -781,15 +781,12 @@ var zysq = Mock.mock('/grain/sample/data', {
   'rows|3-10': [
     {
       'id|+1': 1,
-      threadArea: "山西省",
-      clueAddress: "山西省太原市迎泽区95号",
-      industryField: "国家政治安全",
-      informType: "威胁政治安全特别是政权安全",
-      phoneNumber: "18335152521",
+      clueAddress:"党委办公室",
+      industryField: "管理机构",
       state: "@state",
       assessor: "Admin",
       createTime: "2018-09-27",
-      
+      informType:"后勤基备处"
     }
   ],
   total: 56,
