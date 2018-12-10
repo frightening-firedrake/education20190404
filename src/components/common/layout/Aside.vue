@@ -1,7 +1,7 @@
 <template>
 
 	<!--<el-menu unique-opened :default-active="activePath" class="el-menu-vertical-demo" :router=true @open="handleOpen" @select="handleSelect" @close="handleClose" :collapse="this.isCollapse" :background-color="backgroundColor">-->
-	<el-menu :default-active="activePath" default-openeds="[1,10]" class="el-menu-vertical-demo" :router=true @open="handleOpen" @select="handleSelect" @close="handleClose" :collapse="this.isCollapse" :background-color="backgroundColor">
+	<el-menu :default-active="activePath" :default-openeds="openeds" class="el-menu-vertical-demo" :router=true @open="handleOpen" @select="handleSelect" @close="handleClose" :collapse="this.isCollapse" :background-color="backgroundColor">
 		<!--用户信息-->
 		<!--<div class="user" style="width:2.5rem;">
 			<div class="photo">
@@ -127,6 +127,7 @@ export default {
   mounted() {},
   data() {
     return {
+      openeds:["1","10"],
       //			isCollapse: false,
       backgroundColor: "#dff0f9",
       user: {

@@ -794,6 +794,19 @@ var zysq = Mock.mock('/grain/sample/data', {
   ],
   total: 56,
 });
+var zysq = Mock.mock('/grain/sample/data111', {
+  'rows|3-10': [
+    {
+      'id|+1': 1,
+      title: "【思政】全区高校全覆盖，这堂课持续火热进行中！学习新思想千万师生同上一堂课",
+      hits: "105",
+      source: "后勤基备处",
+      createTime: "2018-09-27",
+      
+    }
+  ],
+  total: 56,
+});
 export default {
   //	LibraryList:LibraryList,
 }

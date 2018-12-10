@@ -12,7 +12,7 @@
 	    		{{userName?userName:"未登录"}}
 	    	</div>
 	    	<div class="mphoto">
-				<img src="static/images/test/photo_001.png" alt="" />
+				<img src="static/images/test/photo_01.png" alt="" />
 			</div>
 	    </div>
 	</div>
