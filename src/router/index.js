@@ -16,6 +16,8 @@ import policyList from '@/components/minProgramManagement/policy/policyList.vue'
 import rulesList from '@/components/minProgramManagement/rules/rulesList.vue'
 //校园黄页管理contactIndexList
 import contactIndexList from '@/components/minProgramManagement/contactIndex/contactIndexList.vue'
+import contactIndexEdit from '@/components/minProgramManagement/contactIndex/contactIndexEdit.vue'
+import contactIndexNew from '@/components/minProgramManagement/contactIndex/contactIndexNew.vue'
 //认识自我管理knowingYourselfList
 import knowingYourselfList from '@/components/minProgramManagement/knowingYourself/knowingYourselfList.vue'
 //党（团）费上缴管理payManagementList
@@ -116,12 +118,26 @@ const routes = [{
                 component: rulesList,
                 meta: { needAuth: '规章制度管理' },
             },
+             //校园黄页新建内容
+             {
+                path: "minProgramManagement/contactIndexList/contactIndexnew",
+                name: "思政微信小程序管理/校园黄页管理/新建内容",
+                component: contactIndexNew,
+                meta: { needAuth: '校园黄页新建内容' },
+            },
 //          校园黄页管理
             {
                 path: "minProgramManagement/contactIndexList",
                 name: "思政微信小程序管理/校园黄页管理",
                 component: contactIndexList,
                 meta: { needAuth: '校园黄页管理' },
+            },
+            //校园黄页管理内容
+            {
+                path: "minProgramManagement/contactIndexList/contactIndexedit",
+                name: "思政微信小程序管理/校园黄页管理/编辑内容",
+                component: contactIndexEdit,
+                meta: { needAuth: '校园黄页管理内容' },
             },
 //          认识自我管理
             {
