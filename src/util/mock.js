@@ -791,6 +791,22 @@ var zysq = Mock.mock('/grain/sample/data', {
   ],
   total: 56,
 });
+//自我认识
+//综合案件列表
+var zwrs = Mock.mock('/grain/sample/zwrs', {
+  'rows|3-10': [
+    {
+      'id|+1': 1,
+      title:"党委办公室",
+      shape: "管理机构",
+      type: "@state",
+      assessor: "Admin",
+      time: "2018-09-27",
+      source:"后勤基备处"
+    }
+  ],
+  total: 56,
+});
 export default {
   //	LibraryList:LibraryList,
 }
