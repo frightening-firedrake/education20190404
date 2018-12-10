@@ -10,14 +10,15 @@
 				</div>
 			</div>-->
         </template>      
-		<el-form-item class="full" label="标题名称：" prop="title"  v-bind:class="{disabled:disabledshow}">
-		    <el-input v-model="formdatas.form.title" :disabled="disabled" placeholder="请输入标题名称10个字符以内"></el-input>
+		<el-form-item :inline-message="true" class="full title borderInput" label="标题名称：" prop="title"  v-bind:class="{disabled:disabledshow}">
+		    <el-input v-model="formdatas.form.title" :disabled="disabled" placeholder="请输入标题名称"></el-input>
+		    <span style="color:#4c90db; font-size:0.16rem;">还可输入{{titlelimit}}个字符</span>
 		</el-form-item>
-		<el-form-item class="full" label="摘要：" prop="summarize"  v-bind:class="{disabled:disabledshow}">
-		    <el-input v-model="formdatas.form.summarize" :disabled="disabled" placeholder="请输入摘要25个字符以内"></el-input>
+		<el-form-item :inline-message="true" class="full summarize borderInput" label="摘要：" prop="summarize"  v-bind:class="{disabled:disabledshow}">
+		    <el-input v-model="formdatas.form.summarize" :disabled="disabled" placeholder="请输入摘要"></el-input>
 		</el-form-item>
-		<el-form-item class="full" label="来源：" prop="source"  v-bind:class="{disabled:disabledshow}">
-		    <el-input v-model="formdatas.form.source" :disabled="disabled" placeholder="请输入来源10个字符以内"></el-input>
+		<el-form-item :inline-message="true" class="full source borderInput" label="来源：" prop="source"  v-bind:class="{disabled:disabledshow}">
+		    <el-input v-model="formdatas.form.source" :disabled="disabled" placeholder="请输入来源"></el-input>
 		</el-form-item>
 		<el-form-item class="full ueditorWrap" label="内容：" prop="pnumber"  v-bind:class="{disabled:disabledshow}">
 		    <UEditor :config=config ref="ueditor" :content="formdatas.form.content" @ready="getready"></UEditor>
@@ -199,6 +200,18 @@
 		border:none;
 		line-height:normal;
 	}
+	form.sampling .el-form-item.title .el-form-item__content>.el-input input{
+		width:20em;
+		padding: 0 15px;
+	}
+	form.sampling .el-form-item.summarize .el-form-item__content>.el-input input{
+		width:40em;
+		padding: 0 15px;
+	}
+	form.sampling .el-form-item.source .el-form-item__content>.el-input input{
+		width:10em;
+		padding: 0 15px;
+	}
 </style>
 <script>
 import "@/assets/style/common/Form.css";
@@ -218,12 +231,20 @@ export default {
     computed:{
 		...mapState([]),
 		...mapGetters(["Token"]),
-
+		titlelimit(){
+			var num=this.titlelength-this.formdatas.form.title.length
+			if(num>=0){
+				return num
+			}else{
+				return 0
+			}
+		}
     },
     
     data() {
     	
         return {
+        	titlelength:10,
         	ready:false,
         	limit:5,
 			problemStatic:'all',
@@ -252,15 +273,15 @@ export default {
 	        rules: {
 		        title: [
 		            { required: true, message: '请输入标题名称', trigger: 'blur' },
-		            { max: 10, message: '标题名称长度不能超过10个字符', trigger: 'blur' }
+		            { max: 10, message: '标题名称长度不能超过10个字符', trigger: ['blur', 'change'] }
 		        ],
 	         	summarize: [
 		            { required: true, message: '请输入摘要名称', trigger: 'blur' },
-		            { max: 25, message: '摘要长度不能超过25个字符', trigger: 'blur' }
+		            { max: 25, message: '摘要长度不能超过25个字符', trigger: ['blur', 'change'] }
 		        ],
 		        source: [
 		            { required: true, message: '请输入来源名称', trigger: 'blur' },
-		            { max: 10, message: '来源名称长度不能超过10个字符', trigger: 'blur' }
+		            { max: 10, message: '来源长度不能超过10个字符', trigger: ['blur', 'change'] }
 		        ],
 
 	          
