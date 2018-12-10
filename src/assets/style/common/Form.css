@@ -17,8 +17,8 @@ form.sampling >p{
 	border-right:solid 1px #dfdfdf;
     height: 0.6rem;
     line-height: 0.6rem;
-    /*color: rgb(0,0,0);*/
-    color:#005dc4;
+    color: rgb(0,0,0);
+    /*color:#005dc4;*/
     font-size: 0.2rem;
     background-color: rgba(242, 242, 242, 1);
     padding-left: 0.4rem;
@@ -116,13 +116,39 @@ form.sampling .el-form-item .el-form-item__label{
 	font-size:0.16rem;
 }
 /*文本框*/
+form.sampling .el-form-item .el-form-item__content>.el-input{
+	padding-left:0.12rem;
+}
 form.sampling .el-form-item .el-form-item__content>.el-input input{
 	height:0.46rem;
 	line-height:0.46rem;
+	/*border-width:0;*/
 	border:none;
+	border-radius: 0;
 	padding-right:7em;
 	font-size:0.16rem;
 }
+/*内边框表单borderInput*/
+form.sampling .el-form-item.borderInput .el-form-item__content>.el-input input{
+	height:0.3rem;
+	line-height:0.46rem;
+	/*border-width:1px;*/
+	border:1px solid #d2d2d2;
+	border-radius: 0;
+	padding-right:7em;
+	font-size:0.16rem;
+}
+form.sampling .el-form-item.borderInput .el-form-item__content>.el-input{
+	width:auto;
+}
+form.sampling .el-form-item.borderInput .el-form-item__content>.el-input{
+	width:auto;
+}
+form.sampling .el-form-item.borderInput .el-form-item__content .el-form-item__error{
+	position:static;
+	margin:0 0 0 0.12rem;
+}
+
 /*文本框*/
 form.Manuscript .el-form-item .el-form-item__content>.el-input input{
 	padding-right:12px;
@@ -376,6 +402,30 @@ form.sampling .el-input.is-disabled .el-input__inner{
 	background:rgba(0,0,0,0);
 	color:inherit;
 }
+/*双色按钮*/
+form.sampling .btns.doubleColor{
+	padding:0.42rem 0;
+}
+form.sampling .btns.doubleColor button.yes {
+	color: #ffffff;
+	background-color: rgb(88,180,129);
+	border-color:rgb(88,180,129);
+}
+form.sampling .btns.doubleColor button.yes:hover {
+	background-color: rgba(88,180,129,0.8);
+	border-color:rgb(88,180,129);
+}
+form.sampling .btns.doubleColor button.no {
+	background-color: rgba(255, 76, 120, 1);
+	border-color:rgba(255, 76, 120, 1);
+	color:#fff;
+}
+form.sampling .btns.doubleColor button.no:hover {
+	background-color: rgba(255, 76, 120, 0.8);
+	border-color:rgba(255, 76, 120, 1);
+	color:#fff;
+}
+
 
 /*工作底稿*/
 form.sampling .el-form-item.three{

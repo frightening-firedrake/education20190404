@@ -18,6 +18,9 @@ export default {
         searching: ""
       },
       tableDate: {
+        tabletype: {
+          type: "contact"
+        },
         hearder: [
           {
             prop: "department",
@@ -42,6 +45,7 @@ export default {
       },
       formData: {
         title: "新建内容",
+        addrowTitle: "新增一行",
         model: {
           name: "",
           categort: "",
@@ -85,15 +89,28 @@ export default {
   },
   methods: {
     addRow() {
+      let valuenum = 0,
+        objlength = 0;
       let params = {
         department: "",
         Telephone: "",
         Office: ""
       };
-      this.tableDate.body.push(params)
+      for (var i in this.tableDate.body[this.tableDate.body.length - 1]) {
+        objlength += 1;
+        if (this.tableDate.body[this.tableDate.body.length - 1][i] == "") {
+          alert(11);
+          return;
+        } else {
+          valuenum += 1;
+        }
+      }
+      if (objlength == valuenum) {
+        this.tableDate.body.push(params);
+      }
     },
-    delrow(e){
-        this.tableDate.body.splice(e,e)
+    delrow(e) {
+      this.tableDate.body.splice(e, e);
     }
   }
 };

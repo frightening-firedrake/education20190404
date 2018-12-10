@@ -18,6 +18,9 @@ export default {
         searching: ""
       },
       tableDate: {
+        tabletype:{
+          type:'contact'
+        },
         hearder: [
           {
             prop: "department",
@@ -42,6 +45,7 @@ export default {
       },
       formData: {
         title: "编辑内容",
+        addrowTitle:"新增一行",
         model: {
           name: "",
           categort: "",

@@ -45,15 +45,15 @@ Mock.Random.extend({
     return this.pick(charsname)
   },
   state: function () {
-    var state = [-1,1, 2, 3, 4]
+    var state = [-1, 1, 2, 3, 4]
     return this.pick(state)
   },
-  examineName:function(){
-    var examineName = ["测定记录","测定记录","杂志、不完善粒测定记录","杂志、不完善粒测定记录","水分测定记录","水分测定记录","真菌毒素检测记录","真菌毒素检测记录","面筋吸水量测定记录","馒头品尝评分记录表","脂肪酸值测定记录","玉米品尝分记录表"]
+  examineName: function () {
+    var examineName = ["测定记录", "测定记录", "杂志、不完善粒测定记录", "杂志、不完善粒测定记录", "水分测定记录", "水分测定记录", "真菌毒素检测记录", "真菌毒素检测记录", "面筋吸水量测定记录", "馒头品尝评分记录表", "脂肪酸值测定记录", "玉米品尝分记录表"]
     return this.pick(examineName)
   },
-  sample:function(){
-    var sample = ["1","2"]
+  sample: function () {
+    var sample = ["1", "2"]
     return this.pick(sample)
   },
   test: function (data) {
@@ -756,23 +756,23 @@ var charts = Mock.mock("/liquid/chart/data", {
 var examine = Mock.mock("/liquid/examine/data", {
   'rows|12': [
     {
-      'id|+1':0,
-      tablename:"@examineName",
-      sample:"@sample",
-      message:1
+      'id|+1': 0,
+      tablename: "@examineName",
+      sample: "@sample",
+      message: 1
     }
   ]
 })
 //审批小样编号
-var sampleexamine = Mock.mock("/liquid/sampleexamine/data",{
-  'rows|12':[
+var sampleexamine = Mock.mock("/liquid/sampleexamine/data", {
+  'rows|12': [
     {
-      'id|+1':0,
-      'sampleNum|+1':201801001,
-      sample:"@sample",
-      people:"admin",
-      state:"1",
-      'applyTime':Mock.Random.date("yyyy-MM-dd")
+      'id|+1': 0,
+      'sampleNum|+1': 201801001,
+      sample: "@sample",
+      people: "admin",
+      state: "1",
+      'applyTime': Mock.Random.date("yyyy-MM-dd")
     }
   ]
 })
@@ -781,12 +781,12 @@ var zysq = Mock.mock('/grain/sample/data', {
   'rows|3-10': [
     {
       'id|+1': 1,
-      clueAddress:"党委办公室",
+      clueAddress: "党委办公室",
       industryField: "管理机构",
       state: "@state",
       assessor: "Admin",
       createTime: "2018-09-27",
-      informType:"后勤基备处"
+      informType: "后勤基备处"
     }
   ],
   total: 56,
@@ -797,12 +797,25 @@ var zwrs = Mock.mock('/grain/sample/zwrs', {
   'rows|3-10': [
     {
       'id|+1': 1,
-      title:"党委办公室",
+      title: "党委办公室",
       shape: "管理机构",
       type: "@state",
       assessor: "Admin",
       time: "2018-09-27",
-      source:"后勤基备处"
+      source: "后勤基备处"
+    }
+  ],
+  total: 56,
+});
+var zysq = Mock.mock('/grain/sample/data111', {
+  'rows|3-10': [
+    {
+      'id|+1': 1,
+      title: "【思政】全区高校全覆盖，这堂课持续火热进行中！学习新思想千万师生同上一堂课",
+      hits: "105",
+      source: "后勤基备处",
+      createTime: "2018-09-27",
+
     }
   ],
   total: 56,
