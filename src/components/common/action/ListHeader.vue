@@ -478,7 +478,8 @@
 	div.listHeader div.Selete2 >div{
 		float:left;
 		width:1.8rem;
-		line-height:0.54rem;
+		/*line-height:0.54rem;*/
+		line-height:inherit;
 	}
 	div.listHeader .el-select .el-input input{
 		/*height:0.36rem;
@@ -542,7 +543,8 @@
 	div.listHeader .search{
 		width:3rem;
 		float:left;
-		line-height:0.54rem;
+		/*line-height:0.54rem;*/
+		line-height:inherit;
 		padding-left:0.16rem;
 	}
 	div.listHeader .search .searchInputwrap{

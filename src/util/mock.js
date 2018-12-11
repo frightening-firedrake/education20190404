@@ -4,6 +4,10 @@ Mock.Random.extend({
     var checkLibs = ['山西屯留国家粮食储备库', '本库']
     return this.pick(checkLibs)
   },
+  sex: function (date) {
+    var checkLibs = ['男', '女']
+    return this.pick(checkLibs)
+  },
   storageVault: function (date) {
     var checkLibs = ['太原库1', '太原库2', '太原库3', '太原库4']
     return this.pick(checkLibs)
@@ -816,6 +820,30 @@ var zysq = Mock.mock('/grain/sample/data111', {
       source: "后勤基备处",
       createTime: "2018-09-27",
 
+    }
+  ],
+  total: 56,
+});
+//自我认识统计表
+var zysq = Mock.mock('test/dataStatistical', {
+  'rows|3-10': [
+    {
+      'id|+1': 1,
+      title: "大学生恋爱观|爱情温度计——测测你的爱情观有多成熟！",
+      testerPassSum: "@natural( 80, 100 )",
+      testerFailureSum: "@natural( 1, 20 )",
+    }
+  ],
+  total: 56,
+});
+var zysq = Mock.mock('account/dataRiskAssessment', {
+  'rows|3-10': [
+    {
+      'id|+1': 1,
+      account: "2018002909277",
+      sex: "@sex",
+      weixinNum: "zjq18235433217",
+      riskAssessment: "@natural( 1, 20 )",
     }
   ],
   total: 56,
