@@ -22,6 +22,8 @@ import contactIndexNew from '@/components/minProgramManagement/contactIndex/cont
 import knowingYourselfList from '@/components/minProgramManagement/knowingYourself/knowingYourselfList.vue'
 import knowingYourSingleNew from '@/components/minProgramManagement/knowingYourself/knowingYourSingleNew.vue'
 import knowingYourSingleEdit from '@/components/minProgramManagement/knowingYourself/knowingYourSingleEdit.vue'
+//积分管理
+import integralList from '@/components/minProgramManagement/integral/integralList.vue'
 //党（团）费上缴管理payManagementList
 import payManagementList from '@/components/minProgramManagement/payManagement/payManagementList.vue'
 //认识自我统计表StatisticalList
@@ -153,6 +155,19 @@ const routes = [{
         name: "思政微信小程序管理/认识自我管理/新建单题测试",
         component: knowingYourSingleNew,
         meta: { needAuth: '认识自我新建单题测试' },
+    },
+    {
+        path: "minProgramManagement/knowingYourselfList/knowingYoursingleEdit",
+        name: "思政微信小程序管理/认识自我管理/编辑单题测试",
+        component: knowingYourSingleEdit,
+        meta: { needAuth: '认识自我编辑单题测试' },
+    },
+    //积分管理  
+    {
+        path: "minProgramManagement/integral/integralList",
+        name: "思政微信小程序管理/积分管理",
+        component: integralList,
+        meta: { needAuth: '积分管理' },
     },
     {
         path: "minProgramManagement/knowingYourselfList/knowingYoursingleEdit",

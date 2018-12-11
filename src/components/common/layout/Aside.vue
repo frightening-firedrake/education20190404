@@ -192,6 +192,14 @@ export default {
 			level: 2,
 			pid: 1,
 			lid: 7
+    },
+    {
+			icon: 'icon-tongguos',
+			title: '积分管理',
+			linkto: '/index/minProgramManagement/integral/integralList',
+			level: 2,
+			pid: 1,
+			lid: 8
 		},
 		{
 			icon: 'icon-guanlizhengshu',
@@ -199,7 +207,7 @@ export default {
 			linkto: '/index/minProgramManagement/payManagementList',
 			level: 2,
 			pid: 1,
-			lid: 8
+			lid: 9
 		},
 		{
 			icon: 'icon-tongji',
@@ -207,7 +215,7 @@ export default {
 			linkto: '/index/minProgramManagement/StatisticalList',
 			level: 2,
 			pid: 1,
-			lid: 9
+			lid: 10
 		},
         
         {
@@ -216,7 +224,7 @@ export default {
           linkto: "",
           level: 2,
           pid: 0,
-          lid: 10,
+          lid: 11,
 //        needAuth: "AuthorityManagement"
         },
         {
@@ -225,7 +233,7 @@ export default {
           linkto: "/index/AuthorityManagement/RoleList",
           level: 2,
           pid: 10,
-          lid: 11
+          lid: 12
         },
         {
           icon: "icon-yonghuguanli",
@@ -233,7 +241,7 @@ export default {
           linkto: "/index/AuthorityManagement/UserList",
           level: 2,
           pid: 10,
-          lid: 12
+          lid: 13
         },
         {
           icon: "icon-ziyuanguanli",
@@ -241,7 +249,7 @@ export default {
           linkto: "/index/AuthorityManagement/ResourcesList",
           level: 2,
           pid: 10,
-          lid: 13
+          lid: 14
         },
       ]
     };
