@@ -110,7 +110,7 @@ export default {
       }
     },
     delrow(e) {
-      this.tableDate.body.splice(e, e);
+      this.tableDate.body.splice(e,1);
     }
   }
 };
