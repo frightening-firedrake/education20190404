@@ -23,8 +23,9 @@
       v-on:getchecked="getchecked"
       :loading="loading"
       v-on:emptyCreate="emptyCreate"
-      @integrallistitem="integrallistitem"
     ></list>
+    <!-- 弹出框 -->
+    <Modal v-if="modalVisible" @dialogClose="dialogClose" :modal="modal" @createlibitem="createlibitem"></Modal>
     <!--分页-->
     <pagination
       :page="page"
@@ -92,6 +93,17 @@ export default {
     this.$root.eventHub.$off("viewlistitem");
     this.$root.eventHub.$off("editlistitem");
     this.$root.eventHub.$off("printlistitem");
+    this.$root.eventHub.$off("integrallistitem");
+    //监听积分弹框
+    this.$root.eventHub.$on(
+      "integrallistitem",
+      function(rowid, list) {
+        this.modal.formdatas[0].value = list.ID;
+        this.modalVisible = true;
+
+        console.log(rowid, list);
+      }.bind(this)
+    );
     //	监听列表删除事件
     this.$root.eventHub.$on(
       "delelistitem",
@@ -148,14 +160,21 @@ export default {
       "close_modal"
     ]),
     ...mapActions(["addAction"]),
+    dialogClose(){
+        this.modalVisible = false
+    },
     //	列表头触发的事件
+    //积分提交
+    createlibitem(form, title) {
+      console.log(form, title);
+    },
     //积分
-    integrallistitem(index,row){
-        console.log(index,row)
+    integrallistitem(index, row) {
+      console.log(index, row);
     },
     //新建试题
     addbtn() {
-      this.$router.push({path:"knowingYourselfList/knowingYoursingleNew"})
+      this.$router.push({ path: "knowingYourselfList/knowingYoursingleNew" });
     },
     //	时间选择
     dateChange(date) {
@@ -385,7 +404,8 @@ export default {
   },
   data() {
     return {
-      datalistURL: "/grain/sample/zwrs",
+      modalVisible: false,
+      datalistURL: "/grain/sample/jfgl",
       //    datalistURL: this.apiRoot+'information/data',
       searchURL: this.apiRoot + "/grain/sample/data",
       deleteURL: "/liquid/role2/data/delete",
@@ -402,6 +422,29 @@ export default {
       counterList: [],
       placeList: [],
       continuity: true, //连续储存开关
+      modal: {
+        title: "添加积分",
+        customClass:"blue",
+        submitText:'确认添加',
+        formdatas: [
+          {
+            position: false,
+            type: "input",
+            hidden: false,
+            label: "学号:",
+            model: "student",
+            value: ""
+          },
+          {
+            position: false,
+            type: "input",
+            hidden: false,
+            label: "添加积分:",
+            model: "integral",
+            value: ""
+          }
+        ]
+      },
       breadcrumb: {
         search: false,
         searching: ""
@@ -466,53 +509,36 @@ export default {
       items: [
         {
           id: 1,
-          prop: "title",
-          label: "标题名称"
+          prop: "ID",
+          label: "学号"
           //      status:true,
           //      sort:true
         },
         {
           id: 2,
-          prop: "shape",
-          label: "测试题形式"
+          prop: "nickname",
+          label: "微信昵称"
           //      sort:true
         },
         {
           id: 3,
-          prop: "type",
-          label: "测试类型"
-          //      width:80,
-          //      sort:true,
-        },
-        {
-          id: 4,
-          prop: "source",
-          label: "来源"
-          //      minWidth:130,
-          //      width:'15%',
-          //      status:true,
-          //      sort:true,
-        },
-        {
-          id: 5,
-          prop: "time",
-          label: "发布日期"
-          //      status:true,
+          prop: "integral",
+          label: "积分"
           //      width:80,
           //      sort:true,
         }
       ],
       actions: {
         selection: false,
-        number: false,
+        number: true,
         //    	view1:true,
         edit: false,
-        show: false,
+        show: true,
         dele: false,
         manuscript: false,
         safetyReport: false,
         printSampleIn: false,
-        integral:true,
+        integral: true
         // actionWidth: 100
         //    	sort:'sampleNum',
       }
