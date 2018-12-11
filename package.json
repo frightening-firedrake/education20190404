@@ -1,7 +1,7 @@
 {
-  "name": "reportPage",
+  "name": "education",
   "version": "1.0.0",
-  "description": "扫黑除恶打击犯罪",
+  "description": "西安翻译学院工程技术学院六号楼移动应用管理平台",
   "author": "frightening-firedrake",
   "private": true,
   "scripts": {

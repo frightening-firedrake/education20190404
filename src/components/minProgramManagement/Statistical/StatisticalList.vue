@@ -285,10 +285,10 @@ export default {
       	testUnpass:"2%",
       },
       carListStyle:[
-      	{title:'平台总题数',font:"color:#dbc24c;",img:"background-color:#dbc24c;background-image:url('/static/images/sys/icon1.png');"},
-      	{title:'平台总测试人数',font:"color:#4c90db;",img:"background-color:#4c90db;background-image:url('/static/images/sys/icon2.png');"},
-      	{title:'平台测试合格率',font:"color:#36cebe;",img:"background-color:#36cebe;background-image:url('/static/images/sys/icon3.png');"},
-      	{title:'平台测试危险率',font:"color:#f16b74;",img:"background-color:#f16b74;background-image:url('/static/images/sys/icon4.png');"},
+      	{title:'平台总题数',font:"color:#dbc24c;",img:"background-color:#dbc24c;background-image:url('static/images/sys/icon1.png');"},
+      	{title:'平台总测试人数',font:"color:#4c90db;",img:"background-color:#4c90db;background-image:url('static/images/sys/icon2.png');"},
+      	{title:'平台测试合格率',font:"color:#36cebe;",img:"background-color:#36cebe;background-image:url('static/images/sys/icon3.png');"},
+      	{title:'平台测试危险率',font:"color:#f16b74;",img:"background-color:#f16b74;background-image:url('static/images/sys/icon4.png');"},
       ],
       searchText:'',
       breadcrumb:{

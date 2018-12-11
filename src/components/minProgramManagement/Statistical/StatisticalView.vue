@@ -519,10 +519,10 @@ export default {
       	testUnpass:120,
       },
       carListStyle:[
-      	{title:'本题测试合格率',font:"color:#dbc24c;",img:"background-color:#dbc24c;background-image:url('/static/images/sys/icon5.png');"},
-      	{title:'本题测试总人次',font:"color:#4c90db;",img:"background-color:#4c90db;background-image:url('/static/images/sys/icon2.png');"},
-      	{title:'本题测试合格人次',font:"color:#36cebe;",img:"background-color:#36cebe;background-image:url('/static/images/sys/icon3.png');"},
-      	{title:'本题测试危险人次',font:"color:#f16b74;",img:"background-color:#f16b74;background-image:url('/static/images/sys/icon4.png');"},
+      	{title:'本题测试合格率',font:"color:#dbc24c;",img:"background-color:#dbc24c;background-image:url('static/images/sys/icon5.png');"},
+      	{title:'本题测试总人次',font:"color:#4c90db;",img:"background-color:#4c90db;background-image:url('static/images/sys/icon2.png');"},
+      	{title:'本题测试合格人次',font:"color:#36cebe;",img:"background-color:#36cebe;background-image:url('static/images/sys/icon3.png');"},
+      	{title:'本题测试危险人次',font:"color:#f16b74;",img:"background-color:#f16b74;background-image:url('static/images/sys/icon4.png');"},
       ],
       searchText:'',
       breadcrumb:{
