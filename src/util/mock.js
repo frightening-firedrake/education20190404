@@ -811,6 +811,17 @@ var zwrs = Mock.mock('/grain/sample/zwrs', {
   ],
   total: 56,
 });
+var jfgl = Mock.mock('/grain/sample/jfgl', {
+  'rows|3-10': [
+    {
+      'id|+1': 1,
+      ID: "1401061998",
+      nickname: "天天晴天",
+      integral: "100",
+    }
+  ],
+  total: 56,
+});
 var zysq = Mock.mock('/grain/sample/data111', {
   'rows|3-10': [
     {

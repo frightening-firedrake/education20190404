@@ -169,12 +169,6 @@ const routes = [{
         component: integralList,
         meta: { needAuth: '积分管理' },
     },
-    {
-        path: "minProgramManagement/knowingYourselfList/knowingYoursingleEdit",
-        name: "思政微信小程序管理/认识自我管理/编辑单题测试",
-        component: knowingYourSingleEdit,
-        meta: { needAuth: '认识自我编辑单题测试' },
-    },
     //          党（团）费上缴管理
     {
         path: "minProgramManagement/payManagementList",
