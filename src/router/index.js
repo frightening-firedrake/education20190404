@@ -28,6 +28,7 @@ import integralList from '@/components/minProgramManagement/integral/integralLis
 import payManagementList from '@/components/minProgramManagement/payManagement/payManagementList.vue'
 //认识自我统计表StatisticalList
 import StatisticalList from '@/components/minProgramManagement/Statistical/StatisticalList.vue'
+import StatisticalView from '@/components/minProgramManagement/Statistical/StatisticalView.vue'
 
 
 
@@ -181,6 +182,13 @@ const routes = [{
         path: "minProgramManagement/StatisticalList",
         name: "思政微信小程序管理/认识自我统计表",
         component: StatisticalList,
+        meta: { needAuth: '认识自我统计表' },
+    },
+    //          认识自我统计表查看
+    {
+        path: "minProgramManagement/StatisticalList/StatisticalView",
+        name: "思政微信小程序管理/认识自我统计表/详情统计",
+        component: StatisticalView,
         meta: { needAuth: '认识自我统计表' },
     },
     //

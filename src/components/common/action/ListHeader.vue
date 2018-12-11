@@ -367,6 +367,12 @@
 	div.listHeader div.dataSelete >p:before{
 		background:#1bb45f;
 	}
+	div.listHeader.blue div.dataSelete >p:before{
+		background:#4c90db;
+	}
+	div.listHeader.red div.dataSelete >p:before{
+		background:#e90a0a;
+	}
 	div.listHeader div.dataSelete.state >p:before{
 		background:#fa8564;
 	}

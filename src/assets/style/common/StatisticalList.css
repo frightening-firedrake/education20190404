@@ -47,12 +47,47 @@
 /*列表缩小样式*/
 .StatisticalList div.listHeader{
 	line-height:0.52rem;
+	position:relative;
+}
+.StatisticalList div.listHeader .bottomline{
+	position:absolute;
+	left:0.3rem;
+	right:0.3rem;
+	bottom:0;
+	height:1px;
+	border-bottom:1px dashed #d7d7d7;
 }
 .StatisticalList div.tfoot{
 	height:0.8rem;
 	border:1px solid #d7d7d7;
+	border-top:none;
 	border-radius:0 0 0.1rem 0.1rem;
 }
 .StatisticalList div.tfoot .el-pagination{
 	padding: 0.23rem 0.45rem;
 }
+.StatisticalList .list .el-table__body{
+	margin:0;
+}
+.el-main .StatisticalList .list .el-table__body-wrapper, .el-main .StatisticalList .list .el-table__header-wrapper{
+	border:none;
+}
+.el-main .StatisticalList .list .el-table__body-wrapper{
+	border:none;
+	min-height: 5.07rem;
+}
+.StatisticalList .el-table--border::after,.StatisticalList .el-table--group::after, .el-table::before{
+	background-color: #d7d7d7;
+}
+.StatisticalList .el-table--border,.StatisticalList .el-table--group{
+	border-right:none;
+}
+
+.StatisticalList .StatisticalListRow .chart{
+	border:1px solid #d7d7d7;
+	border-top:none;
+	background-color: #ffffff;
+	height:6.54rem;
+	border-radius:0 0 0.1rem 0.1rem;
+}
+

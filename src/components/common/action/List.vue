@@ -207,6 +207,12 @@
             <div v-html="colorCheckeds(scope.row['checkeds'],scope.row['sort'])"></div>
           </template>
           <template v-if="item.prop=='sampleNum'">监{{scope.row[item.prop]}}</template>
+          <template v-if="item.prop=='riskAssessment'">
+          	<span style="color:#e90a0a;">{{scope.row[item.prop]}}</span>
+          </template>
+          <template v-if="item.prop=='passPercentage'">
+          	<span>{{passPercentage(scope.row["testerPassSum"],scope.row["testerFailureSum"])}}</span>
+          </template>
           <template v-if="item.prop=='smallSampleNum'">
             <template v-if="scope.row[item.prop].substr(-1,1)==1">监{{scope.row[item.prop]}}小1</template>
             <template v-if="scope.row[item.prop].substr(-1,1)==2">监{{scope.row[item.prop]}}小2</template>
@@ -452,7 +458,7 @@
         </template>
         <!--是否包含查看详情操作-->
         <template v-if="actions.view1">
-          <button class="view1" @click.stop="handleView(scope.$index, scope.row,scope)">查看详情</button>
+          <button class="view1" @click.stop="handleView(scope.$index, scope.row,scope)">查看</button>
         </template>
         <!--是否包含查看操作-->
         <template v-if="actions.view">
@@ -758,6 +764,10 @@ export default {
       if (pitem.length) {
         return pitem[0].libraryName;
       }
+    },
+    passPercentage(testerPassSum,testerFailureSum) {
+    	var total=testerPassSum-0+(testerFailureSum-0)
+    	return (testerPassSum/total*100.).toFixed(2)+'%'
     },
     colorCheckeds(str, sort) {
       //			console.log(this.actions.searchText,str,sort)

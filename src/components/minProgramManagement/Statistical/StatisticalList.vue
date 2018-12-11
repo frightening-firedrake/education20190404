@@ -77,10 +77,26 @@ export default {
 
 //	监听列表删除事件
     this.$root.eventHub.$on('delelistitem',function(rowid,list){
-    	this.tabledatas=this.tabledatas.filter(function(item){
-    		return item.id!==rowid;
-    	})
-    	this.sendDeleteId(rowid);
+      	this.$confirm('此操作将永久删除该信息, 是否继续?', '提示', {
+			confirmButtonText: '确定',
+			cancelButtonText: '取消',
+			type: 'warning'
+		}).then(() => {
+			this.tabledatas2=this.tabledatas2.filter(function(item){
+	    		return item.id!==rowid;
+	    	})
+			//  	this.sendDeleteId(rowid);
+		    this.$message({
+		        type: 'success',
+		        message: '删除成功!'
+		    });
+		}).catch(() => {
+			this.$message({
+				type: 'info',
+				message: '已取消删除'
+			});
+		});
+    	
 //  	console.log(rowid,list);
     }.bind(this)); 	
 //	监听列表点击查看事件
@@ -89,7 +105,7 @@ export default {
 //		if(!this.$_ault_alert('information:get')){
 //			return
 //		}
-		this.$router.push({path: '/index/evilCriminalCases/comprehensiveCriminalCaseList/criminalCasesView',query:{id:id,state:row.state}})
+		this.$router.push({path: '/index/minProgramManagement/StatisticalList/StatisticalView',query:{id:id}})
 		
   	}.bind(this));
 
@@ -159,7 +175,7 @@ export default {
   		// 获取列表数据（第？页）
 		this.$http({
 		    method: 'post',
-			url: this.datalistURL2,
+			url: this.datalistURL1,
 			transformRequest: [function (data) {
 				// Do whatever you want to transform the data
 				let ret = ''
@@ -306,6 +322,7 @@ export default {
       listHeader1:{
       	search:true,
       	placeholder:'请输入标题名称',
+      	class:'blue',
       },
     
       tabledatas1:[],
@@ -329,14 +346,16 @@ export default {
       },
       ],
       actions1:{
+      	number:true,
       	view1:true,
       	show:true,
-      	actionWidth:100,
+      	actionWidth:90,
       },
 //    表格数据1
       listHeader2:{
       	subtitle:true,
       	title:'危险评测表榜单',
+      	class:'red',
       },
       tabledatas2:[],
       items2: [
@@ -365,6 +384,7 @@ export default {
         id: 4,
         prop:'riskAssessment',
         label: "危险测评题数",
+        status:true,
 //      minWidth:130,
 //      width:'15%',
 //      status:true,
@@ -374,7 +394,7 @@ export default {
       actions2:{
       	show:true,
       	dele:true,
-      	actionWidth:100,
+      	actionWidth:90,
       },
     }
   }

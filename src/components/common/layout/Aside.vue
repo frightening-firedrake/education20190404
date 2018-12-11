@@ -127,7 +127,7 @@ export default {
   mounted() {},
   data() {
     return {
-      openeds:["1","10"],
+      openeds:["1","11"],
       //			isCollapse: false,
       backgroundColor: "#dff0f9",
       user: {
@@ -201,14 +201,14 @@ export default {
 			pid: 1,
 			lid: 8
 		},
-		{
-			icon: 'icon-guanlizhengshu',
-			title: '党(团)费上缴管理',
-			linkto: '/index/minProgramManagement/payManagementList',
-			level: 2,
-			pid: 1,
-			lid: 9
-		},
+//		{
+//			icon: 'icon-guanlizhengshu',
+//			title: '党(团)费上缴管理',
+//			linkto: '/index/minProgramManagement/payManagementList',
+//			level: 2,
+//			pid: 1,
+//			lid: 9
+//		},
 		{
 			icon: 'icon-tongji',
 			title: '认识自我统计表',
@@ -232,7 +232,7 @@ export default {
           title: "角色管理",
           linkto: "/index/AuthorityManagement/RoleList",
           level: 2,
-          pid: 10,
+          pid: 11,
           lid: 12
         },
         {
@@ -240,7 +240,7 @@ export default {
           title: "用户管理",
           linkto: "/index/AuthorityManagement/UserList",
           level: 2,
-          pid: 10,
+          pid: 11,
           lid: 13
         },
         {
@@ -248,7 +248,7 @@ export default {
           title: "资源管理",
           linkto: "/index/AuthorityManagement/ResourcesList",
           level: 2,
-          pid: 10,
+          pid: 11,
           lid: 14
         },
       ]
