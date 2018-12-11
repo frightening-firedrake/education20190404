@@ -474,7 +474,7 @@
           <!--这里有问题改天处理一下-->
           <!--<button v-if="!$_ault_alert('all:edit')" class="undele" @click.stop="notAllowed()">编辑</button>-->
           <!--<button v-else class="edit" @click.stop="handleEdit(scope.$index, scope.row)">编辑</button>-->
-          <button class="edit" @click.stop="handleintegral(scope.$index, scope.row)">integral</button>
+          <button class="edit" @click.stop="handleintegral(scope.$index, scope.row)">添加积分</button>
         </template>
         <!--删除操作-->
         <template v-if="actions.deleCaogao">
