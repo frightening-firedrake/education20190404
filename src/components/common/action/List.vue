@@ -75,6 +75,20 @@
               <span style="color:blue;">草稿</span>
             </template>
           </template>
+          <template v-if="item.prop=='testtype'">
+            <template v-if="scope.row['type']==1">
+              <span>性格</span>
+            </template>
+            <template v-if="scope.row['type']==2">
+              <span>情感</span>
+            </template>
+            <template v-if="scope.row['type']==3">
+              <span>健康</span>
+            </template>
+            <template v-if="scope.row['type']==4">
+              <span>人际</span>
+            </template>
+          </template>
           <template v-if="item.prop=='sampleState'">
             <template v-if="scope.row[item.prop]==-1">
               <span style="color:#fc6500;">未扦样</span>

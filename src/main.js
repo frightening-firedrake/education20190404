@@ -18,7 +18,8 @@ Vue.use(VideoPlayer)
 Vue.use(ElementUI);
 Vue.prototype.apiRoot = 'https://report.ityyedu.com/education/'
 
-// Vue.prototype.apiRoot = 'https://192.168.1.253:8443/education/'//bo
+   Vue.prototype.apiRoot = 'http://192.168.1.253:8080/educationSystem/'//bo
+// Vue.prototype.apiRoot = 'https://192.168.1.253:8443/educationSystem/'//bo
 // Vue.prototype.apiRoot = 'http://192.168.1.252:8081/education/'//kun
 
 //axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';

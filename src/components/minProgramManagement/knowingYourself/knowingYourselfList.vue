@@ -49,7 +49,7 @@ import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 //import {getLodop} from 'static/lodop/LodopFuncs'
 //let LODOP
 //本地测试要用下面import代码
-import data from "@/util/mock";
+//import data from "@/util/mock";
 
 export default {
   components: {
@@ -253,22 +253,6 @@ export default {
     //	获取列表数据方法
     getlistdata(page) {
       var params = {};
-      if (this.state !== "全部") {
-        params.state = this.state;
-      }
-      if (this.threadArea !== "全部") {
-        params.threadArea = this.threadArea;
-      }
-      if (this.industryField !== "全部") {
-        params.industryField = this.industryField;
-      }
-      if (this.informType !== "全部") {
-        params.informType = this.informType;
-      }
-      if (this.searchText) {
-        params.phoneNumber = this.searchText;
-      }
-
       this.loading = false;
       // 获取列表数据（第？页）
       this.$http({
@@ -380,7 +364,7 @@ export default {
   },
   data() {
     return {
-      datalistURL: "/grain/sample/zwrs",
+      datalistURL: this.apiRoot + "test/data",
       //    datalistURL: this.apiRoot+'information/data',
       searchURL: this.apiRoot + "/grain/sample/data",
       deleteURL: "/liquid/role2/data/delete",
@@ -469,14 +453,15 @@ export default {
         },
         {
           id: 2,
-          prop: "shape",
+          prop: "form",
           label: "测试题形式"
           //      sort:true
         },
         {
           id: 3,
-          prop: "type",
-          label: "测试类型"
+          prop: "testtype",
+          label: "测试类型",
+          status:true,
           //      width:80,
           //      sort:true,
         },
@@ -491,7 +476,7 @@ export default {
         },
         {
           id: 5,
-          prop: "time",
+          prop: "createTime",
           label: "发布日期"
           //      status:true,
           //      width:80,
