@@ -89,6 +89,15 @@
               <span>人际</span>
             </template>
           </template>
+          <template v-if="item.prop=='contacttype'">
+            <template v-if="scope.row['type']==1">
+              <span>管理结构</span>
+            </template>
+            <template v-if="scope.row['type']==2">
+              <span>学院机构</span>
+            </template>
+          </template>
+
           <template v-if="item.prop=='sampleState'">
             <template v-if="scope.row[item.prop]==-1">
               <span style="color:#fc6500;">未扦样</span>
@@ -222,10 +231,10 @@
           </template>
           <template v-if="item.prop=='sampleNum'">监{{scope.row[item.prop]}}</template>
           <template v-if="item.prop=='riskAssessment'">
-          	<span style="color:#e90a0a;">{{scope.row[item.prop]}}</span>
+            <span style="color:#e90a0a;">{{scope.row[item.prop]}}</span>
           </template>
           <template v-if="item.prop=='passPercentage'">
-          	<span>{{passPercentage(scope.row["testerPassSum"],scope.row["testerFailureSum"])}}</span>
+            <span>{{passPercentage(scope.row["testerPassSum"],scope.row["testerFailureSum"])}}</span>
           </template>
           <template v-if="item.prop=='smallSampleNum'">
             <template v-if="scope.row[item.prop].substr(-1,1)==1">监{{scope.row[item.prop]}}小1</template>
@@ -779,9 +788,11 @@ export default {
         return pitem[0].libraryName;
       }
     },
-    passPercentage(testerPassSum,testerFailureSum) {
-    	var total=testerPassSum-0+(testerFailureSum-0)
-    	return (testerPassSum/total*100.).toFixed(2)+'%'
+    passPercentage(testerPassSum, testerFailureSum) {
+      var total = testerPassSum - 0 + (testerFailureSum - 0);
+      return isNaN(testerPassSum / total)
+        ? 0
+        : ((testerPassSum / total) * 100).toFixed(2) + "%";
     },
     colorCheckeds(str, sort) {
       //			console.log(this.actions.searchText,str,sort)

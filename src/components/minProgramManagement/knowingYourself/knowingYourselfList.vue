@@ -150,7 +150,7 @@ export default {
     //	列表头触发的事件
     //新建试题
     addbtn() {
-      this.$router.push({path:"knowingYourselfList/knowingYoursingleNew"})
+      this.$router.push({ path: "knowingYourselfList/knowingYoursingleNew" });
     },
     //	时间选择
     dateChange(date) {
@@ -194,27 +194,21 @@ export default {
     //	搜索电话号码
     search(data) {
       this.searchText = data;
-      this.getlistdata(1);
+      this.searchingfor(1);
     },
     emptyCreate() {
       //		this.scanCode();
     },
     //	获取搜索数据
-    searchingfor(searching, page) {
+    searchingfor( page) {
       page ? page : 1;
-      this.searchText =
-        searching.indexOf("监") == 0 ? searching.slice(1) : searching;
-      //		console.log(this.searchText);
       var params = {};
-      params.sampleWordOrsampleNumLike = this.searchText;
-      params.ruKuSampleState = 2;
-      params.fenxiaoyangSampleState = 3;
-      params.rank = "sampleNum";
+      params.titleLike = this.searchText;
       //		console.log(this.breadcrumb.searching);
       // 获取列表数据（第？页）
       this.$http({
         method: "post",
-        url: this.searchURL,
+        url: this.datalistURL,
         transformRequest: [
           function(data) {
             // Do whatever you want to transform the data
@@ -461,13 +455,13 @@ export default {
           id: 3,
           prop: "testtype",
           label: "测试类型",
-          status:true,
+          status: true
           //      width:80,
           //      sort:true,
         },
         {
           id: 4,
-          prop: "source",
+          prop: "articleSource",
           label: "来源"
           //      minWidth:130,
           //      width:'15%',
@@ -489,7 +483,7 @@ export default {
         //    	view1:true,
         edit: true,
         show: true,
-        dele: true,
+        dele: false,
         manuscript: false,
         safetyReport: false,
         printSampleIn: false

@@ -17,13 +17,22 @@
           <template v-if="data.type=='photo'">
             <el-upload
               class="avatar-uploader"
-              action="https://jsonplaceholder.typicode.com/posts/"
               :show-file-list="true"
+              :action="action"
               :on-exceed="handleexceed"
               :on-success="handleAvatarSuccess"
               :limit="1"
+              :file-list="filelist"
+              name="pictureFile"
               list-type="picture-card"
             >
+              <!-- <img
+              
+
+                :src="apiRoot+'upload/picture/'+formdata.model.image"
+                v-if="formdata.model.image"
+                alt
+              >-->
               <i class="iconfont icon-tianjia"></i>
             </el-upload>
           </template>
@@ -113,8 +122,8 @@
                 <template slot-scope="scope">
                   <span v-if="table.prop=='option'">{{topicnum[scope.$index]}}</span>
                   <el-form-item
-                    v-else-if="table.prop=='Answer'"
-                    v-for="answer in scope.row.Answer"
+                    v-else-if="table.prop=='result'"
+                    v-for="answer in scope.row.result"
                     :key="answer.placeholder"
                     label
                     :style="{height:answer.height}"
@@ -122,17 +131,18 @@
                     <el-input
                       v-model="scope.row.module[answer.prop]"
                       :placeholder="answer.placeholder"
+                      :disabled="answer.disabled"
                     ></el-input>
                   </el-form-item>
                   <el-radio
-                    v-else-if="table.prop=='danger'"
-                    v-model="scope.row.module[danger.prop]"
-                    v-for="danger in scope.row.danger"
-                    :key="danger.text"
-                    :label="danger.text"
-                    :class="danger.class"
-                    :style="{color:danger.textcolor}"
-                  >{{danger.text}}</el-radio>
+                    v-else-if="table.prop=='rank'"
+                    v-model="scope.row.module[rank.prop]"
+                    v-for="rank in scope.row.rank"
+                    :key="rank.text"
+                    :label="rank.value"
+                    :class="rank.class"
+                    :style="{color:rank.textcolor}"
+                  >{{rank.text}}</el-radio>
                 </template>
               </el-table-column>
             </template>
@@ -164,14 +174,38 @@
 <script>
 export default {
   props: ["formdata", "tabledata"],
+  computed: {
+    filelist: function() {
+      if (this.formdata.model.image == "") return [];
+      let params = {
+        name: this.formdata.model.image,
+        url: this.apiRoot + "upload/picture/" + this.formdata.model.image
+      };
+      return [params];
+    }
+  },
   data() {
     return {
-      topicnum: ["A", "B", "C", "D", "E", "F", "G"],
+      action: this.apiRoot + "/test/uploadPic",
+      topicnum: ["A", "B", "C", "D"],
       labelWidth: "2.07rem",
       tableWidth: "79px",
       rules: {
-        name: [{ required: true, message: "请输入活动名称", trigger: "blur" }],
-        problem: [{ required: true, message: "请输入问题", trigger: "blur" }]
+        sectionName: [
+          { required: true, message: "请输入机构名称", trigger: "blur" }
+        ],
+        articleSource: [
+          { required: true, message: "请输入来源", trigger: "blur" }
+        ],
+        title: [{ required: true, message: "请输入标题名称", trigger: "blur" }],
+        topic: [{ required: true, message: "请输入问题", trigger: "blur" }],
+        form: [{ required: true, message: "请输入问题", trigger: "blur" }],
+        type: [{ required: true, message: "请输入测试类别", trigger: "blur" }],
+        source: [{ required: true, message: "请输入来源", trigger: "blur" }],
+        pictureFile: [
+          { required: true, message: "请输入封面照片", trigger: "blur" }
+        ],
+        summarize: [{ required: true, message: "请输入摘要", trigger: "blur" }]
       }
     };
   },
@@ -218,7 +252,9 @@ export default {
       });
     },
     //上传成功时
-    handleAvatarSuccess() {},
+    handleAvatarSuccess(res, file, fileList) {
+      this.formdata.model.image = res.msg;
+    },
     del(e) {
       // console.log(e);
       this.$emit("delrow", e.$index);
@@ -230,10 +266,10 @@ export default {
       this.$router.go(-1);
     },
     submitForm(formName) {
-      console.log(this.tabledata.body);
       this.$refs[formName].validate(valid => {
         if (valid) {
-          console.log(this.$refs[formName]);
+          // console.log(this.$refs[formName]);
+          this.$emit("submit", this.$refs[formName]);
         } else {
           console.log("error submit!!");
           return false;
@@ -264,7 +300,7 @@ export default {
     .formborder {
       border: 1px solid #dfdfdf;
       &.active {
-        border-bottom:none;
+        border-bottom: none;
         margin-top: 0.12rem;
         border-top-right-radius: 0.1rem;
         border-top-left-radius: 0.1rem;
@@ -509,6 +545,11 @@ export default {
           line-height: 0.84rem;
           border: 1px solid #4c90db;
           border-radius: 0;
+          img {
+            width: 1.3rem;
+            height: 0.84rem;
+            margin: 0 8px 8px 0;
+          }
           i {
             font-size: 0.4rem;
             color: #4c90db;

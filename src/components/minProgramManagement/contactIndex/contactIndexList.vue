@@ -150,7 +150,7 @@ export default {
     //	列表头触发的事件
     //新建内容
     addbtn() {
-      this.$router.push({path:"contactIndexList/contactIndexnew"})
+      this.$router.push({ path: "contactIndexList/contactIndexnew" });
     },
     //	时间选择
     dateChange(date) {
@@ -253,21 +253,21 @@ export default {
     //	获取列表数据方法
     getlistdata(page) {
       var params = {};
-      if (this.state !== "全部") {
-        params.state = this.state;
-      }
-      if (this.threadArea !== "全部") {
-        params.threadArea = this.threadArea;
-      }
-      if (this.industryField !== "全部") {
-        params.industryField = this.industryField;
-      }
-      if (this.informType !== "全部") {
-        params.informType = this.informType;
-      }
-      if (this.searchText) {
-        params.phoneNumber = this.searchText;
-      }
+      // if (this.state !== "全部") {
+      //   params.state = this.state;
+      // }
+      // if (this.threadArea !== "全部") {
+      //   params.threadArea = this.threadArea;
+      // }
+      // if (this.industryField !== "全部") {
+      //   params.industryField = this.industryField;
+      // }
+      // if (this.informType !== "全部") {
+      //   params.informType = this.informType;
+      // }
+      // if (this.searchText) {
+      //   params.phoneNumber = this.searchText;
+      // }
 
       this.loading = false;
       // 获取列表数据（第？页）
@@ -379,7 +379,7 @@ export default {
   },
   data() {
     return {
-      datalistURL: "/grain/sample/data",
+      datalistURL: this.apiRoot + "xiaoyuanhuangye/data",
       //    datalistURL: this.apiRoot+'information/data',
       searchURL: this.apiRoot + "/grain/sample/data",
       deleteURL: "/liquid/role2/data/delete",
@@ -459,27 +459,28 @@ export default {
       remark: "", //备注信息
       tabledatas: [],
       items: [
+        // type类型，author作者，sectionName部门名字，positionName职位名称，phone电话，adress地址，articleSource来源，createTime发布时间
         {
           id: 1,
-          prop: "clueAddress",
+          prop: "sectionName",
           label: "机构名称",
           width: 400
           //      sort:true
         },
         {
           id: 2,
-          prop: "industryField",
+          prop: "contacttype",
           label: "机构类别",
-          width: 350
+          width: 350,
+          status: true
           //      sort:true,
         },
         {
           id: 3,
-          prop: "informType",
+          prop: "articleSource",
           label: "来源"
           //      minWidth:130,
           //      width:'15%',
-          //      status:true,
           //      sort:true,
         },
         {

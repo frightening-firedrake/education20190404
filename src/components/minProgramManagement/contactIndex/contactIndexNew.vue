@@ -2,7 +2,7 @@
   <div class="listpagewrap">
     <!--面包屑-->
     <breadcrumb :breadcrumb="breadcrumb"></breadcrumb>
-    <index-common :formdata="formData" :tabledata="tableDate" @addRow="addRow" @delrow="delrow"></index-common>
+    <index-common :formdata="formData" :tabledata="tableDate" @submit="submit" @addRow="addRow" @delrow="delrow"></index-common>
   </div>
 </template>
 
@@ -23,23 +23,23 @@ export default {
         },
         hearder: [
           {
-            prop: "department",
+            prop: "positonName",
             label: "部门"
           },
           {
-            prop: "Telephone",
+            prop: "phone",
             label: "电话"
           },
           {
-            prop: "Office",
+            prop: "adress",
             label: "办公地点"
           }
         ],
         body: [
           {
-            department: "",
-            Telephone: "",
-            Office: ""
+            positonName: "",
+            phone: "",
+            adress: ""
           }
         ]
       },
@@ -55,7 +55,7 @@ export default {
           {
             label: "机构名称:",
             labelWidth: "",
-            prop: "name",
+            prop: "sectionName",
             span: 40,
             type: "",
             placeholder: "请填写机构名称"
@@ -64,14 +64,19 @@ export default {
             label: "机构类别:",
             labelWidth: "",
             class: "mini",
-            prop: "category",
+            prop: "type",
             type: "select",
             placeholder: "请填写机构类别",
             data: [
               {
                 index: 1,
+                label: "管理机构",
+                value: 1
+              },
+              {
+                index: 1,
                 label: "学院机构",
-                value: "111"
+                value: 2
               }
             ]
           },
@@ -79,7 +84,7 @@ export default {
             label: "来源:",
             labelWidth: "",
             class: "mini",
-            prop: "source",
+            prop: "articleSource",
             type: "",
             span: 20
           }
@@ -88,6 +93,9 @@ export default {
     };
   },
   methods: {
+    submit(form){
+      console.log(form)
+    },
     addRow() {
       let valuenum = 0,
         objlength = 0;
@@ -110,7 +118,7 @@ export default {
       }
     },
     delrow(e) {
-      this.tableDate.body.splice(e,1);
+      this.tableDate.body.splice(e, 1);
     }
   }
 };

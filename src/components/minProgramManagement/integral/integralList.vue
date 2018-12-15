@@ -25,7 +25,12 @@
       v-on:emptyCreate="emptyCreate"
     ></list>
     <!-- 弹出框 -->
-    <Modal v-if="modalVisible" @dialogClose="dialogClose" :modal="modal" @createlibitem="createlibitem"></Modal>
+    <Modal
+      v-if="modalVisible"
+      @dialogClose="dialogClose"
+      :modal="modal"
+      @createlibitem="createlibitem"
+    ></Modal>
     <!--分页-->
     <pagination
       :page="page"
@@ -98,10 +103,9 @@ export default {
     this.$root.eventHub.$on(
       "integrallistitem",
       function(rowid, list) {
-        this.modal.formdatas[0].value = list.ID;
+        this.modal.formdatas[0].value = list.account;
         this.modalVisible = true;
-
-        console.log(rowid, list);
+        this.studentId = list.id;
       }.bind(this)
     );
     //	监听列表删除事件
@@ -160,17 +164,48 @@ export default {
       "close_modal"
     ]),
     ...mapActions(["addAction"]),
-    dialogClose(){
-        this.modalVisible = false
+    dialogClose() {
+      this.modalVisible = false;
     },
     //	列表头触发的事件
     //积分提交
     createlibitem(form, title) {
-      console.log(form, title);
-    },
-    //积分
-    integrallistitem(index, row) {
-      console.log(index, row);
+      // form.integral;
+      this.$http({
+        method: "post",
+        url: this.addIntegralUrl,
+        transformRequest: [
+          function(data) {
+            // Do whatever you want to transform the data
+            let ret = "";
+            for (let it in data) {
+              ret +=
+                encodeURIComponent(it) +
+                "=" +
+                encodeURIComponent(data[it]) +
+                "&";
+            }
+            return ret;
+          }
+        ],
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        data: {
+          id: this.studentId,
+          addIntegral: form.integral
+        }
+      })
+        .then(
+          function(response) {
+            if (response.data.success) {
+              this.getlistdata(1);
+            }
+          }.bind(this)
+        )
+        .catch(
+          function(error) {
+            console.log(error);
+          }.bind(this)
+        );
     },
     //新建试题
     addbtn() {
@@ -218,27 +253,22 @@ export default {
     //	搜索电话号码
     search(data) {
       this.searchText = data;
-      this.getlistdata(1);
+      this.searchingfor(1);
     },
     emptyCreate() {
       //		this.scanCode();
     },
     //	获取搜索数据
-    searchingfor(searching, page) {
+    searchingfor(page) {
       page ? page : 1;
-      this.searchText =
-        searching.indexOf("监") == 0 ? searching.slice(1) : searching;
       //		console.log(this.searchText);
       var params = {};
-      params.sampleWordOrsampleNumLike = this.searchText;
-      params.ruKuSampleState = 2;
-      params.fenxiaoyangSampleState = 3;
-      params.rank = "sampleNum";
+      params.account = this.searchText;
       //		console.log(this.breadcrumb.searching);
       // 获取列表数据（第？页）
       this.$http({
         method: "post",
-        url: this.searchURL,
+        url: this.datalistURL,
         transformRequest: [
           function(data) {
             // Do whatever you want to transform the data
@@ -277,21 +307,21 @@ export default {
     //	获取列表数据方法
     getlistdata(page) {
       var params = {};
-      if (this.state !== "全部") {
-        params.state = this.state;
-      }
-      if (this.threadArea !== "全部") {
-        params.threadArea = this.threadArea;
-      }
-      if (this.industryField !== "全部") {
-        params.industryField = this.industryField;
-      }
-      if (this.informType !== "全部") {
-        params.informType = this.informType;
-      }
-      if (this.searchText) {
-        params.phoneNumber = this.searchText;
-      }
+      // if (this.state !== "全部") {
+      //   params.state = this.state;
+      // }
+      // if (this.threadArea !== "全部") {
+      //   params.threadArea = this.threadArea;
+      // }
+      // if (this.industryField !== "全部") {
+      //   params.industryField = this.industryField;
+      // }
+      // if (this.informType !== "全部") {
+      //   params.informType = this.informType;
+      // }
+      // if (this.searchText) {
+      //   params.phoneNumber = this.searchText;
+      // }
 
       this.loading = false;
       // 获取列表数据（第？页）
@@ -404,8 +434,10 @@ export default {
   },
   data() {
     return {
+      studentId: "",
+      addIntegralUrl: this.apiRoot + "account/addIntegral",
       modalVisible: false,
-      datalistURL: "/grain/sample/jfgl",
+      datalistURL: this.apiRoot + "account/data",
       //    datalistURL: this.apiRoot+'information/data',
       searchURL: this.apiRoot + "/grain/sample/data",
       deleteURL: "/liquid/role2/data/delete",
@@ -424,15 +456,15 @@ export default {
       continuity: true, //连续储存开关
       modal: {
         title: "添加积分",
-        customClass:"blue",
-        submitText:'确认添加',
+        customClass: "blue",
+        submitText: "确认添加",
         formdatas: [
           {
             position: false,
             type: "input",
             hidden: false,
             label: "学号:",
-            model: "student",
+            model: "account",
             value: ""
           },
           {
@@ -478,7 +510,7 @@ export default {
       //    表格数据
       listHeader: {
         search: true,
-        placeholder: "请输入标题名称",
+        placeholder: "请输入学号",
         date1: false,
         date1Title: "储存时间：",
         selectlib: false,
@@ -509,14 +541,14 @@ export default {
       items: [
         {
           id: 1,
-          prop: "ID",
+          prop: "account",
           label: "学号"
           //      status:true,
           //      sort:true
         },
         {
           id: 2,
-          prop: "nickname",
+          prop: "weixinNum",
           label: "微信昵称"
           //      sort:true
         },
