@@ -253,6 +253,7 @@ export default {
     //	获取列表数据方法
     getlistdata(page) {
       var params = {};
+      params.organizationName = this.searchText
       // if (this.state !== "全部") {
       //   params.state = this.state;
       // }
@@ -429,7 +430,7 @@ export default {
       //    表格数据
       listHeader: {
         search: true,
-        placeholder: "请输入标题名称",
+        placeholder: "请输入机构名称",
         date1: false,
         date1Title: "储存时间：",
         selectlib: false,
@@ -462,7 +463,7 @@ export default {
         // type类型，author作者，sectionName部门名字，positionName职位名称，phone电话，adress地址，articleSource来源，createTime发布时间
         {
           id: 1,
-          prop: "sectionName",
+          prop: "organizationName",
           label: "机构名称",
           width: 400
           //      sort:true
@@ -498,7 +499,7 @@ export default {
         //    	view1:true,
         edit: true,
         show: true,
-        dele: true,
+        dele: false,
         manuscript: false,
         safetyReport: false,
         printSampleIn: false

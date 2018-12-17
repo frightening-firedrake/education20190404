@@ -21,7 +21,7 @@ Vue.prototype.apiRoot = 'https://report.ityyedu.com/education/'
    Vue.prototype.apiRoot = 'http://192.168.1.253:8080/educationSystem/'//bo
 //    Vue.prototype.apiRoot = 'http://192.168.0.111:8080/educationSystem/'//bo
 // Vue.prototype.apiRoot = 'https://192.168.1.253:8443/educationSystem/'//bo
-// Vue.prototype.apiRoot = 'http://192.168.1.252:8081/education/'//kun
+// Vue.prototype.apiRoot = 'http://192.168.1.252:8083/educationSystem/'//kun
 
 //axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 //axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded'

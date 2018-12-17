@@ -400,7 +400,7 @@ export default {
       {
         id: 1,
         prop:'title',
-        label: "标题",
+		label: "标题",
 //      status:true,
 //      sort:true
       },
@@ -409,13 +409,13 @@ export default {
         prop:'hits',
         label: "阅读次数",
 //      sort:true
-        width:'90',
+        width:'120',
       },
       {
         id: 3,
         prop:'source',
         label:"来源",
-//      width:80,
+    //  width:80,
 //      sort:true,
         width:'120',
       },
@@ -424,7 +424,7 @@ export default {
         prop:'createTime',
         label: "发布日期",
 //      minWidth:130,
-        width:'90',
+        width:'120',
 //      status:true,
 //      sort:true,
       },
@@ -439,7 +439,7 @@ export default {
       	manuscript:false,
       	safetyReport:false,
       	printSampleIn:false,
-      	actionWidth:100,
+      	actionWidth:90,
 //    	sort:'sampleNum',
       },
 

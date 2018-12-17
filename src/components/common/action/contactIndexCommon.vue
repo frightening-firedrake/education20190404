@@ -76,7 +76,7 @@
               >
                 <template slot-scope="scope">
                   <el-form-item label>
-                    <el-input v-model="scope.row[table.prop]"></el-input>
+                    <el-input v-model="scope.row[table.prop]" ></el-input>
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -191,7 +191,7 @@ export default {
       labelWidth: "2.07rem",
       tableWidth: "79px",
       rules: {
-        sectionName: [
+        organizationName: [
           { required: true, message: "请输入机构名称", trigger: "blur" }
         ],
         articleSource: [
@@ -256,8 +256,7 @@ export default {
       this.formdata.model.image = res.msg;
     },
     del(e) {
-      // console.log(e);
-      this.$emit("delrow", e.$index);
+      this.$emit("delrow", e.$index,e.row);
     },
     addRow() {
       this.$emit("addRow");
