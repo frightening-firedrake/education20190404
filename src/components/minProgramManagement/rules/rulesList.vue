@@ -5,7 +5,7 @@
       <!--alert-->
       <!--<prompt :alerts="alerts"></prompt>-->
       <!--表格上的时间选框以及 创建-->
-      <list-header :listHeader="listHeader" @threadAreaChange="threadAreaChange" @stateChange="stateChange" @industryFieldChange="industryFieldChange" @informTypeChange="informTypeChange" @search="search"></list-header>
+      <list-header :listHeader="listHeader" @threadAreaChange="threadAreaChange" @stateChange="stateChange" @industryFieldChange="industryFieldChange" @informTypeChange="informTypeChange" @search="search" @addbtn="addbtn"></list-header>
       <!--表格-->
       <list class="list nopointer" :tabledata="tabledatas"  :items="items" :actions="actions" v-on:getchecked="getchecked" :loading="loading" v-on:emptyCreate="emptyCreate" > 
       </list>
@@ -65,10 +65,26 @@ export default {
     this.$root.eventHub.$off("printlistitem")
 //	监听列表删除事件
     this.$root.eventHub.$on('delelistitem',function(rowid,list){
-    	this.tabledatas=this.tabledatas.filter(function(item){
-    		return item.id!==rowid;
-    	})
-    	this.sendDeleteId(rowid);
+		this.$confirm('此操作将永久删除该文章, 是否继续?', '提示', {
+			confirmButtonText: '确定',
+			cancelButtonText: '取消',
+			type: 'warning'
+		}).then(() => {
+			this.tabledatas=this.tabledatas.filter(function(item){
+	    		return item.id!==rowid;
+	    	})
+	      this.$message({
+	        type: 'success',
+	        message: '删除成功!'
+	      });
+		}).catch(() => {
+			this.$message({
+				type: 'info',
+				message: '已取消删除'
+			});
+		});
+    	
+//  	this.sendDeleteId(rowid);
 //  	console.log(rowid,list);
     }.bind(this)); 	
 //	监听列表点击查看事件
@@ -77,13 +93,13 @@ export default {
 //		if(!this.$_ault_alert('information:get')){
 //			return
 //		}
-		this.$router.push({path: '/index/evilCriminalCases/comprehensiveCriminalCaseList/criminalCasesView',query:{id:id,state:row.state}})
+//		this.$router.push({path: '/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalAdd',query:{id:id,state:row.state}})
 		
   	}.bind(this));
   	//	监听列表点击编辑事件
-  	this.$root.eventHub.$on("editlistitem",function(id){  
+  	this.$root.eventHub.$on("editlistitem",function(id,row){  
 //		console.log(id)
-		this.$router.push({path: '/index/sampleManagement/sampleIn/sampleInEdit',query:{id:id}})
+		this.$router.push({path: '/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalEdit',query:{id:id,model:'edit'}})
 		
   	}.bind(this));
   	//	监听列表点击打印事件
@@ -138,6 +154,10 @@ export default {
 		this.informType=data
 		this.getlistdata(1)
 	},  
+	addbtn(){
+//		console.log('addbtn')
+		this.$router.push({path: '/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalAdd'})
+	},
 	//	搜索电话号码
 	search(data){
 		this.searchText=data
@@ -187,21 +207,21 @@ export default {
 //	获取列表数据方法
   	getlistdata(page){
 		var params = {};
-		if(this.state!=='全部'){
-			params.state=this.state
-		}
-		if(this.threadArea!=='全部'){
-			params.threadArea=this.threadArea
-		}
-		if(this.industryField!=='全部'){
-			params.industryField=this.industryField
-		}
-		if(this.informType!=='全部'){
-			params.informType=this.informType
-		}
-		if(this.searchText){
-			params.phoneNumber=this.searchText
-		}
+		// if(this.state!=='全部'){
+		// 	params.state=this.state
+		// }
+		// if(this.threadArea!=='全部'){
+		// 	params.threadArea=this.threadArea
+		// }
+		// if(this.industryField!=='全部'){
+		// 	params.industryField=this.industryField
+		// }
+		// if(this.informType!=='全部'){
+		// 	params.informType=this.informType
+		// }
+		// if(this.searchText){
+		// 	params.phoneNumber=this.searchText
+		// }
 
   		this.loading=false;
   		// 获取列表数据（第？页）
@@ -297,7 +317,7 @@ export default {
   },
   data() {
     return {
-      datalistURL: '/grain/sample/data',
+      datalistURL:this.apiRoot+ 'guizhangzhidu/data',
 //    datalistURL: this.apiRoot+'information/data',
 	  searchURL:this.apiRoot + '/grain/sample/data',
       deleteURL:'/liquid/role2/data/delete',
@@ -345,7 +365,7 @@ export default {
 //    表格数据
       listHeader:{
       	search:true,
-      	placeholder:'请输入举报人电话',
+      	placeholder:'请输入标题名称',
       	date1:false,
       	date1Title:'储存时间：',
       	selectlib:false,
@@ -357,15 +377,16 @@ export default {
       		{label:1,text:'未检测'},
       		{label:2,text:'已检测'},
       	],
-      	stateList:[],
+//    	stateList:[],
       	selectRem:false,
-      	state:true,
-      	threadArea:true,
-      	industryField:true,
-      	informType:true,
-      	threadAreaList:[
-      		{id:'山西省',threadAreaName:'山西省'},
-      	],
+//    	state:true,
+//    	threadArea:true,
+//    	industryField:true,
+//    	informType:true,
+//    	threadAreaList:[
+//    		{id:'山西省',threadAreaName:'山西省'},
+//    	],
+		addbtn:'新建内容'
       },
       libtype:'pLibrary',
       selectLibraryId:'全部',
@@ -378,77 +399,47 @@ export default {
       items: [
       {
         id: 1,
-        prop:'threadArea',
-        label: "线报地域",
+        prop:'title',
+		label: "标题",
 //      status:true,
 //      sort:true
       },
       {
         id: 2,
-        prop:'clueAddress',
-        label: "线报详址",
+        prop:'hits',
+        label: "阅读次数",
 //      sort:true
+        width:'100',
       },
       {
         id: 3,
-        prop:'industryField',
-        label:"行业领域",
-//      width:80,
+        prop:'source',
+        label:"来源",
+    //  width:80,
 //      sort:true,
+        width:'120',
       },
       {
         id: 4,
-        prop:'informType',
-        label: "举报类别",
-//      minWidth:130,
-//      width:'15%',
-//      status:true,
-//      sort:true,
-      },
-      {
-        id: 5,
-        prop:'phoneNumber',
-        label:"举报人电话",
-//      status:true,
-//      width:80,
-//      sort:true,
-      },
-      {
-        id: 6,
-//      prop:'sampleState',
-        prop:'state',
-        label:"案件进度",
-        status:true,
-//      width:80,
-//      sort:true,
-      },
-//    {
-//      id: 7,
-//      prop:'assessor',
-//      label:"审核员",
-////      width:80,
-////      sort:true,
-//    },
-      {
-        id: 8,
         prop:'createTime',
-        label:"举报时间",
-//      width:80,
+        label: "发布日期",
+//      minWidth:130,
+        width:'120',
+//      status:true,
 //      sort:true,
       },
-
       ],
       actions:{
       	selection:false,
-      	number:false,
+      	number:true,
 //    	view1:true,
       	edit:true,
       	show:true,
-      	dele:true,
+      	dele:false,
       	manuscript:false,
       	safetyReport:false,
       	printSampleIn:false,
-      	actionWidth:100,
+      	actionWidth:150,
 //    	sort:'sampleNum',
       },
 

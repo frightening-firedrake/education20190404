@@ -207,21 +207,21 @@ export default {
 //	获取列表数据方法
   	getlistdata(page){
 		var params = {};
-		if(this.state!=='全部'){
-			params.state=this.state
-		}
-		if(this.threadArea!=='全部'){
-			params.threadArea=this.threadArea
-		}
-		if(this.industryField!=='全部'){
-			params.industryField=this.industryField
-		}
-		if(this.informType!=='全部'){
-			params.informType=this.informType
-		}
-		if(this.searchText){
-			params.phoneNumber=this.searchText
-		}
+		// if(this.state!=='全部'){
+		// 	params.state=this.state
+		// }
+		// if(this.threadArea!=='全部'){
+		// 	params.threadArea=this.threadArea
+		// }
+		// if(this.industryField!=='全部'){
+		// 	params.industryField=this.industryField
+		// }
+		// if(this.informType!=='全部'){
+		// 	params.informType=this.informType
+		// }
+		// if(this.searchText){
+		// 	params.phoneNumber=this.searchText
+		// }
 
   		this.loading=false;
   		// 获取列表数据（第？页）
@@ -317,7 +317,7 @@ export default {
   },
   data() {
     return {
-      datalistURL: '/grain/sample/data111',
+      datalistURL:this.apiRoot+ 'sizhengjianshe/data',
 //    datalistURL: this.apiRoot+'information/data',
 	  searchURL:this.apiRoot + '/grain/sample/data',
       deleteURL:'/liquid/role2/data/delete',
@@ -409,7 +409,7 @@ export default {
         prop:'hits',
         label: "阅读次数",
 //      sort:true
-        width:'120',
+        width:'100',
       },
       {
         id: 3,
@@ -435,11 +435,11 @@ export default {
 //    	view1:true,
       	edit:true,
       	show:true,
-      	dele:true,
+      	dele:false,
       	manuscript:false,
       	safetyReport:false,
       	printSampleIn:false,
-      	actionWidth:90,
+      	actionWidth:150,
 //    	sort:'sampleNum',
       },
 

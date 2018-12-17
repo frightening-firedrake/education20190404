@@ -28,7 +28,7 @@
       ></el-table-column>
     </template>
     <!--是否添加编号-->
-    <el-table-column type="index" :index="1" align="center" label="编号" v-if="actions.number"></el-table-column>
+    <el-table-column width="80" type="index" :index="1" align="center" label="编号" v-if="actions.number"></el-table-column>
     <!--<el-table-column type="index" :index="indexMethod" v-if="actions.number"></el-table-column>-->
     <!--循环数据-->
     <template v-for="item in items">
