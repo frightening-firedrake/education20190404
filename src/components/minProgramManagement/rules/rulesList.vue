@@ -207,6 +207,7 @@ export default {
 //	获取列表数据方法
   	getlistdata(page){
 		var params = {};
+		params.title = this.searchText
 		// if(this.state!=='全部'){
 		// 	params.state=this.state
 		// }
@@ -413,7 +414,7 @@ export default {
       },
       {
         id: 3,
-        prop:'source',
+        prop:'articleSource',
         label:"来源",
     //  width:80,
 //      sort:true,

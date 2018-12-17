@@ -222,7 +222,7 @@ export default {
 		// if(this.searchText){
 		// 	params.phoneNumber=this.searchText
 		// }
-
+	params.title = this.searchText
   		this.loading=false;
   		// 获取列表数据（第？页）
 		this.$http({
@@ -413,7 +413,7 @@ export default {
       },
       {
         id: 3,
-        prop:'source',
+        prop:'articleSource',
         label:"来源",
     //  width:80,
 //      sort:true,
@@ -435,7 +435,7 @@ export default {
 //    	view1:true,
       	edit:true,
       	show:true,
-      	dele:true,
+      	dele:false,
       	manuscript:false,
       	safetyReport:false,
       	printSampleIn:false,
