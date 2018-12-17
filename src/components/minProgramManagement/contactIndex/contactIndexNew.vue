@@ -153,8 +153,8 @@ export default {
       })
         .then(
           function(response) {
-            if(response.data.success){
-              this.$router.go(-1)
+            if (response.data.success) {
+              this.$router.go(-1);
             }
           }.bind(this)
         )
@@ -168,9 +168,9 @@ export default {
       let valuenum = 0,
         objlength = 0;
       let params = {
-        department: "",
-        Telephone: "",
-        Office: ""
+        positionName: "",
+        phone: "",
+        adress: ""
       };
       for (var i in this.tableDate.body[this.tableDate.body.length - 1]) {
         objlength += 1;
