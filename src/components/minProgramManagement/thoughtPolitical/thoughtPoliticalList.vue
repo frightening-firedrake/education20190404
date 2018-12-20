@@ -159,6 +159,7 @@ export default {
 //	获取列表数据方法
   	getlistdata(page){
 		var params = {};
+		params.title =this.searchText
 		// if(this.state!=='全部'){
 		// 	params.state=this.state
 		// }
