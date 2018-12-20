@@ -30,7 +30,7 @@ import { mapState,mapMutations,mapGetters,mapActions} from 'vuex';
 //import {getLodop} from 'static/lodop/LodopFuncs'
 //let LODOP
 //本地测试要用下面import代码
-import data from '@/util/mock';
+//import data from '@/util/mock';
 
 
 
@@ -41,20 +41,10 @@ export default {
   computed:{
 	...mapState(["modal_id_number","viewdata","editdata","aultdata","messions","mask"]),
 	...mapGetters(["userName","stateList","Token"]),
-	tabledatasFilter(){
 
-		if(this.filterStatus=="全部"){
-			return this.tabledatas;
-		}else{
-			return this.tabledatas.filter((value,index)=>{
-				return value.sampleStatus==this.filterStatus
-			})
-		}
-
-	}
   },
   created(){
-  	this.listHeader.stateList=this.stateList
+
 //	console.log(this.$route.query)
 //  获取列表数据（第一页）
 	this.getlistdata(1)
@@ -62,7 +52,7 @@ export default {
     this.$root.eventHub.$off('delelistitem')
     this.$root.eventHub.$off("viewlistitem")
     this.$root.eventHub.$off("editlistitem")
-    this.$root.eventHub.$off("printlistitem")
+
 //	监听列表删除事件
     this.$root.eventHub.$on('delelistitem',function(rowid,list){
 		this.$confirm('此操作将永久删除该文章, 是否继续?', '提示', {
@@ -103,38 +93,18 @@ export default {
 		
   	}.bind(this));
   	//	监听列表点击打印事件
-  	this.$root.eventHub.$on("printlistitem",function(code){  
-		this.printitem(code);	
-  	}.bind(this));
+
   },
   destroy(){
   	this.$root.eventHub.$off("viewlistitem")
   	this.$root.eventHub.$off('delelistitem')
+    this.$root.eventHub.$off("editlistitem")
   },
   methods: {
   	...mapMutations(['create_modal_id','is_mask','create_modal','close_modal']),
   	...mapActions(['addAction']),
 //	列表头触发的事件
-//	时间选择
-	dateChange(date){
-//		console.log(date);
-		this.dateStart=date[0];
-		this.dateEnd=date[1];
-		this.getlistdata(1)
-	},
-//	备注选择
-	remChange(remark){
-//		console.log(remark)
-		this.remark=remark
-		this.getlistdata(1)
-	},
-//	检验状态选择
-	statusChange(data){
-//		console.log(data)
-		this.filterStatus=data
-		this.getlistdata(1)
-	},
- 
+
 	addbtn(){
 //		console.log('addbtn')
 		this.$router.push({path: '/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalAdd'})
@@ -289,19 +259,10 @@ export default {
 //    datalistURL: this.apiRoot+'information/data',
 	  searchURL:this.apiRoot + '/grain/sample/data',
       deleteURL:'/liquid/role2/data/delete',
-  	  state:"全部",
-  	  threadArea:"全部",
-//	  threadArea:"山西省",
-  	  industryField:"全部",
-  	  informType:"全部",
+  	  
       searchText:'',
-      sampleInTotal:0,
+
       checkedId:[],
-	  dataBySampleNo: {},
-	  depotList:[],
-      counterList:[],
-      placeList:[],
-      continuity:true,//连续储存开关
       breadcrumb:{
       	search:false,   
       	searching:'',
@@ -310,8 +271,7 @@ export default {
       	btn:false,
       	btntext:'',
       },
-      loading:true,
-      
+      loading:false,
 //    分页数据
       page: {
         size: 10,
@@ -337,12 +297,6 @@ export default {
 		addbtn:'新建内容'
       },
 
-
-//    remark:'',
-      filterStatus:'全部',//检验状态
-      dateStart:0,//开始时间
-      dateEnd:9999999999999999999999999,//结束时间
-      remark:'',//备注信息
       tabledatas:[],
       items: [
       {
