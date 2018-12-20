@@ -161,7 +161,7 @@ export default {
       	form:{
 	        title:'我是标题',
 	        summarize:'我是再要',
-	        source:'我是来院',
+	        articleSource:'我是来院',
 	        content:'我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容',
       	},
       	loading:false,

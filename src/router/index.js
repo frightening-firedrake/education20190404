@@ -53,8 +53,8 @@ Vue.use(Router)
 
 const routes = [{
     path: '/',
-    //      redirect: '/login',
-    redirect: '/index',//暂时屏蔽掉了登录与首页直接列表页开始
+            redirect: '/login',
+//  redirect: '/index',//暂时屏蔽掉了登录与首页直接列表页开始
     name: '',
 },
 {

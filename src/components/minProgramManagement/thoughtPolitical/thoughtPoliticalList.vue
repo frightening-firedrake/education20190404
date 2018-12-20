@@ -111,9 +111,9 @@ export default {
 	},
 	//	搜索电话号码
 	search(data){
-		console.log(data)
-//		this.searchText=data
-//		this.getlistdata(1)
+//		console.log(data)
+		this.searchText=data
+		this.getlistdata(1)
 	},  
 	emptyCreate(){
 //		this.scanCode();
@@ -159,10 +159,9 @@ export default {
 //	获取列表数据方法
   	getlistdata(page){
 		var params = {};
-		params.title =this.searchText
-		// if(this.state!=='全部'){
-		// 	params.state=this.state
-		// }
+		if(this.searchText){
+			params.titleLike =this.searchText
+		}
 		// if(this.threadArea!=='全部'){
 		// 	params.threadArea=this.threadArea
 		// }

@@ -19,6 +19,7 @@
      * 因此，UEditor提供了针对不同页面的编辑器可单独配置的根路径，具体来说，在需要实例化编辑器的页面最顶部写上如下代码即可。当然，需要令此处的URL等于对应的配置。
      * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
      */
+    //window.UEDITOR_HOME_URL = "/static/ueditor/";
     var URL = window.UEDITOR_HOME_URL || getUEBasePath();
 
     /**
@@ -30,9 +31,11 @@
         UEDITOR_HOME_URL: URL
 
         // 服务器统一请求接口路径
-//      , serverUrl: URL + "jsp/controller.jsp"
-        , serverUrl: "http://192.168.1.253:8080/educationSystem/ueditor/exec"
-//      , serverUrl: "http://192.168.1.252:8083/educationSystem/ueditor/exec"
+
+        , serverUrl: "http://192.168.1.252:8083/educationSystem/ueditor/exec"//kun
+//      , serverUrl: "http://192.168.1.253:8080/educationSystem/ueditor/exec"//bo
+
+
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
         , toolbars: [[
@@ -252,9 +255,8 @@
         //,elementPathEnabled : true
 
         //wordCount
-//        ,wordCount:true          //是否开启字数统计
-//        ,maximumWords:10000       //允许的最大字符数
-//        ,maximumWords:5000       //允许的最大字符数
+        //,wordCount:true          //是否开启字数统计
+        //,maximumWords:10000       //允许的最大字符数
         //字数统计提示，{#count}代表当前字数，{#leave}代表还可以输入多少字符数,留空支持多语言自动切换，否则按此配置显示
         //,wordCountMsg:''   //当前已输入 {#count} 个字符，您还可以输入{#leave} 个字符
         //超出字数限制提示  留空支持多语言自动切换，否则按此配置显示
@@ -431,6 +433,7 @@
 			video:  ['autoplay', 'controls', 'loop', 'preload', 'src', 'height', 'width', 'class', 'style']
 		}
     };
+    console.log(window.UEDITOR_CONFIG);
 
     function getUEBasePath(docUrl, confUrl) {
 
