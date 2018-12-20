@@ -110,10 +110,10 @@ export default {
 
     //	获取搜索数据
     searchingfor(searching) {},
-    toExamine(data) {
+    articleEdit(data) {
       this.$http({
         method: "post",
-        url: this.toExamineURL,
+        url: this.articleEditURL,
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         transformRequest: [
           function(data) {
@@ -136,7 +136,7 @@ export default {
             if (response.data.success) {
               this.$notify({
                 title: "操作成功",
-                message: "文章发布成功！！！",
+                message: "文章修改成功！！！",
                 type: "success"
               });
               this.$router.go(-1);
@@ -146,7 +146,7 @@ export default {
             } else {
               this.$notify.error({
                 title: "操作失败",
-                message: "文章发布失败！！！"
+                message: "文章修改失败！！！"
               });
             }
           }.bind(this)
@@ -163,15 +163,17 @@ export default {
     //获取文档内容
     submit(form) {
       this.formdatas.loading = true;
+      form.author=this.userName;
+      form.id=this.$route.query.id;
       console.log(form);
-      //    	this.toExamine(form)
+      this.articleEdit(form)
     }
   },
 
   data() {
     return {
-      DetailsURL: this.apiRoot + "guizhangzhidui/getById",
-      toExamineURL: this.apiRoot + "information/toExamine",
+      DetailsURL: this.apiRoot + "guizhangzhidu/getById",
+      articleEditURL: this.apiRoot + "guizhangzhidu/edit",
       editURL: this.apiRoot + "/grain/safetyReport/edit",
       searchURL: "/liquid/role2/data/search",
       createlibVisible: false,
@@ -191,17 +193,19 @@ export default {
         }
       ],
       formdatas: {
-        title: "编辑内容",
-        form: {
-          title: "我是标题",
-          summarize: "我是再要",
-          articleSource: "我是来院",
-          content:
-            "我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容"
-        },
-        loading: false
-      }
-    };
+
+      	title:'编辑内容',
+      	form:{
+	        title:'我是标题',
+	        summarize:'我是再要',
+	        articleSource:'我是来院',
+	        content:'我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容',
+      	},
+      	loading:false,
+
+	  },     
+    }
+
   }
 };
 </script>

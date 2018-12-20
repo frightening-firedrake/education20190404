@@ -11,12 +11,15 @@ import thoughtPoliticalEdit from '@/components/minProgramManagement/thoughtPolit
 //活动动态管理activityList
 import activityList from '@/components/minProgramManagement/activity/activityList.vue'
 import activityListEdit from '@/components/minProgramManagement/activity/activityListEdit.vue'
+import activityListAdd from '@/components/minProgramManagement/activity/activityListAdd.vue'
 //政策法规管理policyList
 import policyList from '@/components/minProgramManagement/policy/policyList.vue'
 import policyListEdit from '@/components/minProgramManagement/policy/policyListEdit.vue'
+import policyListAdd from '@/components/minProgramManagement/policy/policyListAdd.vue'
 //规章制度管理rulesList
 import rulesList from '@/components/minProgramManagement/rules/rulesList.vue'
 import rulesListEdit from '@/components/minProgramManagement/rules/rulesListEdit.vue'
+import rulesListAdd from '@/components/minProgramManagement/rules/rulesListAdd.vue'
 //校园黄页管理contactIndexList
 import contactIndexList from '@/components/minProgramManagement/contactIndex/contactIndexList.vue'
 import contactIndexEdit from '@/components/minProgramManagement/contactIndex/contactIndexEdit.vue'
@@ -56,7 +59,7 @@ Vue.use(Router)
 
 const routes = [{
     path: '/',
-            redirect: '/login',
+    redirect: '/login',
 //  redirect: '/index',//暂时屏蔽掉了登录与首页直接列表页开始
     name: '',
 },
@@ -115,9 +118,16 @@ const routes = [{
     //活动动态编辑
     {
         path: "minProgramManagement/activityList/activityListEdit",
-        name: "思政微信小程序管理/活动动态管理/活动动态编辑",
+        name: "思政微信小程序管理/活动动态管理/活动动态管理内容",
         component: activityListEdit,
-        meta: { needAuth: '活动动态编辑' },
+        meta: { needAuth: '活动动态管理' },
+    },
+    //活动动态新建
+    {
+        path: "minProgramManagement/activityList/activityListAdd",
+        name: "思政微信小程序管理/活动动态管理/新建内容",
+        component: activityListAdd,
+        meta: { needAuth: '活动动态管理' },
     },
     // activityListEdit
     //          政策法规管理
@@ -129,9 +139,15 @@ const routes = [{
     },
     {
         path: "minProgramManagement/policyList/policyListEdit",
-        name: "思政微信小程序管理/政策法规管理/政策法规编辑",
+        name: "思政微信小程序管理/政策法规管理/政策法规管理内容",
         component: policyListEdit,
-        meta: { needAuth: '政策法规编辑' },
+        meta: { needAuth: '政策法规管理' },
+    },
+    {
+        path: "minProgramManagement/policyList/policyListAdd",
+        name: "思政微信小程序管理/政策法规管理/新建内容",
+        component: policyListAdd,
+        meta: { needAuth: '政策法规管理' },
     },
     //          规章制度管理
     {
@@ -144,9 +160,15 @@ const routes = [{
     // rulesListEdit
     {
         path: "minProgramManagement/rulesList/rulesListEdit",
-        name: "思政微信小程序管理/规章制度管理/规章制度编辑",
+        name: "思政微信小程序管理/规章制度管理/规章制度管理内容",
         component: rulesListEdit,
-        meta: { needAuth: '规章制度编辑' },
+        meta: { needAuth: '规章制度管理' },
+    },
+    {
+        path: "minProgramManagement/rulesList/rulesListAdd",
+        name: "思政微信小程序管理/规章制度管理/新建内容",
+        component: rulesListAdd,
+        meta: { needAuth: '规章制度管理' },
     },
     //校园黄页新建内容
     {

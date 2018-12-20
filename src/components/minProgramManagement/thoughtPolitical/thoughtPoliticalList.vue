@@ -84,14 +84,11 @@ export default {
         })
           .then(() => {
             this.sendDeleteId(rowid);
-            this.tabledatas = this.tabledatas.filter(function(item) {
-              return item.id !== rowid;
-            });
+//          this.tabledatas = this.tabledatas.filter(function(item) {
+//            return item.id !== rowid;
+//          });
 
-            this.$message({
-              type: "success",
-              message: "删除成功!"
-            });
+            
           })
           .catch(() => {
             this.$message({
@@ -134,13 +131,6 @@ export default {
     this.$root.eventHub.$off("editlistitem");
   },
   methods: {
-    ...mapMutations([
-      "create_modal_id",
-      "is_mask",
-      "create_modal",
-      "close_modal"
-    ]),
-    ...mapActions(["addAction"]),
     //	列表头触发的事件
   	...mapMutations(['create_modal_id','is_mask','create_modal','close_modal']),
   	...mapActions(['addAction']),
@@ -160,41 +150,41 @@ export default {
 //		this.scanCode();
 	},
 //	获取搜索数据
-  	searchingfor(searching,page){
+  searchingfor(searching,page){
   		page?page:1;
   		this.searchText=searching.indexOf('监')==0?searching.slice(1):searching;
 //		console.log(this.searchText);
   		var params = {};
-		params.sampleWordOrsampleNumLike = this.searchText;
-		params.ruKuSampleState = 2
-		params.fenxiaoyangSampleState = 3
-		params.rank = 'sampleNum'
-//		console.log(this.breadcrumb.searching);
-  		// 获取列表数据（第？页）
-		this.$http({
-		    method: 'post',
-			url: this.searchURL,
-			transformRequest: [function (data) {
-				// Do whatever you want to transform the data
-				let ret = ''
-				for (let it in data) {
-				ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+			params.sampleWordOrsampleNumLike = this.searchText;
+			params.ruKuSampleState = 2
+			params.fenxiaoyangSampleState = 3
+			params.rank = 'sampleNum'
+	//		console.log(this.breadcrumb.searching);
+	  		// 获取列表数据（第？页）
+			this.$http({
+			    method: 'post',
+				url: this.searchURL,
+				transformRequest: [function (data) {
+					// Do whatever you want to transform the data
+					let ret = ''
+					for (let it in data) {
+					ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+					}
+					return ret
+				}],
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				data: {
+					page:page,
+				    rows:this.page.size,
+				   	params:JSON.stringify(params)
 				}
-				return ret
-			}],
-			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-			data: {
-				page:page,
-			    rows:this.page.size,
-			   	params:JSON.stringify(params)
-			}
-	    }).then(function (response) {
-			this.tabledatas=response.data.rows;
-	  		this.page.total=response.data.total;
-	  		this.page.currentPage=page;
-		}.bind(this)).catch(function (error) {
-		    console.log(error);
-		}.bind(this));
+		    }).then(function (response) {
+				this.tabledatas=response.data.rows;
+		  		this.page.total=response.data.total;
+		  		this.page.currentPage=page;
+			}.bind(this)).catch(function (error) {
+			    console.log(error);
+			}.bind(this));
   	},
   
 //	获取列表数据方法
@@ -203,106 +193,6 @@ export default {
 		if(this.searchText){
 			params.titleLike =this.searchText
 		}
-		// if(this.threadArea!=='全部'){
-		// 	params.threadArea=this.threadArea
-		// }
-		// if(this.industryField!=='全部'){
-		// 	params.industryField=this.industryField
-		// }
-		// if(this.informType!=='全部'){
-		// 	params.informType=this.informType
-		// }
-		// if(this.searchText){
-		// 	params.phoneNumber=this.searchText
-		// }
-
-    addbtn() {
-      //		console.log('addbtn')
-      this.$router.push({
-        path:
-          "/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalAdd"
-      });
-    },
-    //	搜索电话号码
-    search(data) {
-      console.log(data);
-      //		this.searchText=data
-      //		this.getlistdata(1)
-    },
-    emptyCreate() {
-      //		this.scanCode();
-    },
-    //	获取搜索数据
-    searchingfor(searching, page) {
-      page ? page : 1;
-      this.searchText =
-        searching.indexOf("监") == 0 ? searching.slice(1) : searching;
-      //		console.log(this.searchText);
-      var params = {};
-      params.sampleWordOrsampleNumLike = this.searchText;
-      params.ruKuSampleState = 2;
-      params.fenxiaoyangSampleState = 3;
-      params.rank = "sampleNum";
-      //		console.log(this.breadcrumb.searching);
-      // 获取列表数据（第？页）
-      this.$http({
-        method: "post",
-        url: this.searchURL,
-        transformRequest: [
-          function(data) {
-            // Do whatever you want to transform the data
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
-            }
-            return ret;
-          }
-        ],
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        data: {
-          page: page,
-          rows: this.page.size,
-          params: JSON.stringify(params)
-        }
-      })
-        .then(
-          function(response) {
-            this.tabledatas = response.data.rows;
-            this.page.total = response.data.total;
-            this.page.currentPage = page;
-          }.bind(this)
-        )
-        .catch(
-          function(error) {
-            console.log(error);
-          }.bind(this)
-        );
-    },
-
-    //	获取列表数据方法
-    getlistdata(page) {
-      var params = {};
-      params.title = this.searchText;
-      // if(this.state!=='全部'){
-      // 	params.state=this.state
-      // }
-      // if(this.threadArea!=='全部'){
-      // 	params.threadArea=this.threadArea
-      // }
-      // if(this.industryField!=='全部'){
-      // 	params.industryField=this.industryField
-      // }
-      // if(this.informType!=='全部'){
-      // 	params.informType=this.informType
-      // }
-      // if(this.searchText){
-      // 	params.phoneNumber=this.searchText
-      // }
-
       this.loading = false;
       // 获取列表数据（第？页）
       this.$http({
@@ -366,9 +256,12 @@ export default {
         data: {
           id: id
         }
-      })
-        .then(function(response) {
-			this.getlistdata(1)
+      }).then(function(response) {
+      	this.getlistdata(this.page.currentPage)
+      	this.$message({
+          type: "success",
+          message: "删除成功!"
+        });
 		}.bind(this))
         .catch(
           function(error) {
@@ -378,11 +271,7 @@ export default {
     },
     //	获取分页点击事件中及当前页码
     getCurrentPage(currentPage) {
-      if (this.searchText) {
-        this.searchingfor(this.searchText, currentPage);
-      } else {
-        this.getlistdata(currentPage);
-      }
+      this.getlistdata(currentPage);
     },
     //	映射分页触发的事件
     paginationEvent(actiontype) {},
