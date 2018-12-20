@@ -42,6 +42,7 @@
 		mounted() {
 			//初始化UE
 			const _this = this;
+			console.log(UE)
 			this.editor = UE.delEditor("editor");
 			this.editor = UE.getEditor('editor', this.config);
 			//UE就绪后方可设置内容不然报错

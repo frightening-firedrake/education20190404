@@ -5,7 +5,7 @@
       <!--alert-->
       <!--<prompt :alerts="alerts"></prompt>-->
       <!--表格上的时间选框以及 创建-->
-      <list-header :listHeader="listHeader" @threadAreaChange="threadAreaChange" @stateChange="stateChange" @industryFieldChange="industryFieldChange" @informTypeChange="informTypeChange" @search="search" @addbtn="addbtn"></list-header>
+      <list-header :listHeader="listHeader"  @search="search" @addbtn="addbtn"></list-header>
       <!--表格-->
       <list class="list nopointer" :tabledata="tabledatas"  :items="items" :actions="actions" v-on:getchecked="getchecked" :loading="loading" v-on:emptyCreate="emptyCreate" > 
       </list>
@@ -134,34 +134,16 @@ export default {
 		this.filterStatus=data
 		this.getlistdata(1)
 	},
-//  	地域
-	threadAreaChange(data){
-		this.threadArea=data
-		this.getlistdata(1)
-	},
-//  	案件进度
-	stateChange(data){
-		this.state=data
-		this.getlistdata(1)
-	},
-//  	行业领域
-	industryFieldChange(data){
-		this.industryField=data
-		this.getlistdata(1)
-	},
-//  	举报类型
-	informTypeChange(data){
-		this.informType=data
-		this.getlistdata(1)
-	},  
+ 
 	addbtn(){
 //		console.log('addbtn')
 		this.$router.push({path: '/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalAdd'})
 	},
 	//	搜索电话号码
 	search(data){
-		this.searchText=data
-		this.getlistdata(1)
+		console.log(data)
+//		this.searchText=data
+//		this.getlistdata(1)
 	},  
 	emptyCreate(){
 //		this.scanCode();
@@ -258,9 +240,16 @@ export default {
 		this.$http({
 		    method: 'post',
 			url: this.deleteURL,
+			transformRequest: [function (data) {
+				// Do whatever you want to transform the data
+				let ret = ''
+				for (let it in data) {
+				ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+				}
+				return ret
+			}],
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 			data: {
-			    listName: this.list,
 			    id:id,
 			}
 	    }).then(function (response) {
@@ -279,12 +268,7 @@ export default {
 	},
 //	映射分页触发的事件
   	paginationEvent(actiontype){
-  		if(actiontype=='leading_out'){
-  			console.log('leading_out')
-  		}else if(actiontype=='refresh'){
-  			// 获取列表数据（第一页）
-			this.getlistdata(1)			
-  		}
+
   	},
 //	获取多选框选中数据的id(这是一个数组)
   	getchecked(checkedId){
@@ -297,23 +281,7 @@ export default {
   		var date1=new Date()
   		return date1.getFullYear()+'-'+(date1.getMonth()+1)+'-'+date1.getDate()
   	},
-  	printitem(code){
-		this.messageShow=true;
-		this.messages.type="loading";
-		this.printCodeBar(code);
-	},
-  	printCodeBar(code){
-		LODOP = getLodop();
 
-		LODOP.PRINT_INIT("打印条码");
-		LODOP.SET_PRINTER_INDEX("Godex G530");  
-		LODOP.SET_PRINT_PAGESIZE(1, 700, 400, "USER");
-		LODOP.ADD_PRINT_BARCODE(3,35,225,115,'128B',code);
-//  	LODOP.PRINT_DESIGN();
-//  	LODOP.PREVIEW();
-		LODOP.PRINT(); 
-
-	},
   },
   data() {
     return {
@@ -366,30 +334,10 @@ export default {
       listHeader:{
       	search:true,
       	placeholder:'请输入标题名称',
-      	date1:false,
-      	date1Title:'储存时间：',
-      	selectlib:false,
-      	libraryList:[],
-      	status:false,
-      	statusTitle:'检验状态：',
-      	statusitems:[
-      		{label:'全部',text:'全部'},
-      		{label:1,text:'未检测'},
-      		{label:2,text:'已检测'},
-      	],
-//    	stateList:[],
-      	selectRem:false,
-//    	state:true,
-//    	threadArea:true,
-//    	industryField:true,
-//    	informType:true,
-//    	threadAreaList:[
-//    		{id:'山西省',threadAreaName:'山西省'},
-//    	],
 		addbtn:'新建内容'
       },
-      libtype:'pLibrary',
-      selectLibraryId:'全部',
+
+
 //    remark:'',
       filterStatus:'全部',//检验状态
       dateStart:0,//开始时间
@@ -413,7 +361,7 @@ export default {
       },
       {
         id: 3,
-        prop:'source',
+        prop:'articleSource',
         label:"来源",
     //  width:80,
 //      sort:true,
@@ -435,11 +383,11 @@ export default {
 //    	view1:true,
       	edit:true,
       	show:true,
-      	dele:false,
+      	dele:true,
       	manuscript:false,
       	safetyReport:false,
       	printSampleIn:false,
-      	actionWidth:150,
+      	actionWidth:100,
 //    	sort:'sampleNum',
       },
 
