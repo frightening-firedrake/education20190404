@@ -143,7 +143,7 @@ export default {
     );
   },
   mounted() {
-    this.findSumAndValid();
+    // this.findSumAndValid();
   },
   destroy() {
     this.$root.eventHub.$off("viewlistitem");
@@ -445,7 +445,7 @@ export default {
       //     }
       //   ];
       var data = data;
-
+      console.log(data)
       var arr_sum = [];
       var arr_validNumber = [];
       data.forEach(value => {

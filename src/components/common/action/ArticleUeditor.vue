@@ -17,11 +17,12 @@
 		<el-form-item :inline-message="true" class="full summarize borderInput" label="摘要：" prop="summarize"  v-bind:class="{disabled:disabledshow}">
 		    <el-input v-model="formdatas.form.summarize" :disabled="disabled" placeholder="请输入摘要"></el-input>
 		</el-form-item>
+
 		<el-form-item :inline-message="true" class="full articleSource borderInput" label="来源：" prop="articleSource"  v-bind:class="{disabled:disabledshow}">
 		    <el-input v-model="formdatas.form.articleSource" :disabled="disabled" placeholder="请输入来源"></el-input>
 		</el-form-item>
 		<el-form-item class="full ueditorWrap" label="内容：" prop="pnumber"  v-bind:class="{disabled:disabledshow}">
-		    <UEditor :config=config ref="ueditor" :content="formdatas.form.content" @ready="getready"></UEditor>
+		    <UEditor :config="config" ref="ueditor" :content="formdatas.form.content" @ready="getready"></UEditor>
 		</el-form-item>
 		
 		<div class="btns doubleColor">

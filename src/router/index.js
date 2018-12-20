@@ -10,10 +10,13 @@ import thoughtPoliticalAdd from '@/components/minProgramManagement/thoughtPoliti
 import thoughtPoliticalEdit from '@/components/minProgramManagement/thoughtPolitical/thoughtPoliticalEdit.vue'
 //活动动态管理activityList
 import activityList from '@/components/minProgramManagement/activity/activityList.vue'
+import activityListEdit from '@/components/minProgramManagement/activity/activityListEdit.vue'
 //政策法规管理policyList
 import policyList from '@/components/minProgramManagement/policy/policyList.vue'
+import policyListEdit from '@/components/minProgramManagement/policy/policyListEdit.vue'
 //规章制度管理rulesList
 import rulesList from '@/components/minProgramManagement/rules/rulesList.vue'
+import rulesListEdit from '@/components/minProgramManagement/rules/rulesListEdit.vue'
 //校园黄页管理contactIndexList
 import contactIndexList from '@/components/minProgramManagement/contactIndex/contactIndexList.vue'
 import contactIndexEdit from '@/components/minProgramManagement/contactIndex/contactIndexEdit.vue'
@@ -109,6 +112,14 @@ const routes = [{
         component: activityList,
         meta: { needAuth: '活动动态管理' },
     },
+    //活动动态编辑
+    {
+        path: "minProgramManagement/activityList/activityListEdit",
+        name: "思政微信小程序管理/活动动态管理/活动动态编辑",
+        component: activityListEdit,
+        meta: { needAuth: '活动动态编辑' },
+    },
+    // activityListEdit
     //          政策法规管理
     {
         path: "minProgramManagement/policyList",
@@ -116,12 +127,26 @@ const routes = [{
         component: policyList,
         meta: { needAuth: '政策法规管理' },
     },
+    {
+        path: "minProgramManagement/policyList/policyListEdit",
+        name: "思政微信小程序管理/政策法规管理/政策法规编辑",
+        component: policyListEdit,
+        meta: { needAuth: '政策法规编辑' },
+    },
     //          规章制度管理
     {
         path: "minProgramManagement/rulesList",
         name: "思政微信小程序管理/规章制度管理",
         component: rulesList,
         meta: { needAuth: '规章制度管理' },
+    },
+    //规章制度编辑
+    // rulesListEdit
+    {
+        path: "minProgramManagement/rulesList/rulesListEdit",
+        name: "思政微信小程序管理/规章制度管理/规章制度编辑",
+        component: rulesListEdit,
+        meta: { needAuth: '规章制度编辑' },
     },
     //校园黄页新建内容
     {

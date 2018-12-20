@@ -170,7 +170,7 @@ export default {
 
   data() {
     return {
-      DetailsURL: this.apiRoot + "sizhengjianshe/getById",
+      DetailsURL: this.apiRoot + "guizhangzhidui/getById",
       toExamineURL: this.apiRoot + "information/toExamine",
       editURL: this.apiRoot + "/grain/safetyReport/edit",
       searchURL: "/liquid/role2/data/search",
@@ -191,19 +191,17 @@ export default {
         }
       ],
       formdatas: {
-
-      	title:'编辑内容',
-      	form:{
-	        title:'我是标题',
-	        summarize:'我是再要',
-	        articleSource:'我是来院',
-	        content:'我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容',
-      	},
-      	loading:false,
-
-	  },     
-    }
-
+        title: "编辑内容",
+        form: {
+          title: "我是标题",
+          summarize: "我是再要",
+          articleSource: "我是来院",
+          content:
+            "我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容"
+        },
+        loading: false
+      }
+    };
   }
 };
 </script>

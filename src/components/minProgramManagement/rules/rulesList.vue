@@ -99,7 +99,7 @@ export default {
   	//	监听列表点击编辑事件
   	this.$root.eventHub.$on("editlistitem",function(id,row){  
 //		console.log(id)
-		this.$router.push({path: '/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalEdit',query:{id:id,model:'edit'}})
+		this.$router.push({path: '/index/minProgramManagement/rulesList/rulesListEdit',query:{id:id,model:'edit'}})
 		
   	}.bind(this));
   	//	监听列表点击打印事件

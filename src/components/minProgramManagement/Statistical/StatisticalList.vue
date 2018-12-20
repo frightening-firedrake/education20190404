@@ -489,7 +489,7 @@ export default {
         {
           id: 3,
           prop: "weixinNum",
-          label: "微信号"
+          label: "微信昵称"
           //      width:80,
           //      sort:true,
         },
