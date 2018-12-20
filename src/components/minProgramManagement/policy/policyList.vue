@@ -136,8 +136,7 @@ export default {
       function(id, row) {
         //		console.log(id)
         this.$router.push({
-          path:
-            "/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalEdit",
+          path: "/index/minProgramManagement/policyList/policyListEdit",
           query: { id: id, model: "edit" }
         });
       }.bind(this)

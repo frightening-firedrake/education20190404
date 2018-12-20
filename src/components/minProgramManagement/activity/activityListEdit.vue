@@ -7,7 +7,7 @@
     <!--提示-->
     <!--<prompt :alerts="alerts"></prompt>-->
     <!--表单-->
-    <article-ueditor :formdatas="formdatas" @submit="submit"></article-ueditor>
+    <article-ueditor :formdatas="formdatas" @submit="submit" v-if="createlibVisible"></article-ueditor>
   </div>
 </template>
 
@@ -99,6 +99,7 @@ export default {
               content: res.content
             };
             this.formdatas.form = form;
+            this.createlibVisible = true
           }.bind(this)
         )
         .catch(
@@ -170,7 +171,7 @@ export default {
 
   data() {
     return {
-      DetailsURL: this.apiRoot + "sizhengjianshe/getById",
+      DetailsURL: this.apiRoot + "activity/getById",
       toExamineURL: this.apiRoot + "information/toExamine",
       editURL: this.apiRoot + "/grain/safetyReport/edit",
       searchURL: "/liquid/role2/data/search",

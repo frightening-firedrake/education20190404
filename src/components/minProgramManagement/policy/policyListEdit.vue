@@ -170,7 +170,7 @@ export default {
 
   data() {
     return {
-      DetailsURL: this.apiRoot + "sizhengjianshe/getById",
+      DetailsURL: this.apiRoot + "zhengcefagui/getById",
       toExamineURL: this.apiRoot + "information/toExamine",
       editURL: this.apiRoot + "/grain/safetyReport/edit",
       searchURL: "/liquid/role2/data/search",
