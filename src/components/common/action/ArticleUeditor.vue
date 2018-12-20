@@ -201,15 +201,15 @@
 		line-height:normal;
 	}
 	form.sampling .el-form-item.title .el-form-item__content>.el-input input{
-		width:20em;
-		padding: 0 15px;
-	}
-	form.sampling .el-form-item.summarize .el-form-item__content>.el-input input{
 		width:40em;
 		padding: 0 15px;
 	}
+	form.sampling .el-form-item.summarize .el-form-item__content>.el-input input{
+		width:60em;
+		padding: 0 15px;
+	}
 	form.sampling .el-form-item.source .el-form-item__content>.el-input input{
-		width:10em;
+		width:20em;
 		padding: 0 15px;
 	}
 </style>
@@ -267,7 +267,7 @@ export default {
 	            initialFrameWidth: null,
 	            initialFrameHeight: 200,
 	//          BaseUrl: '',//代码我搬来的不知道他是什么鬼
-	            UEDITOR_HOME_URL: '/static/ueditor/',//别改会报错
+	            UEDITOR_HOME_URL: 'static/ueditor/',//别改会报错
 	
 	       },
 	        rules: {
