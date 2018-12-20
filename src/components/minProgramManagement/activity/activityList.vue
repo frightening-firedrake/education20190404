@@ -101,6 +101,7 @@ export default {
           type: "warning"
         })
           .then(() => {
+            this.sendDeleteId(rowid);
             this.tabledatas = this.tabledatas.filter(function(item) {
               return item.id !== rowid;
             });
@@ -116,7 +117,6 @@ export default {
             });
           });
 
-        //  	this.sendDeleteId(rowid);
         //  	console.log(rowid,list);
       }.bind(this)
     );
@@ -331,13 +331,30 @@ export default {
       this.$http({
         method: "post",
         url: this.deleteURL,
+        transformRequest: [
+          function(data) {
+            // Do whatever you want to transform the data
+            let ret = "";
+            for (let it in data) {
+              ret +=
+                encodeURIComponent(it) +
+                "=" +
+                encodeURIComponent(data[it]) +
+                "&";
+            }
+            return ret;
+          }
+        ],
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data: {
-          listName: this.list,
           id: id
         }
       })
-        .then(function(response) {}.bind(this))
+        .then(
+          function(response) {
+            this.getlistdata(1);
+          }.bind(this)
+        )
         .catch(
           function(error) {
             console.log(error);
@@ -400,7 +417,7 @@ export default {
       datalistURL: this.apiRoot + "activity/data",
       //    datalistURL: this.apiRoot+'information/data',
       searchURL: this.apiRoot + "/grain/sample/data",
-      deleteURL: "/liquid/role2/data/delete",
+      deleteURL: this.apiRoot + "activity/delete",
       state: "全部",
       threadArea: "全部",
       //	  threadArea:"山西省",
@@ -517,7 +534,7 @@ export default {
         //    	view1:true,
         edit: true,
         show: true,
-        dele: false,
+        dele: true,
         manuscript: false,
         safetyReport: false,
         printSampleIn: false,

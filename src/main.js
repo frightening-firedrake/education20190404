@@ -11,17 +11,17 @@ import axios from 'axios'
 import router from './router/index'
 //import 'vue2-animate/dist/vue2-animate.min.css';
 import VideoPlayer from 'vue-video-player'
-require('video.js/dist/video-js.css')
-require('vue-video-player/src/custom-theme.css')
+//require('video.js/dist/video-js.css')
+//require('vue-video-player/src/custom-theme.css')
 Vue.use(VideoPlayer)
 
 Vue.use(ElementUI);
 Vue.prototype.apiRoot = 'https://report.ityyedu.com/education/'
 
 //    Vue.prototype.apiRoot = 'http://192.168.1.253:8080/educationSystem/'//bo
+Vue.prototype.apiRoot = 'http://192.168.1.252:8083/educationSystem/'//kun
 //    Vue.prototype.apiRoot = 'http://192.168.0.111:8080/educationSystem/'//bo
 // Vue.prototype.apiRoot = 'https://192.168.1.253:8443/educationSystem/'//bo
-Vue.prototype.apiRoot = 'http://192.168.1.252:8083/educationSystem/'//kun
 
 //axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 //axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded'

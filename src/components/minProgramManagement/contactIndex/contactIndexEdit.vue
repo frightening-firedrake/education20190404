@@ -21,7 +21,7 @@ export default {
     return {
       dataUrl: this.apiRoot + "xiaoyuanhuangye/findAll",
       editUrl: this.apiRoot + "xiaoyuanhuangye/edit",
-      delUrl: this.apiRoot + "xiaoyuanhuangye/delete",
+      delUrl: this.apiRoot + "xiaoyuanhuangye/deleteDepartment",
       breadcrumb: {
         search: false,
         searching: ""

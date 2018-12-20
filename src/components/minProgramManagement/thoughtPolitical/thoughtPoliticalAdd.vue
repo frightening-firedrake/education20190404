@@ -90,10 +90,10 @@ export default {
   	searchingfor(searching){
   		
   	},
-	toExamine(data){
+	articleAdd(data){
 		this.$http({
 	 	    method: 'post',
-	 		url: this.toExamineURL,
+	 		url: this.articleAddURL,
 	 		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 	 		transformRequest: [function (data) {
 			// Do whatever you want to transform the data
@@ -131,15 +131,15 @@ export default {
 	//获取文档内容
     submit(form){
     	this.formdatas.loading=true;
-      	console.log(form)
-//    	this.toExamine(form)
+    	form.author=this.userName;
+      	this.articleAdd(form)
     },
   },
 
   data() {
     return {
 	  DetailsURL:  this.apiRoot + 'information/get',
-	  toExamineURL:  this.apiRoot + 'information/toExamine',
+	  articleAddURL:  this.apiRoot + 'sizhengjianshe/save',
 	  editURL:  this.apiRoot + '/grain/safetyReport/edit',
       searchURL:'/liquid/role2/data/search',
 	  createlibVisible:false,
@@ -161,7 +161,7 @@ export default {
       	form:{
 	        title:'',
 	        summarize:'',
-	        source:'',
+	        articleSource:'',
 	        content:'',
       	},
       	loading:false,

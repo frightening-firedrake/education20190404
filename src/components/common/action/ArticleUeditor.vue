@@ -17,7 +17,8 @@
 		<el-form-item :inline-message="true" class="full summarize borderInput" label="摘要：" prop="summarize"  v-bind:class="{disabled:disabledshow}">
 		    <el-input v-model="formdatas.form.summarize" :disabled="disabled" placeholder="请输入摘要"></el-input>
 		</el-form-item>
-		<el-form-item :inline-message="true" class="full source borderInput" label="来源：" prop="articleSource"  v-bind:class="{disabled:disabledshow}">
+
+		<el-form-item :inline-message="true" class="full articleSource borderInput" label="来源：" prop="articleSource"  v-bind:class="{disabled:disabledshow}">
 		    <el-input v-model="formdatas.form.articleSource" :disabled="disabled" placeholder="请输入来源"></el-input>
 		</el-form-item>
 		<el-form-item class="full ueditorWrap" label="内容：" prop="pnumber"  v-bind:class="{disabled:disabledshow}">
@@ -208,7 +209,7 @@
 		width:60em;
 		padding: 0 15px;
 	}
-	form.sampling .el-form-item.source .el-form-item__content>.el-input input{
+	form.sampling .el-form-item.articleSource .el-form-item__content>.el-input input{
 		width:20em;
 		padding: 0 15px;
 	}
@@ -244,7 +245,7 @@ export default {
     data() {
     	
         return {
-        	titlelength:10,
+        	titlelength:36,
         	ready:false,
         	limit:5,
 			problemStatic:'all',
@@ -273,15 +274,15 @@ export default {
 	        rules: {
 		        title: [
 		            { required: true, message: '请输入标题名称', trigger: 'blur' },
-		            { max: 10, message: '标题名称长度不能超过10个字符', trigger: ['blur', 'change'] }
+		            { max: 36, message: '标题名称长度不能超过36个字符', trigger: ['blur', 'change'] }
 		        ],
 	         	summarize: [
 		            { required: true, message: '请输入摘要名称', trigger: 'blur' },
-		            { max: 25, message: '摘要长度不能超过25个字符', trigger: ['blur', 'change'] }
+		            { max: 56, message: '摘要长度不能超过56个字符', trigger: ['blur', 'change'] }
 		        ],
-		        source: [
+		        articleSource: [
 		            { required: true, message: '请输入来源名称', trigger: 'blur' },
-		            { max: 10, message: '来源长度不能超过10个字符', trigger: ['blur', 'change'] }
+		            { max: 17, message: '来源长度不能超过17个字符', trigger: ['blur', 'change'] }
 		        ],
 
 	          
