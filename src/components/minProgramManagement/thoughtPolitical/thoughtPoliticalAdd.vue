@@ -105,22 +105,22 @@ export default {
 			}],
 	 		data: data
 	    }).then(function (response) {
-//	     	if(response.data.success){
-//	     		this.$notify({
-//		          	title: '操作成功',
-//		          	message: '文章发布成功！！！',
-//		          	type: 'success'
-//		        });
-//		        this.$router.go(-1)
-////				this.$router.push({path: '/index/evilCriminalCases/comprehensiveCriminalCaseList/criminalCasesView',query:{id:id,state:row.state}})
-//		        
-////		        this.getDetails()
-//	     	}else{
-//	     		this.$notify.error({
-//		          	title: '操作失败',
-//		          	message: '文章发布失败！！！',
-//		        });
-//	     	}
+	     	if(response.data.success){
+	     		this.$notify({
+		          	title: '操作成功',
+		          	message: '文章发布成功！！！',
+		          	type: 'success'
+		        });
+		        this.$router.go(-1)
+//				this.$router.push({path: '/index/evilCriminalCases/comprehensiveCriminalCaseList/criminalCasesView',query:{id:id,state:row.state}})
+		        
+//		        this.getDetails()
+	     	}else{
+	     		this.$notify.error({
+		          	title: '操作失败',
+		          	message: '文章发布失败！！！',
+		        });
+	     	}
 	 	}.bind(this)).catch(function (error) {
 	 	    console.log(error);
 	 	}.bind(this));

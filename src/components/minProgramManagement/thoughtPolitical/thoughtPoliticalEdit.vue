@@ -110,10 +110,10 @@ export default {
 
     //	获取搜索数据
     searchingfor(searching) {},
-    toExamine(data) {
+    articleEdit(data) {
       this.$http({
         method: "post",
-        url: this.toExamineURL,
+        url: this.articleEditURL,
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         transformRequest: [
           function(data) {
@@ -136,7 +136,7 @@ export default {
             if (response.data.success) {
               this.$notify({
                 title: "操作成功",
-                message: "文章发布成功！！！",
+                message: "文章修改成功！！！",
                 type: "success"
               });
               this.$router.go(-1);
@@ -146,7 +146,7 @@ export default {
             } else {
               this.$notify.error({
                 title: "操作失败",
-                message: "文章发布失败！！！"
+                message: "文章修改失败！！！"
               });
             }
           }.bind(this)
@@ -163,15 +163,17 @@ export default {
     //获取文档内容
     submit(form) {
       this.formdatas.loading = true;
+      form.author=this.userName;
+      form.id=this.$route.query.id;
       console.log(form);
-      //    	this.toExamine(form)
+      this.articleEdit(form)
     }
   },
 
   data() {
     return {
       DetailsURL: this.apiRoot + "sizhengjianshe/getById",
-      toExamineURL: this.apiRoot + "information/toExamine",
+      articleEditURL: this.apiRoot + "sizhengjianshe/edit",
       editURL: this.apiRoot + "/grain/safetyReport/edit",
       searchURL: "/liquid/role2/data/search",
       createlibVisible: false,
