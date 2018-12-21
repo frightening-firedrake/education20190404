@@ -142,80 +142,101 @@ export default {
     ]),
     ...mapActions(["addAction"]),
     //	列表头触发的事件
-  	...mapMutations(['create_modal_id','is_mask','create_modal','close_modal']),
-  	...mapActions(['addAction']),
-//	列表头触发的事件
+    ...mapMutations([
+      "create_modal_id",
+      "is_mask",
+      "create_modal",
+      "close_modal"
+    ]),
+    ...mapActions(["addAction"]),
+    //	列表头触发的事件
 
-	addbtn(){
-//		console.log('addbtn')
-		this.$router.push({path: '/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalAdd'})
-	},
-	//	搜索电话号码
-	search(data){
-//		console.log(data)
-		this.searchText=data
-		this.getlistdata(1)
-	},  
-	emptyCreate(){
-//		this.scanCode();
-	},
-//	获取搜索数据
-  	searchingfor(searching,page){
-  		page?page:1;
-  		this.searchText=searching.indexOf('监')==0?searching.slice(1):searching;
-//		console.log(this.searchText);
-  		var params = {};
-		params.sampleWordOrsampleNumLike = this.searchText;
-		params.ruKuSampleState = 2
-		params.fenxiaoyangSampleState = 3
-		params.rank = 'sampleNum'
-//		console.log(this.breadcrumb.searching);
-  		// 获取列表数据（第？页）
-		this.$http({
-		    method: 'post',
-			url: this.searchURL,
-			transformRequest: [function (data) {
-				// Do whatever you want to transform the data
-				let ret = ''
-				for (let it in data) {
-				ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-				}
-				return ret
-			}],
-			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-			data: {
-				page:page,
-			    rows:this.page.size,
-			   	params:JSON.stringify(params)
-			}
-	    }).then(function (response) {
-			this.tabledatas=response.data.rows;
-	  		this.page.total=response.data.total;
-	  		this.page.currentPage=page;
-		}.bind(this)).catch(function (error) {
-		    console.log(error);
-		}.bind(this));
-  	},
-  
-//	获取列表数据方法
-  	getlistdata(page){
-		var params = {};
-		if(this.searchText){
-			params.titleLike =this.searchText
-		}
-		// if(this.threadArea!=='全部'){
-		// 	params.threadArea=this.threadArea
-		// }
-		// if(this.industryField!=='全部'){
-		// 	params.industryField=this.industryField
-		// }
-		// if(this.informType!=='全部'){
-		// 	params.informType=this.informType
-		// }
-		// if(this.searchText){
-		// 	params.phoneNumber=this.searchText
-		// }
+    addbtn() {
+      //		console.log('addbtn')
+      this.$router.push({
+        path:
+          "/index/minProgramManagement/thoughtPoliticalList/thoughtPoliticalAdd"
+      });
+    },
+    //	搜索电话号码
+    search(data) {
+      //		console.log(data)
+      this.searchText = data;
+      this.getlistdata(1);
+    },
+    emptyCreate() {
+      //		this.scanCode();
+    },
+    //	获取搜索数据
+    searchingfor(searching, page) {
+      page ? page : 1;
+      this.searchText =
+        searching.indexOf("监") == 0 ? searching.slice(1) : searching;
+      //		console.log(this.searchText);
+      var params = {};
+      params.sampleWordOrsampleNumLike = this.searchText;
+      params.ruKuSampleState = 2;
+      params.fenxiaoyangSampleState = 3;
+      params.rank = "sampleNum";
+      //		console.log(this.breadcrumb.searching);
+      // 获取列表数据（第？页）
+      this.$http({
+        method: "post",
+        url: this.searchURL,
+        transformRequest: [
+          function(data) {
+            // Do whatever you want to transform the data
+            let ret = "";
+            for (let it in data) {
+              ret +=
+                encodeURIComponent(it) +
+                "=" +
+                encodeURIComponent(data[it]) +
+                "&";
+            }
+            return ret;
+          }
+        ],
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        data: {
+          page: page,
+          rows: this.page.size,
+          params: JSON.stringify(params)
+        }
+      })
+        .then(
+          function(response) {
+            this.tabledatas = response.data.rows;
+            this.page.total = response.data.total;
+            this.page.currentPage = page;
+          }.bind(this)
+        )
+        .catch(
+          function(error) {
+            console.log(error);
+          }.bind(this)
+        );
+    },
 
+    //	获取列表数据方法
+    getlistdata(page) {
+      var params = {};
+      if (this.searchText) {
+        params.titleLike = this.searchText;
+      }
+      // if(this.threadArea!=='全部'){
+      // 	params.threadArea=this.threadArea
+      // }
+      // if(this.industryField!=='全部'){
+      // 	params.industryField=this.industryField
+      // }
+      // if(this.informType!=='全部'){
+      // 	params.informType=this.informType
+      // }
+      // if(this.searchText){
+      // 	params.phoneNumber=this.searchText
+      // }
+    },
     addbtn() {
       //		console.log('addbtn')
       this.$router.push({
@@ -367,9 +388,11 @@ export default {
           id: id
         }
       })
-        .then(function(response) {
-			this.getlistdata(1)
-		}.bind(this))
+        .then(
+          function(response) {
+            this.getlistdata(1);
+          }.bind(this)
+        )
         .catch(
           function(error) {
             console.log(error);
