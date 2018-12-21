@@ -198,7 +198,9 @@ export default {
           type: forms.type,
           articleSource: forms.articleSource,
           author: this.userName,
-          params: JSON.stringify(this.tableDate.body)
+          params: this.tableDate.body.length
+            ? JSON.stringify(this.tableDate.body)
+            : null
         }
       })
         .then(
