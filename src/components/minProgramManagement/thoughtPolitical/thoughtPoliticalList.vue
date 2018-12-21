@@ -132,14 +132,9 @@ export default {
   },
   methods: {
     //	列表头触发的事件
-    ...mapMutations([
-      "create_modal_id",
-      "is_mask",
-      "create_modal",
-      "close_modal"
-    ]),
-    ...mapActions(["addAction"]),
-    //	列表头触发的事件
+  	...mapMutations(['create_modal_id','is_mask','create_modal','close_modal']),
+  	...mapActions(['addAction']),
+//	列表头触发的事件
 
 	addbtn(){
 //		console.log('addbtn')

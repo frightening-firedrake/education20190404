@@ -130,6 +130,7 @@ Vue.prototype.$_has = function(value) {
 };
 //方法内权限判断
 Vue.prototype.$_ault_alert = function(value) {
+	return true
 	let buttonpermsStr=store.getters.permissions;
 //	console.log(buttonpermsStr)
 	if(!buttonpermsStr){
