@@ -49,7 +49,7 @@ import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 //import {getLodop} from 'static/lodop/LodopFuncs'
 //let LODOP
 //本地测试要用下面import代码
-import data from "@/util/mock";
+//import data from "@/util/mock";
 
 export default {
   components: {
@@ -95,6 +95,9 @@ export default {
     this.$root.eventHub.$on(
       "delelistitem",
       function(rowid, list) {
+      	if(!this.$_ault_alert('xiaoyuanhuangye:deleteOrganization')){
+		  			return
+		  	}
         this.$confirm("此操作将永久删除信息, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
@@ -102,14 +105,14 @@ export default {
         })
           .then(() => {
             this.sendDeleteId(rowid);
-            this.tabledatas = this.tabledatas.filter(function(item) {
-              return item.id !== rowid;
-            });
+//          this.tabledatas = this.tabledatas.filter(function(item) {
+//            return item.id !== rowid;
+//          });
 
-            this.$message({
-              type: "success",
-              message: "删除成功!"
-            });
+//          this.$message({
+//            type: "success",
+//            message: "删除成功!"
+//          });
           })
           .catch(() => {
             this.$message({
@@ -129,17 +132,20 @@ export default {
         //		if(!this.$_ault_alert('information:get')){
         //			return
         //		}
-        this.$router.push({
-          path:
-            "/index/evilCriminalCases/comprehensiveCriminalCaseList/criminalCasesView",
-          query: { id: id, state: row.state }
-        });
+//      this.$router.push({
+//        path:
+//          "/index/evilCriminalCases/comprehensiveCriminalCaseList/criminalCasesView",
+//        query: { id: id, state: row.state }
+//      });
       }.bind(this)
     );
     //	监听列表点击编辑事件
     this.$root.eventHub.$on(
       "editlistitem",
       function(id) {
+      	if(!this.$_ault_alert('xiaoyuanhuangye:edit')){
+		  			return
+		  	}
         //		console.log(id)
         this.$router.push({
           path: "contactIndexList/contactIndexedit",
@@ -170,6 +176,9 @@ export default {
     //	列表头触发的事件
     //新建内容
     addbtn() {
+    	if(!this.$_ault_alert('xiaoyuanhuangye:save')){
+	  			return
+	  	}
       this.$router.push({ path: "contactIndexList/contactIndexnew" });
     },
     //	时间选择
@@ -355,7 +364,19 @@ export default {
       })
         .then(
           function(response) {
-            this.getlistdata(1);
+          	
+            if(response.data.success){
+			      	this.getlistdata(this.page.currentPage)
+			      	this.$message({
+			          type: "success",
+			          message: "删除成功!"
+			        });
+		      	}else{
+		      		this.$message({
+			          type: "error",
+			          message: "删除失败!"
+			        });
+		      	}
           }.bind(this)
         )
         .catch(
@@ -502,14 +523,14 @@ export default {
           id: 1,
           prop: "organizationName",
           label: "机构名称",
-          width: 400
+          minWidth: 350
           //      sort:true
         },
         {
           id: 2,
           prop: "contacttype",
           label: "机构类别",
-          width: 350,
+          minWidth: 200,
           status: true
           //      sort:true,
         },
@@ -539,8 +560,7 @@ export default {
         dele: true,
         manuscript: false,
         safetyReport: false,
-        printSampleIn: false
-        // actionWidth: 100
+        actionWidth: 150
         //    	sort:'sampleNum',
       }
     };

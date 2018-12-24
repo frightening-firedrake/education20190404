@@ -106,6 +106,9 @@ export default {
   },
   methods: {
     submit(form) {
+    	if(!this.$_ault_alert('xiaoyuanhuangye:save')){
+	  			return
+	  	}
       let forms = form.model;
       let valuenum = 0,
         objlength = 0;

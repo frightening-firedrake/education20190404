@@ -162,6 +162,9 @@ export default {
     },
     //获取文档内容
     submit(form) {
+    	if(!this.$_ault_alert('guizhangzhidu:edit')){
+	  			return
+	  	}
       this.formdatas.loading = true;
       form.author=this.userName;
       form.id=this.$route.query.id;

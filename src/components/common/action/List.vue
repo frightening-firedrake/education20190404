@@ -91,7 +91,7 @@
           </template>
           <template v-if="item.prop=='contacttype'">
             <template v-if="scope.row['type']==1">
-              <span>管理结构</span>
+              <span>管理机构</span>
             </template>
             <template v-if="scope.row['type']==2">
               <span>学院机构</span>

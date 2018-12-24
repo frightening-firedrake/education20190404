@@ -103,6 +103,9 @@ export default {
     this.$root.eventHub.$on(
       "integrallistitem",
       function(rowid, list) {
+      	if(!this.$_ault_alert('account:addIntegral')){
+	  			return
+	  	}
         this.modal.formdatas[0].value = list.account;
         this.modalVisible = true;
         this.studentId = list.id;

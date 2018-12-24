@@ -155,6 +155,9 @@ export default {
         );
     },
     submit(form) {
+    	if(!this.$_ault_alert('xiaoyuanhuangye:edit')){
+	  			return
+	  	}
       let forms = form.model;
       let valuenum = 0,
         objlength = 0;
@@ -242,6 +245,9 @@ export default {
       }
     },
     delrow(e, row) {
+    	if(!this.$_ault_alert('xiaoyuanhuangye:deleteDepartment')){
+	  			return
+	  	}
       this.$http({
         method: "post",
         url: this.delUrl,

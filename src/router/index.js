@@ -175,7 +175,7 @@ const routes = [{
         path: "minProgramManagement/contactIndexList/contactIndexnew",
         name: "思政微信小程序管理/校园黄页管理/新建内容",
         component: contactIndexNew,
-        meta: { needAuth: '校园黄页新建内容' },
+        meta: { needAuth: '校园黄页管理' },
     },
     //          校园黄页管理
     {
@@ -189,7 +189,7 @@ const routes = [{
         path: "minProgramManagement/contactIndexList/contactIndexedit",
         name: "思政微信小程序管理/校园黄页管理/编辑内容",
         component: contactIndexEdit,
-        meta: { needAuth: '校园黄页管理内容' },
+        meta: { needAuth: '校园黄页管理' },
     },
     //          认识自我管理
     {
@@ -202,13 +202,13 @@ const routes = [{
         path: "minProgramManagement/knowingYourselfList/knowingYoursingleNew",
         name: "思政微信小程序管理/认识自我管理/新建单题测试",
         component: knowingYourSingleNew,
-        meta: { needAuth: '认识自我新建单题测试' },
+        meta: { needAuth: '认识自我管理' },
     },
     {
         path: "minProgramManagement/knowingYourselfList/knowingYoursingleEdit",
         name: "思政微信小程序管理/认识自我管理/编辑单题测试",
         component: knowingYourSingleEdit,
-        meta: { needAuth: '认识自我编辑单题测试' },
+        meta: { needAuth: '认识自我管理' },
     },
     //积分管理  
     {
@@ -328,7 +328,7 @@ router.beforeEach((to, from, next) => {
     if (!userAuth && to.path !== '/login') {
         console.log('没登陆')
         next({
-            //          path: '/login',//离线时屏蔽
+            path: '/login',//离线时屏蔽
             //query: { redirect: to.fullPath }// 考虑登录成功之后可以根据query中的内容跳转回原来的路由(页面)
         })
     } else if (userAuth && to.path == '/index') {
@@ -343,7 +343,7 @@ router.beforeEach((to, from, next) => {
         next()
     } else if (to.matched.some(record => record.meta.needAuth)) {
         //		验证用户权限
-        console.log('needAuth')
+//      console.log('needAuth')
         userAuth = userAuth.split(',');
         if (!userAuth.includes(to.meta.needAuth)) {
             console.log('没权限')

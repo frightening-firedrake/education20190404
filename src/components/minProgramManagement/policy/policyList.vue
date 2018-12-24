@@ -77,6 +77,9 @@ export default {
     this.$root.eventHub.$on(
       "delelistitem",
       function(rowid, list) {
+      	if(!this.$_ault_alert('zhengcefagui:delete')){
+		  			return
+		  	}
         this.$confirm("此操作将永久删除该文章, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
@@ -115,6 +118,9 @@ export default {
     this.$root.eventHub.$on(
       "editlistitem",
       function(id, row) {
+      	if(!this.$_ault_alert('zhengcefagui:edit')){
+		  			return
+		  	}
         //		console.log(id)
         this.$router.push({
           path:
@@ -137,6 +143,9 @@ export default {
 //	列表头触发的事件
 
 	addbtn(){
+		if(!this.$_ault_alert('zhengcefagui:save')){
+  			return
+  	}
 //		console.log('addbtn')
 		this.$router.push({path: '/index/minProgramManagement/policyList/policyListAdd'})
 	},
@@ -257,11 +266,18 @@ export default {
           id: id
         }
       }).then(function(response) {
-      	this.getlistdata(this.page.currentPage)
-      	this.$message({
-          type: "success",
-          message: "删除成功!"
-        });
+      	if(response.data.success){
+	      	this.getlistdata(this.page.currentPage)
+	      	this.$message({
+	          type: "success",
+	          message: "删除成功!"
+	        });
+      	}else{
+      		this.$message({
+	          type: "error",
+	          message: "删除失败!"
+	        });
+      	}
 		}.bind(this))
         .catch(
           function(error) {

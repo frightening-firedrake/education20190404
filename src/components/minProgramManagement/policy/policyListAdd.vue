@@ -130,6 +130,9 @@ export default {
     },
 	//获取文档内容
     submit(form){
+    	if(!this.$_ault_alert('zhengcefagui:save')){
+	  			return
+	  	}
     	this.formdatas.loading=true;
     	form.author=this.userName;
       	this.articleAdd(form)

@@ -197,6 +197,9 @@ export default {
   },
   methods: {
     submit(form) {
+    	if(!this.$_ault_alert('test:saveSingleTopic')){
+	  			return
+	  	}
       let valuenum = 0,
         objlength = 0;
       for (var i in this.tableDate.body[this.tableDate.body.length - 1]

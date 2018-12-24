@@ -102,20 +102,23 @@ export default {
     this.$root.eventHub.$on(
       "delelistitem",
       function(rowid, list) {
+      	if(!this.$_ault_alert('account:delete')){
+		  			return
+		  	}
         this.$confirm("此操作将永久删除该信息, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
         })
           .then(() => {
-            this.tabledatas2 = this.tabledatas2.filter(function(item) {
-              return item.id !== rowid;
-            });
-            //  	this.sendDeleteId(rowid);
-            this.$message({
-              type: "success",
-              message: "删除成功!"
-            });
+//          this.tabledatas2 = this.tabledatas2.filter(function(item) {
+//            return item.id !== rowid;
+//          });
+                	this.sendDeleteId(rowid);
+//          this.$message({
+//            type: "success",
+//            message: "删除成功!"
+//          });
           })
           .catch(() => {
             this.$message({
@@ -361,13 +364,42 @@ export default {
       this.$http({
         method: "post",
         url: this.deleteURL,
+        transformRequest: [
+          function(data) {
+            // Do whatever you want to transform the data
+            let ret = "";
+            for (let it in data) {
+              ret +=
+                encodeURIComponent(it) +
+                "=" +
+                encodeURIComponent(data[it]) +
+                "&";
+            }
+            return ret;
+          }
+        ],
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data: {
-          listName: this.list,
           id: id
         }
       })
-        .then(function(response) {}.bind(this))
+        .then(
+          function(response) {
+          	if(response.data.success){
+		      	this.getlistdata1(this.page.currentPage)
+		      	this.$message({
+		          type: "success",
+		          message: "删除成功!"
+		        });
+	      	}else{
+	      		this.$message({
+		          type: "error",
+		          message: "删除失败!"
+		        });
+	      	}
+//          console.log(response);
+          }.bind(this)
+        )
         .catch(
           function(error) {
             console.log(error);
@@ -788,7 +820,7 @@ export default {
         {
           id: 3,
           prop: "weixinNum",
-          label: "微信号"
+          label: "微信昵称"
           //      width:80,
           //      sort:true,
         }

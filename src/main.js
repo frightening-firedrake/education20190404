@@ -16,7 +16,7 @@ import VideoPlayer from 'vue-video-player'
 Vue.use(VideoPlayer)
 
 Vue.use(ElementUI);
-Vue.prototype.apiRoot = 'https://report.ityyedu.com/education/'
+//Vue.prototype.apiRoot = 'https://report.ityyedu.com/education/'
 
 //    Vue.prototype.apiRoot = 'http://192.168.1.253:8080/educationSystem/'//bo
 Vue.prototype.apiRoot = 'http://192.168.1.252:8083/educationSystem/'//kun
@@ -130,7 +130,7 @@ Vue.prototype.$_has = function(value) {
 };
 //方法内权限判断
 Vue.prototype.$_ault_alert = function(value) {
-	return true
+//	return true
 	let buttonpermsStr=store.getters.permissions;
 //	console.log(buttonpermsStr)
 	if(!buttonpermsStr){
