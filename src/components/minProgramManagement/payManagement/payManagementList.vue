@@ -91,10 +91,6 @@ export default {
 		this.printitem(code);	
   	}.bind(this));
   },
-  destroy(){
-  	this.$root.eventHub.$off("viewlistitem")
-  	this.$root.eventHub.$off('delelistitem')
-  },
   methods: {
   	...mapMutations(['create_modal_id','is_mask','create_modal','close_modal']),
   	...mapActions(['addAction']),

@@ -199,10 +199,10 @@ export default {
 
       	title:'编辑内容',
       	form:{
-	        title:'我是标题',
-	        summarize:'我是再要',
-	        articleSource:'我是来院',
-	        content:'我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容',
+	        title:'',
+	        summarize:'',
+	        articleSource:'',
+	        content:'',
       	},
       	loading:false,
 

@@ -148,10 +148,6 @@ export default {
   mounted() {
     // this.findSumAndValid();
   },
-  destroy() {
-    this.$root.eventHub.$off("viewlistitem");
-    this.$root.eventHub.$off("delelistitem");
-  },
   methods: {
     ...mapMutations([]),
     ...mapActions([]),

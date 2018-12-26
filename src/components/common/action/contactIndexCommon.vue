@@ -23,6 +23,7 @@
               :on-success="handleAvatarSuccess"
               :limit="1"
               :file-list="filelist"
+              :headers="{'Authorization':Token}"
               name="pictureFile"
               list-type="picture-card"
             >
@@ -92,7 +93,7 @@
           <p class="title">题目内容</p>
 
           <el-form-item
-            class="table"
+            class="table addborder_right"
             v-for="table in tabledata.problem"
             :key="table.id"
             :prop="table.prop"
@@ -103,11 +104,19 @@
             :class="table.class?table.class:''"
             :style="{height:table.height}"
           >
-            <el-input
+            <!--<el-input
               :disabled="table.disabled"
               v-model="formdata.model[table.prop]"
               :placeholder="table.placeholder"
-            ></el-input>
+            ></el-input>-->
+            <el-input
+					    	class="autotextarea"
+							  type="textarea"
+							  :autosize="{ minRows: 2}"
+              	:disabled="table.disabled"
+              	:placeholder="table.placeholder"
+							  v-model="formdata.model[table.prop]">
+						</el-input>
           </el-form-item>
           <el-table border :data="tabledata.body" class="topic">
             <template v-for="(table,index) in tabledata.hearder">
@@ -165,16 +174,18 @@
       </p>
     </el-form>
     <div class="btns">
-      <el-button class="no" @click="goout">返回上一层</el-button>
-      <el-button class="submit" @click="submitForm('ruleForm')">提交发布</el-button>
+      <el-button class="no" :loading="loading" @click="goout">返回上一层</el-button>
+      <el-button class="submit" :loading="loading" @click="submitForm('ruleForm')">提交发布</el-button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState,mapMutations,mapGetters,mapActions} from 'vuex';
 export default {
   props: ["formdata", "tabledata"],
   computed: {
+		...mapGetters(["Token"]),
     filelist: function() {
       if (this.formdata.model.image == "") return [];
       let params = {
@@ -187,6 +198,7 @@ export default {
   data() {
     return {
       action: this.apiRoot + "/test/uploadPic",
+      loading:false,
       topicnum: ["A", "B", "C", "D"],
       labelWidth: "2.07rem",
       tableWidth: "79px",
@@ -269,6 +281,7 @@ export default {
         if (valid) {
           // console.log(this.$refs[formName]);
           this.$emit("submit", this.$refs[formName]);
+          this.loading=true
         } else {
           console.log("error submit!!");
           return false;
@@ -298,23 +311,26 @@ export default {
   .el-form {
     .formborder {
       border: 1px solid #dfdfdf;
+      border-top: none;
       &.active {
         border-bottom: none;
         margin-top: 0.12rem;
         border-top-right-radius: 0.1rem;
         border-top-left-radius: 0.1rem;
-        border-top: none;
+        border-right:none;
       }
     }
   }
   .btns {
     width: 100%;
-    height: 0.5rem;
+    height: 1rem;
     text-align: center;
     margin-top: 0.45rem;
     .el-button {
       width: 1.3rem;
       height: 0.5rem;
+      padding:0;
+      line-height:0.5rem;
       border-radius: 0.1rem;
       color: #ffffff;
       font-size: 0.18rem;
@@ -335,11 +351,13 @@ export default {
     height: 0.5rem;
     line-height: 0.5rem;
     text-align: center;
+    border:1px solid #dfdfdf;
+    border-top:none;
     span {
       cursor: pointer;
       display: inline-block;
       width: auto;
-      height: 0.3rem;
+      /*height: 0.3rem;*/
       padding: 0 0.2rem;
       margin: 0 auto;
       text-align: center;
@@ -502,7 +520,9 @@ export default {
         }
         .el-form-item__error {
           position: absolute;
-          top: 65%;
+          /*top: 65%;*/
+         	bottom:0.1rem;
+         	line-height:0.4rem;
           margin-left: 0;
           display: block;
           left: 93%;
@@ -585,5 +605,26 @@ export default {
       }
     }
   }
+}
+.addborder_right{
+	border-right:1px solid #dfdfdf!important;
+	height:auto!important;
+}
+.autotextarea{
+	border:none;
+	padding:0;
+	/*margin:0.1rem 0;*/
+	margin-bottom:0.1rem;
+}
+.autotextarea textarea{
+	border-radius: 0;
+	background-color: #f9f9f9;
+	font-size: 0.16rem;
+	color: #333333;
+	border: 1px solid #dcdfe6;
+	padding-top:0;
+	padding-bottom:0;
+	line-height:0.4rem;
+	
 }
 </style>

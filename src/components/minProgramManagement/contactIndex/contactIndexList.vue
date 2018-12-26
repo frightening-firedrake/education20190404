@@ -161,10 +161,6 @@ export default {
       }.bind(this)
     );
   },
-  destroy() {
-    this.$root.eventHub.$off("viewlistitem");
-    this.$root.eventHub.$off("delelistitem");
-  },
   methods: {
     ...mapMutations([
       "create_modal_id",

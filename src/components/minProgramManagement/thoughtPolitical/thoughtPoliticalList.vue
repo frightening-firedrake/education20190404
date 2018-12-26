@@ -131,11 +131,6 @@ export default {
     );
     //	监听列表点击打印事件
   },
-  destroy() {
-    this.$root.eventHub.$off("viewlistitem");
-    this.$root.eventHub.$off("delelistitem");
-    this.$root.eventHub.$off("editlistitem");
-  },
   methods: {
     //	列表头触发的事件
   	...mapMutations(['create_modal_id','is_mask','create_modal','close_modal']),

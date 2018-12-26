@@ -346,7 +346,7 @@ export default {
 //					'webapp', //百度应用 
 					'touppercase', //字母大写 
 					'tolowercase', //字母小写 
-					'background', //背景 
+//					'background', //背景 
 					'template', //模板 
 					'scrawl', //涂鸦 
 //					'music', //音乐 

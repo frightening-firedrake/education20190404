@@ -104,7 +104,7 @@ export default {
       "integrallistitem",
       function(rowid, list) {
       	if(!this.$_ault_alert('account:addIntegral')){
-	  			return
+  			return
 	  	}
         this.modal.formdatas[0].value = list.account;
         this.modalVisible = true;
@@ -154,10 +154,6 @@ export default {
         this.printitem(code);
       }.bind(this)
     );
-  },
-  destroy() {
-    this.$root.eventHub.$off("viewlistitem");
-    this.$root.eventHub.$off("delelistitem");
   },
   methods: {
     ...mapMutations([
