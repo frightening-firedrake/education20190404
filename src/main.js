@@ -16,10 +16,10 @@ import VideoPlayer from 'vue-video-player'
 Vue.use(VideoPlayer)
 
 Vue.use(ElementUI);
-Vue.prototype.apiRoot = 'https://education.ityyedu.com/educationSystem/'
+//Vue.prototype.apiRoot = 'https://education.ityyedu.com/educationSystem/'
 
 //    Vue.prototype.apiRoot = 'http://192.168.1.253:8080/educationSystem/'//bo
-//Vue.prototype.apiRoot = 'http://192.168.1.252:8083/educationSystem/'//kun
+Vue.prototype.apiRoot = 'http://192.168.1.252:8083/educationSystem/'//kun
 //    Vue.prototype.apiRoot = 'http://192.168.0.111:8080/educationSystem/'//bo
 // Vue.prototype.apiRoot = 'https://192.168.1.253:8443/educationSystem/'//bo
 

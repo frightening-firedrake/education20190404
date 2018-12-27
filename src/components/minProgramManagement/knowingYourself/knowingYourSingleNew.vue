@@ -5,6 +5,7 @@
     <index-common
       :formdata="formData"
       :tabledata="tableDate"
+      :submitLoading="submitLoading"
       @addRow="addRow"
       @delrow="delrow"
       @submit="submit"
@@ -19,6 +20,7 @@ export default {
   components: { IndexCommon, Breadcrumb },
   data() {
     return {
+    	submitLoading:false,
       submitUrl: "test/saveSingleTopic",
       breadcrumb: {
         search: false,
@@ -54,6 +56,141 @@ export default {
         ],
         body: [
           {
+            module: {
+              result: "",
+              rank: "",
+              option: ""
+            },
+            result: [
+              {
+                text: "",
+                placeholder: "请输入答案",
+                height: "0.3rem",
+                prop: "option",
+                disabled: false
+              },
+              {
+                text: "",
+                placeholder: "请输入测试结果",
+                height: "0.8rem",
+                prop: "result",
+                disabled: false
+              }
+            ],
+            rank: [
+              {
+                text: "优秀",
+                value: 1,
+                prop: "rank",
+                textcolor: "#20a235",
+                class: "fine"
+              },
+              {
+                text: "良好",
+                value: 2,
+                prop: "rank",
+                textcolor: "#2871df",
+                class: "good"
+              },
+              {
+                text: "危险",
+                value: 3,
+                textcolor: "#df2828",
+                class: "danger",
+                prop: "rank"
+              }
+            ]
+          },{
+            module: {
+              result: "",
+              rank: "",
+              option: ""
+            },
+            result: [
+              {
+                text: "",
+                placeholder: "请输入答案",
+                height: "0.3rem",
+                prop: "option",
+                disabled: false
+              },
+              {
+                text: "",
+                placeholder: "请输入测试结果",
+                height: "0.8rem",
+                prop: "result",
+                disabled: false
+              }
+            ],
+            rank: [
+              {
+                text: "优秀",
+                value: 1,
+                prop: "rank",
+                textcolor: "#20a235",
+                class: "fine"
+              },
+              {
+                text: "良好",
+                value: 2,
+                prop: "rank",
+                textcolor: "#2871df",
+                class: "good"
+              },
+              {
+                text: "危险",
+                value: 3,
+                textcolor: "#df2828",
+                class: "danger",
+                prop: "rank"
+              }
+            ]
+          },{
+            module: {
+              result: "",
+              rank: "",
+              option: ""
+            },
+            result: [
+              {
+                text: "",
+                placeholder: "请输入答案",
+                height: "0.3rem",
+                prop: "option",
+                disabled: false
+              },
+              {
+                text: "",
+                placeholder: "请输入测试结果",
+                height: "0.8rem",
+                prop: "result",
+                disabled: false
+              }
+            ],
+            rank: [
+              {
+                text: "优秀",
+                value: 1,
+                prop: "rank",
+                textcolor: "#20a235",
+                class: "fine"
+              },
+              {
+                text: "良好",
+                value: 2,
+                prop: "rank",
+                textcolor: "#2871df",
+                class: "good"
+              },
+              {
+                text: "危险",
+                value: 3,
+                textcolor: "#df2828",
+                class: "danger",
+                prop: "rank"
+              }
+            ]
+          },{
             module: {
               result: "",
               rank: "",
@@ -235,6 +372,7 @@ export default {
           option["rank"] = v.module.rank;
           singleOption.push(option);
         });
+      	this.submitLoading=true
         this.$http({
           method: "post",
           url: this.apiRoot + this.submitUrl,
@@ -267,10 +405,20 @@ export default {
           }
         })
           .then(
-            function(res) {
-              if (res.data.success) {
-                this.$router.go(-1);
-              }
+            function(response) {
+              if(response.data.success){
+				     		this.$notify({
+				          	title: '操作成功',
+				          	message: '测试题新建成功！！！',
+				          	type: 'success'
+				        });
+			        	this.$router.go(-1)
+				     	}else{
+				     		this.$notify.error({
+				          	title: '操作失败',
+				          	message: '测试题新建失败！！！',
+				        });
+				     	}
             }.bind(this)
           )
           .catch(
@@ -359,7 +507,7 @@ export default {
           this.tableDate.body[
             this.tableDate.body.length - 1
           ].result[1].disabled = true;
-          console.log(this.tableDate.body[this.tableDate.body.length - 1]);
+//        console.log(this.tableDate.body[this.tableDate.body.length - 1]);
           this.tableDate.body.push(params);
         }
       }

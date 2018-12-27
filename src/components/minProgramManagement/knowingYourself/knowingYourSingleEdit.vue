@@ -5,6 +5,7 @@
     <index-common
       :formdata="formData"
       :tabledata="tableDate"
+      :submitLoading="submitLoading"
       @addRow="addRow"
       @delrow="delrow"
       @submit="submit"
@@ -19,6 +20,7 @@ export default {
   components: { IndexCommon, Breadcrumb },
   data() {
     return {
+    	submitLoading:false,
       breadcrumb: {
         search: false,
         searching: ""
@@ -202,14 +204,14 @@ export default {
                     placeholder: "请输入答案",
                     height: "0.3rem",
                     prop: "option",
-                    disabled: flag
+//                  disabled: flag
                   },
                   {
                     text: "",
                     placeholder: "请输入测试结果",
                     height: "0.8rem",
                     prop: "result",
-                    disabled: flag
+//                  disabled: flag
                   }
                 ],
                 rank: [
@@ -297,7 +299,7 @@ export default {
           topic: { topic: forms.topic },
           singleOption: singleOption
         };
-
+      	this.submitLoading=true
         this.$http({
           method: "post",
           url: this.apiRoot + this.editUrl,
@@ -317,7 +319,8 @@ export default {
           ],
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           data: {
-            test: JSON.stringify({
+            tests: JSON.stringify({
+            	id:this.$route.query.id,
               title: forms.title,
               form: forms.form,
               type: forms.type,
@@ -325,15 +328,25 @@ export default {
               summarize: forms.summarize,
               image: forms.image
             }),
-            topic: JSON.stringify({ topic: forms.topic }),
+            topics: JSON.stringify({ topic: forms.topic }),
             singleOptions: JSON.stringify(singleOption)
           }
         })
           .then(
-            function(res) {
-              if (res.data.success) {
-                this.$router.go(-1);
-              }
+            function(response) {
+              if(response.data.success){
+				     		this.$notify({
+				          	title: '操作成功',
+				          	message: '测试题编辑成功！！！',
+				          	type: 'success'
+				        });
+			        	this.$router.go(-1)
+				     	}else{
+				     		this.$notify.error({
+				          	title: '操作失败',
+				          	message: '测试题编辑失败！！！',
+				        });
+				     	}
             }.bind(this)
           )
           .catch(
@@ -416,13 +429,13 @@ export default {
           }
         }
         if (objlength == valuenum) {
-          this.tableDate.body[
-            this.tableDate.body.length - 1
-          ].result[0].disabled = true;
-          this.tableDate.body[
-            this.tableDate.body.length - 1
-          ].result[1].disabled = true;
-          console.log(this.tableDate.body[this.tableDate.body.length - 1]);
+//        this.tableDate.body[
+//          this.tableDate.body.length - 1
+//        ].result[0].disabled = true;
+//        this.tableDate.body[
+//          this.tableDate.body.length - 1
+//        ].result[1].disabled = true;
+//        console.log(this.tableDate.body[this.tableDate.body.length - 1]);
           this.tableDate.body.push(params);
         }
       }

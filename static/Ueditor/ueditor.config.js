@@ -32,8 +32,8 @@
 
         // 服务器统一请求接口路径
 
-        , serverUrl: "https://education.ityyedu.com/educationSystem/ueditor/exec"//测试服务器
-//      , serverUrl: "http://192.168.1.252:8083/educationSystem/ueditor/exec"//kun
+//      , serverUrl: "https://education.ityyedu.com/educationSystem/ueditor/exec"//测试服务器
+        , serverUrl: "http://192.168.1.252:8083/educationSystem/ueditor/exec"//kun
 //      , serverUrl: "http://192.168.1.253:8080/educationSystem/ueditor/exec"//bo
 
 

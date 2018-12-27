@@ -195,9 +195,19 @@ export default {
       })
         .then(
           function(response) {
-            if (response.data.success) {
-              this.getlistdata(1);
-            }
+            if(response.data.success){
+			     		this.$notify({
+			          	title: '操作成功',
+			          	message: '添加成功！！！',
+			          	type: 'success'
+			        });
+			        this.getlistdata(1);
+			     	}else{
+			     		this.$notify.error({
+			          	title: '操作失败',
+			          	message: '添加失败！！！',
+			        });
+			     	}
           }.bind(this)
         )
         .catch(

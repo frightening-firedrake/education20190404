@@ -5,6 +5,8 @@
     <index-common
       :formdata="formData"
       :tabledata="tableDate"
+      :submitLoading="submitLoading"
+      :addbtn="true"
       @submit="submit"
       @addRow="addRow"
       @delrow="delrow"
@@ -24,6 +26,7 @@ export default {
   },
   data() {
     return {
+    	submitLoading:false,
       newUrl: this.apiRoot + "xiaoyuanhuangye/save",
       breadcrumb: {
         search: false,
@@ -126,6 +129,7 @@ export default {
         }
       }
       //作者
+      this.submitLoading=true
       this.$http({
         method: "post",
         url: this.newUrl,
@@ -156,9 +160,19 @@ export default {
       })
         .then(
           function(response) {
-            if (response.data.success) {
-              this.$router.go(-1);
-            }
+            if(response.data.success){
+			     		this.$notify({
+			          	title: '操作成功',
+			          	message: '新建成功！！！',
+			          	type: 'success'
+			        });
+		        	this.$router.go(-1)
+			     	}else{
+			     		this.$notify.error({
+			          	title: '操作失败',
+			          	message: '新建失败！！！',
+			        });
+			     	}
           }.bind(this)
         )
         .catch(

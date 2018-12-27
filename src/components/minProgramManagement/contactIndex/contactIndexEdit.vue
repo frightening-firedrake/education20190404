@@ -4,7 +4,9 @@
     <breadcrumb :breadcrumb="breadcrumb"></breadcrumb>
     <index-common
       :formdata="formData"
+      :submitLoading="submitLoading"
       :tabledata="tableDate"
+      :addbtn="true"
       @addRow="addRow"
       @delrow="delrow"
       @submit="submit"
@@ -15,10 +17,16 @@
 <script>
 import IndexCommon from "@/components/common/action/contactIndexCommon";
 import Breadcrumb from "@/components/common/action/Breadcrumb.vue";
+import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
+
 export default {
   components: { IndexCommon, Breadcrumb },
+  computed: {
+    ...mapGetters(["userName", "stateList", "Token"])
+  },
   data() {
     return {
+    	submitLoading:false,
       dataUrl: this.apiRoot + "xiaoyuanhuangye/findAll",
       editUrl: this.apiRoot + "xiaoyuanhuangye/edit",
       delUrl: this.apiRoot + "xiaoyuanhuangye/deleteDepartment",
@@ -174,6 +182,7 @@ export default {
           valuenum += 1;
         }
       }
+      this.submitLoading=true
       //作者
       this.$http({
         method: "post",
@@ -208,9 +217,19 @@ export default {
       })
         .then(
           function(response) {
-            if (response.data.success) {
-              this.$router.go(-1);
-            }
+		      	if(response.data.success){
+			     		this.$notify({
+			          	title: '操作成功',
+			          	message: '编辑成功！！！',
+			          	type: 'success'
+			        });
+		        	this.$router.go(-1)
+			     	}else{
+			     		this.$notify.error({
+			          	title: '操作失败',
+			          	message: '编辑失败！！！',
+			        });
+			     	}
           }.bind(this)
         )
         .catch(
@@ -248,6 +267,10 @@ export default {
     	if(!this.$_ault_alert('xiaoyuanhuangye:deleteDepartment')){
 	  			return
 	  	}
+    	if(!row.id){
+    		this.tableDate.body.splice(e, 1);
+				return
+    	}
       this.$http({
         method: "post",
         url: this.delUrl,

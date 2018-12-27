@@ -64,7 +64,7 @@
           </template>
         </el-form-item>
       </div>
-      <div class="formborder active">
+      <div class="formborder active" :class="{ NoRound: tabledata.tabletype.type!='topic' }">
         <template v-if="tabledata.tabletype.type=='contact'">
           <el-table border :data="tabledata.body">
             <template v-for="(table,index) in tabledata.hearder">
@@ -155,7 +155,7 @@
                 </template>
               </el-table-column>
             </template>
-            <el-table-column label="操作" header-align="center" align="center" width="92">
+            <!--<el-table-column label="操作" header-align="center" align="center" width="92">
               <template slot-scope="scope">
                 <el-button
                   size="small"
@@ -165,17 +165,17 @@
                   @click="del(scope)"
                 >删除</el-button>
               </template>
-            </el-table-column>
+            </el-table-column>-->
           </el-table>
         </template>
       </div>
-      <p class="addrow">
+      <p class="addrow" v-if="addbtn">
         <span @click="addRow">+{{formdata.addrowTitle}}</span>
       </p>
     </el-form>
     <div class="btns">
-      <el-button class="no" :loading="loading" @click="goout">返回上一层</el-button>
-      <el-button class="submit" :loading="loading" @click="submitForm('ruleForm')">提交发布</el-button>
+      <el-button class="no" :loading="submitLoading" @click="goout">返回上一层</el-button>
+      <el-button class="submit" :loading="submitLoading" @click="submitForm('ruleForm')">提交发布</el-button>
     </div>
   </div>
 </template>
@@ -183,7 +183,7 @@
 <script>
 import { mapState,mapMutations,mapGetters,mapActions} from 'vuex';
 export default {
-  props: ["formdata", "tabledata"],
+  props: ["formdata", "tabledata","submitLoading","addbtn"],
   computed: {
 		...mapGetters(["Token"]),
     filelist: function() {
@@ -210,7 +210,10 @@ export default {
           { required: true, message: "请输入来源", trigger: "blur" }
         ],
         title: [{ required: true, message: "请输入标题名称", trigger: "blur" }],
-        topic: [{ required: true, message: "请输入问题", trigger: "blur" }],
+        topic: [
+        	{ required: true, message: "请输入问题", trigger: "blur" },
+        	{ max: 250, message: '问题长度超过250个字符限制', trigger: 'change' }
+        	],
         form: [{ required: true, message: "请输入问题", trigger: "blur" }],
         type: [{ required: true, message: "请输入测试类别", trigger: "blur" }],
         source: [{ required: true, message: "请输入来源", trigger: "blur" }],
@@ -525,7 +528,8 @@ export default {
          	line-height:0.4rem;
           margin-left: 0;
           display: block;
-          left: 93%;
+          /*left: 93%;*/
+          right: 0.2rem;
         }
       }
     }
@@ -606,6 +610,7 @@ export default {
     }
   }
 }
+/*添加了写样式修改*/
 .addborder_right{
 	border-right:1px solid #dfdfdf!important;
 	height:auto!important;
@@ -626,5 +631,8 @@ export default {
 	padding-bottom:0;
 	line-height:0.4rem;
 	
+}
+.NoRound{
+	border-radius:0!important;
 }
 </style>
