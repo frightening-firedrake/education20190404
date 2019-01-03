@@ -178,15 +178,15 @@ export default {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data: {
           page: page,
-          rows: this.page.size,
+          rows: this.page1.size,
           params: JSON.stringify(params)
         }
       })
         .then(
           function(response) {
-            this.tabledatas = response.data.rows;
-            this.page.total = response.data.total;
-            this.page.currentPage = page;
+            this.tabledatas1 = response.data.rows;
+            this.page1.total = response.data.total;
+            this.page1.currentPage = page;
           }.bind(this)
         )
         .catch(
@@ -200,7 +200,7 @@ export default {
     getlistdata1(page) {
       var params = {};
       if (this.searchText) {
-        params.title = this.searchText;
+        params.titleLike = this.searchText;
       }
       this.loading1 = false;
       // 获取列表数据（第？页）
@@ -296,15 +296,10 @@ export default {
         .then(
           function(response) {
             let res = response.data;
-            this.carList.testPass = isNaN(res.testerPassSum / res.testerSum)
-              ? 0
-              : ((res.testerPassSum / res.testerSum) * 100).toFixed(2) + "%";
-            this.carList.testUnpass = isNaN(
-              res.testerFailureSum / res.testerSum
-            )
-              ? 0
-              : ((res.testerFailureSum / res.testerSum) * 100).toFixed(2) + "%";
-            this.carList.testSum = res.testerSum;
+            var total=res.testerPassSum-0+(res.testerFailureSum-0)
+            this.carList.testPass =total? ((res.testerPassSum / total) * 100).toFixed(0) + "%":0;
+            this.carList.testUnpass = total? 100-((res.testerPassSum / total) * 100).toFixed(0) + "%":0;
+            this.carList.testSum = res.testSum;
             this.carList.testerSum = res.testerSum;
           }.bind(this)
         )
@@ -341,7 +336,9 @@ export default {
         .then(
           function(response) {
           	if(response.data.success){
-		      	this.getlistdata1(this.page.currentPage)
+					    this.getcard();
+					    this.getlistdata1(this.page1.currentPage);
+		      		this.getlistdata2(this.page2.currentPage);
 		      	this.$message({
 		          type: "success",
 		          message: "删除成功!"
@@ -408,7 +405,7 @@ export default {
             "background-color:#dbc24c;background-image:url('static/images/sys/icon1.png');"
         },
         {
-          title: "平台总测试人数",
+          title: "平台总测试人次",
           font: "color:#4c90db;",
           img:
             "background-color:#4c90db;background-image:url('static/images/sys/icon2.png');"

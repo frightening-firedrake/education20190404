@@ -57,7 +57,7 @@ import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 //import {getLodop} from 'static/lodop/LodopFuncs'
 //let LODOP
 //本地测试要用下面import代码
-import data from "@/util/mock";
+//import data from "@/util/mock";
 
 // 引入基本模板
 let echarts = require("echarts/lib/echarts");
@@ -186,12 +186,8 @@ export default {
             //     testPass: "",
             //     testUnpass: ""
             //   },
-            this.carList.testSum = isNaN(
-              res.oneTesterPassSum / res.oneTesterSum
-            )
-              ? 0
-              : (res.oneTesterPassSum / res.oneTesterSum).toFixed(2) * 100 +
-                "%";
+            this.carList.testSum = res.oneTesterSum? (res.oneTesterPassSum / res.oneTesterSum * 100).toFixed(0) +
+                "%": 0;
             this.carList.testerSum = res.oneTesterSum;
             this.carList.testPass = res.oneTesterPassSum;
             this.carList.testUnpass = res.oneTesterFailureSum;
@@ -291,9 +287,7 @@ export default {
         ],
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data: {
-          page: page,
-          rows: this.page1.size,
-          params: JSON.stringify(params)
+          testId:this.$route.query.id
         }
       })
         .then(
@@ -302,7 +296,7 @@ export default {
             // this.tabledatas1 = response.data.rows;
             // this.page1.total = response.data.total;
             // this.page1.currentPage = page;
-            this.findSumAndValid(response.data.rows);
+            this.findSumAndValid(response.data);
           }.bind(this)
         )
         .catch(
@@ -314,7 +308,7 @@ export default {
     //	获取列表数据方法
     getlistdata2(page) {
       var params = {};
-
+			params.testId=this.$route.query.id
       this.loading2 = false;
       // 获取列表数据（第？页）
       this.$http({
@@ -376,13 +370,16 @@ export default {
         ],
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data: {
-          id: id
+          id: id,
+          testId: this.$route.query.id
         }
       })
         .then(
           function(response) {
           	if(response.data.success){
-		      	this.getlistdata1(this.page.currentPage)
+		      		this.getcard();
+					    this.getlistdata1(this.page1.currentPage);
+		      		this.getlistdata2(this.page2.currentPage);
 		      	this.$message({
 		          type: "success",
 		          message: "删除成功!"
@@ -480,9 +477,9 @@ export default {
         var obj_sum = [];
         var obj_validNumber = [];
         obj_sum[0] = value.createTime;
-        obj_sum[1] = value.testerPassSum - 0 + value.testerFailureSum - 0;
+        obj_sum[1] = value.oneTesterSum - 0;
         obj_validNumber[0] = value.createTime;
-        obj_validNumber[1] = value.testerPassSum;
+        obj_validNumber[1] = value.oneTesterPassSum - 0;
         arr_sum.push(obj_sum);
         arr_validNumber.push(obj_validNumber);
       });
@@ -689,11 +686,12 @@ export default {
   data() {
     return {
       carListUrl: this.apiRoot + "statistical/findSumByTestId",
-      datalistURL1: this.apiRoot + "test/dataStatistical",
-      datalistURL2: this.apiRoot + "account/dataRiskAssessment",
+//    datalistURL1: this.apiRoot + "test/dataStatistical",
+      datalistURL1: this.apiRoot + "statistical/findGroupByCreateTime",
+      datalistURL2: this.apiRoot + "account/dataRiskByTask",
       //    datalistURL: this.apiRoot+'information/data',
       searchURL: this.apiRoot + "/grain/sample/data",
-      deleteURL: "/liquid/role2/data/delete",
+      deleteURL: this.apiRoot + "account/deleteByTestId",
       sum: [],
       validNumber: [],
       carList: {

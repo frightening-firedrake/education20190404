@@ -635,4 +635,7 @@ export default {
 .NoRound{
 	border-radius:0!important;
 }
+.formborder .el-form-item--mini.el-form-item,.formborder .el-form-item--small.el-form-item {
+    margin-bottom: 0;
+}
 </style>

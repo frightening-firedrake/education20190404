@@ -790,9 +790,8 @@ export default {
     },
     passPercentage(testerPassSum, testerFailureSum) {
       var total = testerPassSum - 0 + (testerFailureSum - 0);
-      return isNaN(testerPassSum / total)
-        ? 0
-        : ((testerPassSum / total) * 100).toFixed(2) + "%";
+      return total
+        ? ((testerPassSum / total) * 100).toFixed(0) + "%":0;
     },
     colorCheckeds(str, sort) {
       //			console.log(this.actions.searchText,str,sort)
