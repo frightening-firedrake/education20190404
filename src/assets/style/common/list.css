@@ -146,6 +146,7 @@
 }
 .el-main .list .el-table__body-wrapper td .cell button.auth{
     color:#e17f00;
+    text-decoration: underline;
 }
 .el-main .list .el-table__body-wrapper td .cell button.repeat{
 	color:#2380FF;

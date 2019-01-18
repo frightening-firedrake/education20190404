@@ -3,7 +3,7 @@
         <div class="login_box">
         	<span class="sjx"></span>
         	<img class="loginbj2" src="static/images/login/bj2.png" alt="" />
-        	<span class="auth">山西硬汉网络科技科技有限公司 版权所有</span>
+        	<!--<span class="auth">山西硬汉网络科技科技有限公司 版权所有</span>-->
             <el-form ref="form"  class="login_form" :model="loginForm">
             	<h1 class="title">登录账户</h1>
             	<p v-if="loginError" class="loginError"><span class="el-icon-warning"></span>{{errorMessage}}</p>

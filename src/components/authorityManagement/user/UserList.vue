@@ -310,7 +310,7 @@ export default {
       	auth:true,
       	show:true,
       	noview:true,
-      	actionWidth:100,
+      	actionWidth:150,
       }
     }
   }

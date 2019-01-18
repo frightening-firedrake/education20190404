@@ -197,7 +197,7 @@ export default {
   },
   data() {
     return {
-      action: this.apiRoot + "/test/uploadPic",
+      action: this.apiRoot + "test/uploadPic",
       loading:false,
       topicnum: ["A", "B", "C", "D"],
       labelWidth: "2.07rem",

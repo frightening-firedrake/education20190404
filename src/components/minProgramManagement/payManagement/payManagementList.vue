@@ -444,7 +444,7 @@ export default {
       	manuscript:false,
       	safetyReport:false,
       	printSampleIn:false,
-      	actionWidth:100,
+      	actionWidth:150,
 //    	sort:'sampleNum',
       },
 
