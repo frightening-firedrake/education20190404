@@ -77,7 +77,7 @@ export default {
     this.$root.eventHub.$on(
       "delelistitem",
       function(rowid, list) {
-      	if(!this.$_ault_alert('guizhangzhidu:delete')){
+      	if(!this.$_ault_alert('notice:delete')){
 		  			return
 		  	}
         this.$confirm("此操作将永久删除该文章, 是否继续?", "提示", {
@@ -119,7 +119,7 @@ export default {
     this.$root.eventHub.$on(
       "editlistitem",
       function(id, row) {
-      	if(!this.$_ault_alert('guizhangzhidu:edit')){
+      	if(!this.$_ault_alert('notice:edit')){
 		  			return
 		  	}
         //		console.log(id)
@@ -139,7 +139,7 @@ export default {
 //	列表头触发的事件
 
 	addbtn(){
-		if(!this.$_ault_alert('guizhangzhidu:save')){
+		if(!this.$_ault_alert('notice:save')){
   			return
   	}
 //		console.log('addbtn')
@@ -307,10 +307,10 @@ export default {
   },
   data() {
     return {
-			datalistURL: this.apiRoot + "guizhangzhidu/data",
+			datalistURL: this.apiRoot + "notice/data",
       //    datalistURL: this.apiRoot+'information/data',
       searchURL: this.apiRoot + "/grain/sample/data",
-      deleteURL: this.apiRoot + "guizhangzhidu/delete",
+      deleteURL: this.apiRoot + "notice/delete",
       searchText: "",
 
       checkedId: [],

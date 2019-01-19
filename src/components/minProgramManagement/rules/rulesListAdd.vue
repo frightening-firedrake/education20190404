@@ -130,7 +130,7 @@ export default {
     },
 	//获取文档内容
     submit(form){
-    	if(!this.$_ault_alert('guizhangzhidu:save')){
+    	if(!this.$_ault_alert('notice:save')){
 	  		return
 	  	}
     	this.formdatas.loading=true;
@@ -142,7 +142,7 @@ export default {
   data() {
     return {
 	  DetailsURL:  this.apiRoot + 'information/get',
-	  articleAddURL:  this.apiRoot + 'guizhangzhidu/save',
+	  articleAddURL:  this.apiRoot + 'notice/save',
 	  editURL:  this.apiRoot + '/grain/safetyReport/edit',
       searchURL:'/liquid/role2/data/search',
 	  createlibVisible:false,

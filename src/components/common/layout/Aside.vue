@@ -171,7 +171,7 @@ export default {
 		},
 		{
 			icon: 'icon-weibiaoti--1',
-			title: '规章制度管理',
+			title: '校园公告管理',
 			linkto: '/index/minProgramManagement/rulesList',
 			level: 2,
 			pid: 1,

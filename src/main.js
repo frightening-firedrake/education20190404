@@ -40,6 +40,7 @@ axios.interceptors.request.use(function (response) {
 
 //axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 axios.interceptors.response.use(function (response) {
+	console.log(111)
 //  console.log('全局的拦截测试，好简单')
 //	console.log(response.data.code==1000000)
 	if(response.data.code==1000000){

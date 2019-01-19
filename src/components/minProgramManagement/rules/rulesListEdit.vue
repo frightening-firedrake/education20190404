@@ -162,7 +162,7 @@ export default {
     },
     //获取文档内容
     submit(form) {
-    	if(!this.$_ault_alert('guizhangzhidu:edit')){
+    	if(!this.$_ault_alert('notice:edit')){
 	  			return
 	  	}
       this.formdatas.loading = true;
@@ -175,8 +175,8 @@ export default {
 
   data() {
     return {
-      DetailsURL: this.apiRoot + "guizhangzhidu/getById",
-      articleEditURL: this.apiRoot + "guizhangzhidu/edit",
+      DetailsURL: this.apiRoot + "notice/getById",
+      articleEditURL: this.apiRoot + "notice/edit",
       editURL: this.apiRoot + "/grain/safetyReport/edit",
       searchURL: "/liquid/role2/data/search",
       createlibVisible: false,
